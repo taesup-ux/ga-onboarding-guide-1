@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1050" width="1200" height="1050" font-family="'Pretendard','Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <defs>
+    <style>
+      .wall-ours { fill:none; stroke:#222; stroke-width:3.5; }
+      .corridor-internal { fill:#F5F5F5; stroke:#AAA; stroke-width:1.2; stroke-dasharray:3 3; }
+      .other-tenant { fill:#D8D8D8; stroke:#999; stroke-width:1.2; stroke-dasharray:4 3; }
+      .corridor { fill:#D6D6D6; stroke:#888; stroke-width:1.5; }
+      .room-prod { fill:#FAF6EC; stroke:#C9B884; stroke-width:1.2; }
+      .room-office { fill:#F2F6FB; stroke:#9BB4D1; stroke-width:1.2; }
+      .room-util { fill:#FFF; stroke:#999; stroke-width:1; }
+      .ev-zone { fill:#E8EAF6; stroke:#5C6BC0; stroke-width:2; }
+      .core { fill:#ECECEC; stroke:#888; stroke-width:1; }
+      .stair { fill:#DCEEDC; stroke:#3A7E3A; stroke-width:1.8; }
+      .cargo-ev { fill:#FFEDD5; stroke:#C2410C; stroke-width:1.5; }
+      .recycle { fill:#E8F5E9; stroke:#558B2F; stroke-width:1.2; }
+      .door { fill:#FFD700; stroke:#B8860B; stroke-width:2.2; }
+      .label-ko { font-size:14px; fill:#222; text-anchor:middle; font-weight:600; }
+      .label-en { font-size:11px; fill:#666; text-anchor:middle; }
+      .label-sm-ko { font-size:11px; fill:#333; text-anchor:middle; font-weight:500; }
+      .label-sm-en { font-size:9px; fill:#777; text-anchor:middle; }
+      .corridor-ko { font-size:14px; fill:#444; text-anchor:middle; font-weight:700; }
+      .corridor-en { font-size:11px; fill:#666; text-anchor:middle; }
+      .stair-ko { font-size:11px; fill:#1F5E1F; text-anchor:middle; font-weight:700; }
+      .door-label { font-size:10px; fill:#8B4513; text-anchor:middle; font-weight:700; }
+      .other-label { font-size:11px; fill:#888; text-anchor:middle; font-style:italic; }
+      .red-tag { font-size:10px; fill:#E60012; text-anchor:middle; font-weight:700; }
+      .ev-label { font-size:11px; fill:#3F51B5; text-anchor:middle; font-weight:700; }
+      .title { font-size:22px; font-weight:700; fill:#111; }
+      .subtitle { font-size:12px; fill:#555; }
+      .legend { font-size:12px; fill:#222; }
+    </style>
+
+    <symbol id="exitSign" viewBox="0 0 40 30">
+      <rect width="40" height="30" rx="3" fill="#00964F"/>
+      <circle cx="13" cy="9" r="2.2" fill="#fff"/>
+      <path d="M9 26 L13 17 L18 19 L22 14 L17 11 L11 13 L8 18 Z" fill="#fff"/>
+      <rect x="26" y="8" width="9" height="16" fill="none" stroke="#fff" stroke-width="1.5"/>
+      <path d="M22 18 L34 18 L31 15 M34 18 L31 21" stroke="#fff" stroke-width="1.8" fill="none"/>
+    </symbol>
+
+    <symbol id="extinguisher" viewBox="0 0 24 24">
+      <rect width="24" height="24" rx="2" fill="#BF1E2D"/>
+      <rect x="9" y="6" width="6" height="13" fill="#fff" rx="1"/>
+      <rect x="10" y="3" width="4" height="3" fill="#fff"/>
+    </symbol>
+
+    <symbol id="hydrant" viewBox="0 0 24 24">
+      <rect width="24" height="24" rx="2" fill="#BF1E2D"/>
+      <text x="12" y="17" text-anchor="middle" font-size="13" font-weight="700" fill="#fff" font-family="sans-serif">소</text>
+    </symbol>
+  </defs>
+
+  <rect width="1200" height="1050" fill="#FAFAFA"/>
+
+  <text x="40" y="40" class="title">28F · 비상대피 안내도</text>
+  <text x="40" y="58" class="subtitle">28F Emergency Evacuation Map · SANDBOX 용산 헤링턴스퀘어 센트럴파크타워 (반층 사용)</text>
+
+  <g transform="translate(1140,75)">
+    <circle r="22" fill="#fff" stroke="#333" stroke-width="1.5"/>
+    <path d="M0 -16 L6 8 L0 4 L-6 8 Z" fill="#333"/>
+    <text y="-26" text-anchor="middle" font-size="13" font-weight="700">N</text>
+  </g>
+
+  <!-- ============ 우리 영역 외곽 ============ -->
+  <path class="wall-ours" d="M 80 100 L 1120 100 L 1120 720 L 80 720 Z"/>
+  <text x="100" y="120" font-size="11" fill="#1F5E1F" font-weight="700">SANDBOX 28F (반층)</text>
+
+  <!-- ============ 상단 행 ============ -->
+  <!-- Studio 2 -->
+  <rect class="room-prod" x="90" y="130" width="160" height="150"/>
+  <text x="170" y="200" class="label-ko">스튜디오 2</text>
+  <text x="170" y="216" class="label-en">(Studio 2)</text>
+
+  <!-- 부조정실 (확장) -->
+  <rect class="room-prod" x="255" y="130" width="170" height="170"/>
+  <text x="340" y="205" class="label-ko">부조정실</text>
+  <text x="340" y="221" class="label-en">(Sub Control)</text>
+
+  <!-- 사무 좌석 (위쪽 — 옛 제작팀 자리) -->
+  <rect class="room-office" x="430" y="130" width="480" height="170"/>
+  <text x="670" y="210" class="label-ko">사무 좌석</text>
+  <text x="670" y="226" class="label-en">(Office Seating)</text>
+
+  <!-- 메일룸 (맨 우측 위) -->
+  <rect class="room-prod" x="915" y="130" width="195" height="170"/>
+  <text x="1012" y="210" class="label-ko">메일룸</text>
+  <text x="1012" y="226" class="label-en">(Mail Room)</text>
+
+  <!-- ============ 중간 행 ============ -->
+  <!-- Storage -->
+  <rect class="room-util" x="90" y="285" width="160" height="145"/>
+  <text x="170" y="350" class="label-sm-ko">스토리지</text>
+  <text x="170" y="364" class="label-sm-en">(Storage)</text>
+
+  <!-- 내부 통로 (EPS/TPS 통합, 라벨 아래 괄호로 표기) -->
+  <rect class="corridor-internal" x="255" y="305" width="375" height="125"/>
+  <text x="442" y="358" class="corridor-ko">내부 통로</text>
+  <text x="442" y="374" class="corridor-en">(Internal Corridor)</text>
+  <text x="442" y="396" class="label-sm-ko">(EPS / TPS · 전력·통신실)</text>
+
+  <!-- 사무 좌석 좌측 세로 통로 (쪽문 → 화장실 전용 통로) -->
+  <rect class="corridor-internal" x="640" y="305" width="50" height="415"/>
+  <text x="665" y="510" font-size="11" fill="#8B4513" font-weight="700" text-anchor="middle" transform="rotate(-90 665 510)">쪽문 → 화장실 통로</text>
+
+  <!-- 사무 좌석 (좌측 통로 우측) -->
+  <rect class="room-office" x="695" y="305" width="415" height="415"/>
+
+  <!-- ============ 하단 행 ============ -->
+  <!-- Studio 1 (위쪽 더 작게) -->
+  <rect class="room-prod" x="90" y="435" width="160" height="85"/>
+  <text x="170" y="475" class="label-ko">스튜디오 1</text>
+  <text x="170" y="491" class="label-en">(Studio 1)</text>
+
+  <!-- 타사 영역 (Studio 1 아래 + 비상계단 A 아래 + 가로 통로 좌측까지 통합) -->
+  <rect class="other-tenant" x="90" y="525" width="270" height="195"/>
+  <text x="170" y="670" class="other-label" font-size="13">타사 (Other Tenant)</text>
+
+  <!-- ============ EV ZONE (메인 엘베존) ============ -->
+  <rect class="ev-zone" x="255" y="440" width="365" height="280"/>
+  <text x="437" y="458" class="label-ko" fill="#3F51B5">EV ZONE (메인 엘베존)</text>
+
+  <!-- 비상계단 A (밑 EV까지 확장 + 비상구 픽토그램) -->
+  <rect class="stair" x="270" y="445" width="80" height="125"/>
+  <text x="310" y="465" class="stair-ko">비상계단 A</text>
+  <text x="310" y="481" class="stair-ko" font-size="9">(Stairs A)</text>
+  <use href="#exitSign" x="290" y="495" width="40" height="30"/>
+
+  <!-- Row 0: 화물 E/V (우상) -->
+  <rect class="cargo-ev" x="475" y="470" width="140" height="45"/>
+  <text x="545" y="490" class="label-sm-ko">화물 E/V</text>
+  <text x="545" y="504" class="label-sm-en">(Cargo Lift)</text>
+
+  <!-- Row 1: EV1 · EV2 · 분리수거 · 작은 택배 랙 -->
+  <rect class="core" x="360" y="520" width="55" height="50"/>
+  <text x="387" y="550" class="ev-label">EV</text>
+
+  <rect class="core" x="420" y="520" width="50" height="50"/>
+  <text x="445" y="550" class="ev-label">EV</text>
+
+  <rect class="recycle" x="475" y="520" width="95" height="50"/>
+  <text x="522" y="540" class="label-sm-ko">분리수거</text>
+  <text x="522" y="553" class="label-sm-en">(Recycling)</text>
+  <text x="522" y="566" class="label-sm-ko" font-size="9">음식물·재활용</text>
+
+  <!-- 작은 택배 랙 (분리수거와 SANDBOX 정문 사이) -->
+  <rect class="room-util" x="575" y="520" width="40" height="50"/>
+  <text x="595" y="540" class="red-tag" font-size="9">★ 택배</text>
+  <text x="595" y="553" class="label-sm-en" font-size="8">랙</text>
+  <text x="595" y="565" class="label-sm-en" font-size="7">(Mail)</text>
+
+  <!-- 가로 통로 (조금 아래로 — 타사 출입문 ↔ SANDBOX 정문) -->
+  <rect class="corridor-internal" x="270" y="595" width="345" height="35"/>
+  <text x="278" y="617" font-size="9" fill="#666" text-anchor="start" font-weight="700">← 타사 출입문</text>
+  <text x="442" y="615" class="corridor-en" font-size="10">통로</text>
+  <text x="608" y="617" font-size="9" fill="#666" text-anchor="end" font-weight="700">SANDBOX 정문 →</text>
+
+  <!-- Row 2: EV3 · EV4 · EV5 -->
+  <rect class="core" x="360" y="640" width="55" height="50"/>
+  <text x="387" y="670" class="ev-label">EV</text>
+
+  <rect class="core" x="420" y="640" width="50" height="50"/>
+  <text x="445" y="670" class="ev-label">EV</text>
+
+  <rect class="core" x="475" y="640" width="140" height="50"/>
+  <text x="545" y="670" class="ev-label">EV</text>
+
+  <!-- ============ SANDBOX 정문 (EV ZONE 우측 외벽 → 사무 좌석군) ============ -->
+  <rect class="door" x="618" y="555" width="22" height="100" rx="2"/>
+  <text x="629" y="608" class="door-label" transform="rotate(-90 629 608)">SANDBOX 정문</text>
+
+  <!-- 정문 화살표: EV ZONE → 사무 좌석군 -->
+  <path d="M 645 605 L 670 605 L 660 598 M 670 605 L 660 612" stroke="#8B4513" stroke-width="2.2" fill="none"/>
+
+  <!-- ============ 사무 좌석 라벨 (박스 가운데) ============ -->
+  <text x="875" y="505" class="label-ko">사무 좌석</text>
+  <text x="875" y="522" class="label-en">(Office Seating)</text>
+  <text x="875" y="545" class="label-sm-ko">OA복합기 · 회의실카드 · 상비약 · 법인차량 키 · 카트</text>
+
+  <!-- ============ 쪽문 (사무 좌석 좌측 통로 끝 외벽 → 외부 공용통로 화장실) ============ -->
+  <rect class="door" x="640" y="720" width="50" height="22" rx="2"/>
+  <text x="665" y="735" class="door-label">쪽문</text>
+
+  <!-- 쪽문 화살표: 통로 → 외부 공용통로 (아래쪽) -->
+  <path d="M 665 745 L 665 760 L 658 753 M 665 760 L 672 753" stroke="#8B4513" stroke-width="2.2" fill="none"/>
+
+  <!-- ============ 외부 공용통로 ============ -->
+  <rect class="corridor" x="80" y="745" width="1040" height="180"/>
+
+  <!-- 소품실 (CS) — 위쪽으로 -->
+  <rect class="room-util" x="240" y="755" width="380" height="60"/>
+  <text x="430" y="785" class="label-sm-ko">소품실 (CS)</text>
+  <text x="430" y="800" class="label-sm-en">(Props Storage)</text>
+
+  <!-- 공용 통로 라벨 (소품실과 타사 창고 사이 가운데) -->
+  <text x="430" y="843" class="corridor-ko" font-size="16">공용 통로</text>
+  <text x="430" y="860" class="corridor-en" font-size="12">(Common Corridor)</text>
+
+  <!-- 여자화장실 -->
+  <rect class="room-util" x="800" y="755" width="180" height="55"/>
+  <text x="890" y="780" class="label-sm-ko">여자화장실</text>
+  <text x="890" y="795" class="label-sm-en">(Women)</text>
+
+  <!-- PS -->
+  <rect class="room-util" x="800" y="815" width="180" height="50"/>
+  <text x="890" y="840" class="label-sm-ko">PS</text>
+  <text x="890" y="854" class="label-sm-en">(Props)</text>
+
+  <!-- 남자화장실 -->
+  <rect class="room-util" x="800" y="870" width="180" height="50"/>
+  <text x="890" y="895" class="label-sm-ko">남자화장실</text>
+  <text x="890" y="910" class="label-sm-en">(Men)</text>
+
+  <!-- 비상 E/V (좌하) -->
+  <rect class="cargo-ev" x="100" y="870" width="135" height="50"/>
+  <text x="167" y="893" class="label-sm-ko">비상 E/V</text>
+  <text x="167" y="907" class="label-sm-en">(Emergency Lift)</text>
+
+  <!-- 타사 창고 -->
+  <rect class="other-tenant" x="250" y="870" width="220" height="50"/>
+  <text x="360" y="893" class="other-label" font-size="12">타사 창고</text>
+  <text x="360" y="908" class="other-label">(Other Tenant Storage)</text>
+
+  <!-- 비상계단 B -->
+  <rect class="stair" x="490" y="870" width="285" height="50"/>
+  <text x="632" y="893" class="stair-ko">비상계단 B (외부)</text>
+  <text x="632" y="908" class="stair-ko" font-size="10">(Stairs B · External)</text>
+
+  <!-- ============ 비상구 픽토그램 (외부 비상계단 B만 — 비상계단 A는 박스 내부에) ============ -->
+  <use href="#exitSign" x="500" y="878" width="36" height="27"/>
+
+  <!-- ============ 소방시설 ============ -->
+  <use href="#extinguisher" x="166" y="425" width="18" height="18"/>
+  <use href="#extinguisher" x="640" y="312" width="18" height="18"/>
+  <use href="#extinguisher" x="1090" y="535" width="18" height="18"/>
+  <use href="#extinguisher" x="600" y="828" width="18" height="18"/>
+  <use href="#hydrant" x="430" y="305" width="20" height="20"/>
+  <use href="#hydrant" x="240" y="828" width="20" height="20"/>
+
+  <!-- ============ 범례 ============ -->
+  <g transform="translate(40,985)">
+    <rect width="700" height="55" fill="#fff" stroke="#CCC" rx="4"/>
+    <text x="14" y="18" class="legend" font-weight="700">범례 · Legend</text>
+
+    <use href="#exitSign" x="14" y="22" width="20" height="14"/>
+    <text x="40" y="33" class="legend">비상구 (Exit)</text>
+
+    <rect class="stair" x="120" y="24" width="14" height="12"/>
+    <text x="140" y="33" class="legend">비상계단 (Stairs)</text>
+
+    <rect class="cargo-ev" x="245" y="24" width="14" height="12"/>
+    <text x="265" y="33" class="legend">화물·비상 E/V</text>
+
+    <rect class="ev-zone" x="365" y="24" width="14" height="12"/>
+    <text x="385" y="33" class="legend">EV ZONE (메인)</text>
+
+    <rect class="recycle" x="490" y="24" width="14" height="12"/>
+    <text x="510" y="33" class="legend">분리수거</text>
+
+    <rect class="door" x="14" y="42" width="14" height="10"/>
+    <text x="34" y="50" class="legend">SANDBOX 정문</text>
+
+    <rect class="corridor-internal" x="120" y="40" width="14" height="12"/>
+    <text x="140" y="50" class="legend">내부 통로</text>
+
+    <rect class="corridor" x="245" y="40" width="14" height="12"/>
+    <text x="265" y="50" class="legend">외부 공용통로</text>
+
+    <rect class="other-tenant" x="365" y="40" width="14" height="12"/>
+    <text x="385" y="50" class="legend">타사 (Other Tenant)</text>
+  </g>
+
+  <!-- 비상연락처 -->
+  <g transform="translate(760,985)">
+    <rect width="400" height="55" fill="#BF1E2D" rx="4"/>
+    <text x="20" y="24" font-size="14" font-weight="700" fill="#fff">화재신고 119 · Fire 119</text>
+    <text x="20" y="44" font-size="11" fill="#fff">관리실 · GA Slack #ga-helpdesk</text>
+  </g>
+</svg>
