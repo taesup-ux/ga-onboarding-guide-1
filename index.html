@@ -1129,6 +1129,31 @@
           <span>AED 위치: 29층 라운지 보관함 (모델 A15). 평소에 위치를 미리 확인해 두세요.</span>
         </div>
       </div>
+
+      <!-- 비상대피도 -->
+      <div class="card">
+        <div class="card-title">비상대피도 · Evacuation Map</div>
+        <p style="color:#94a3b8; margin:0 0 16px; font-size:14px;">시작점에서 가까운 비상구로 이동하세요. 초록(A 루트) = SANDBOX 정문 → 비상계단 A · 청록(B 루트) = 쪽문 → 외부 공용통로 → 비상계단 B</p>
+
+        <div class="floor-tabs" style="display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap;">
+          <button class="floor-tab active" data-floor="28F" onclick="switchFloor('28F')" style="flex:1; min-width:100px; padding:12px 20px; border-radius:8px; border:2px solid #3b82f6; background:#3b82f6; color:#fff; font-weight:700; cursor:pointer; transition:all 0.2s;">28F · 반층</button>
+          <button class="floor-tab" data-floor="29F" onclick="switchFloor('29F')" style="flex:1; min-width:100px; padding:12px 20px; border-radius:8px; border:2px solid #475569; background:transparent; color:#cbd5e1; font-weight:700; cursor:pointer; transition:all 0.2s;">29F · 전층</button>
+        </div>
+
+        <div class="floor-content" data-floor="28F" style="display:block; background:#fafafa; border-radius:8px; padding:8px; overflow-x:auto;">
+          <object data="floorplans/28F-evac-animated.svg" type="image/svg+xml" style="width:100%; min-width:900px; display:block;" aria-label="28F 비상대피 동선"></object>
+        </div>
+
+        <div class="floor-content" data-floor="29F" style="display:none; background:#fafafa; border-radius:8px; padding:8px; overflow-x:auto;">
+          <object data="floorplans/29F-base.svg" type="image/svg+xml" style="width:100%; min-width:900px; display:block;" aria-label="29F 비상대피도"></object>
+          <p style="color:#64748b; margin:8px 0 0; font-size:12px; text-align:center;">29F 동선 애니메이션은 준비 중입니다 (1차 mockup)</p>
+        </div>
+
+        <div class="alert alert-green" style="margin-top:16px;">
+          <span class="alert-icon">🟢</span>
+          <span>붉은 점멸 = 시작점 · 초록 점선 = A 루트 · 청록 점선 = B 루트 · 비상구 점등 = 출구</span>
+        </div>
+      </div>
     </section>
 
     <!-- ───────────── SECTION 06 ───────────── -->
@@ -1295,6 +1320,20 @@
     } else {
       document.getElementById('prog-count').style.color = 'var(--blue)';
     }
+  }
+
+  // 비상대피도 층 탭 전환
+  function switchFloor(floor) {
+    document.querySelectorAll('.floor-tab').forEach(btn => {
+      const isActive = btn.dataset.floor === floor;
+      btn.classList.toggle('active', isActive);
+      btn.style.background = isActive ? '#3b82f6' : 'transparent';
+      btn.style.color = isActive ? '#fff' : '#cbd5e1';
+      btn.style.borderColor = isActive ? '#3b82f6' : '#475569';
+    });
+    document.querySelectorAll('.floor-content').forEach(content => {
+      content.style.display = content.dataset.floor === floor ? 'block' : 'none';
+    });
   }
 
   // 초기화

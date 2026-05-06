@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" font-family="'Pretendard','Apple SD Gothic Neo','Noto Sans KR',sans-serif">
+  <defs>
+    <style>
+      .wall-ours { fill:none; stroke:#222; stroke-width:3.5; }
+      .room { fill:#FFF; stroke:#999; stroke-width:1; }
+      .room-office { fill:#F2F6FB; stroke:#9BB4D1; stroke-width:1; }
+      .room-meeting { fill:#FFF8E1; stroke:#D4A017; stroke-width:1; }
+      .room-exec { fill:#F3E5F5; stroke:#7B1FA2; stroke-width:1.2; }
+      .room-lounge { fill:#E8F5E9; stroke:#388E3C; stroke-width:1; }
+      .core { fill:#ECECEC; stroke:#888; stroke-width:1; }
+      .stair { fill:#DCEEDC; stroke:#3A7E3A; stroke-width:1.8; }
+      .cargo-ev { fill:#FFEDD5; stroke:#C2410C; stroke-width:1.5; }
+      .storage { fill:#F5F0E8; stroke:#8B6F47; stroke-width:1; stroke-dasharray:3 2; }
+      .door { fill:#FFD700; stroke:#B8860B; stroke-width:2; }
+      .label-ko { font-size:13px; fill:#222; text-anchor:middle; font-weight:600; }
+      .label-en { font-size:10px; fill:#666; text-anchor:middle; }
+      .label-sm-ko { font-size:11px; fill:#333; text-anchor:middle; font-weight:500; }
+      .label-sm-en { font-size:9px; fill:#777; text-anchor:middle; }
+      .seat-ko { font-size:10px; fill:#222; text-anchor:middle; font-weight:600; }
+      .seat-en { font-size:8px; fill:#666; text-anchor:middle; }
+      .stair-ko { font-size:11px; fill:#1F5E1F; text-anchor:middle; font-weight:700; }
+      .exec-ko { font-size:11px; fill:#4A148C; text-anchor:middle; font-weight:700; }
+      .door-label { font-size:10px; fill:#8B4513; text-anchor:middle; font-weight:700; }
+      .title { font-size:22px; font-weight:700; fill:#111; }
+      .subtitle { font-size:12px; fill:#555; }
+      .legend { font-size:12px; fill:#222; }
+      .red-tag { font-size:9px; fill:#E60012; text-anchor:middle; font-weight:700; }
+    </style>
+
+    <symbol id="exitSign" viewBox="0 0 40 30">
+      <rect width="40" height="30" rx="3" fill="#00964F"/>
+      <circle cx="13" cy="9" r="2.2" fill="#fff"/>
+      <path d="M9 26 L13 17 L18 19 L22 14 L17 11 L11 13 L8 18 Z" fill="#fff"/>
+      <rect x="26" y="8" width="9" height="16" fill="none" stroke="#fff" stroke-width="1.5"/>
+      <path d="M22 18 L34 18 L31 15 M34 18 L31 21" stroke="#fff" stroke-width="1.8" fill="none"/>
+    </symbol>
+
+    <symbol id="extinguisher" viewBox="0 0 24 24">
+      <rect width="24" height="24" rx="2" fill="#BF1E2D"/>
+      <rect x="9" y="6" width="6" height="13" fill="#fff" rx="1"/>
+      <rect x="10" y="3" width="4" height="3" fill="#fff"/>
+    </symbol>
+
+    <symbol id="hydrant" viewBox="0 0 24 24">
+      <rect width="24" height="24" rx="2" fill="#BF1E2D"/>
+      <text x="12" y="17" text-anchor="middle" font-size="13" font-weight="700" fill="#fff" font-family="sans-serif">소</text>
+    </symbol>
+  </defs>
+
+  <rect width="1200" height="900" fill="#FAFAFA"/>
+
+  <text x="40" y="40" class="title">29F · 비상대피 안내도</text>
+  <text x="40" y="58" class="subtitle">29F Emergency Evacuation Map · SANDBOX 용산 헤링턴스퀘어 센트럴파크타워 (전층 사용)</text>
+
+  <g transform="translate(1130,75)">
+    <circle r="22" fill="#fff" stroke="#333" stroke-width="1.5"/>
+    <path d="M0 -16 L6 8 L0 4 L-6 8 Z" fill="#333"/>
+    <text y="-26" text-anchor="middle" font-size="13" font-weight="700">N</text>
+  </g>
+
+  <!-- 우리 영역 외곽 (전층) -->
+  <path class="wall-ours" d="M 80 100 L 1120 100 L 1120 800 L 80 800 Z"/>
+  <text x="100" y="120" font-size="11" fill="#1F5E1F" font-weight="700">SANDBOX 29F (전층)</text>
+
+  <!-- ============ 북쪽 행 (y=130~270) ============ -->
+  <!-- 좌측 좌석군 (CXO · IP · Partnership 일부) -->
+  <rect class="room-office" x="90" y="130" width="340" height="140"/>
+  <text x="260" y="190" class="label-ko">좌측 사무 좌석군</text>
+  <text x="260" y="204" class="label-en">(West Office Seating)</text>
+  <text x="260" y="226" class="label-sm-ko">CXO · IP · Partnership</text>
+
+  <!-- CGO Office (이필성) -->
+  <rect class="room-exec" x="440" y="130" width="170" height="140"/>
+  <text x="525" y="190" class="exec-ko">CGO Office</text>
+  <text x="525" y="206" class="seat-en">(이필성 / Lee Pil-sung)</text>
+
+  <!-- 중앙 좌석군 (Partnership · AD Business) -->
+  <rect class="room-office" x="620" y="130" width="280" height="140"/>
+  <text x="760" y="190" class="label-ko">중앙 사무 좌석군</text>
+  <text x="760" y="204" class="label-en">(Center Office Seating)</text>
+  <text x="760" y="226" class="label-sm-ko">Partnership · AD Business</text>
+
+  <!-- 우측 좌석군 (HR · Legal · Design) -->
+  <rect class="room-office" x="910" y="130" width="200" height="140"/>
+  <text x="1010" y="190" class="label-ko">우측 사무 좌석군</text>
+  <text x="1010" y="204" class="label-en">(East Office Seating)</text>
+  <text x="1010" y="226" class="label-sm-ko">HR · Legal · Design</text>
+
+  <!-- ============ 중앙 행 (y=280~450) ============ -->
+  <!-- IP·FP 좌석군 -->
+  <rect class="room-office" x="90" y="280" width="200" height="170"/>
+  <text x="190" y="345" class="label-ko">IP · FP · BDP</text>
+  <text x="190" y="359" class="label-en">좌석군 (Seating)</text>
+
+  <!-- 미팅룸 2 -->
+  <rect class="room-meeting" x="295" y="280" width="135" height="80"/>
+  <text x="362" y="316" class="label-sm-ko">미팅룸 2</text>
+  <text x="362" y="330" class="label-sm-en">(Meeting Room 2)</text>
+
+  <!-- 미팅룸 3 -->
+  <rect class="room-meeting" x="295" y="365" width="135" height="85"/>
+  <text x="362" y="403" class="label-sm-ko">미팅룸 3</text>
+  <text x="362" y="417" class="label-sm-en">(Meeting Room 3)</text>
+
+  <!-- EPS/TPS -->
+  <rect class="room" x="440" y="280" width="170" height="100"/>
+  <text x="525" y="325" class="label-ko">EPS / TPS</text>
+  <text x="525" y="339" class="label-en">(전력실 · 통신실)</text>
+
+  <!-- 인감날인석 + OA복합기 ① -->
+  <rect class="room" x="440" y="385" width="170" height="65"/>
+  <text x="525" y="408" class="label-sm-ko">인감날인석 · OA복합기 ①</text>
+  <text x="525" y="422" class="label-sm-en">(Seal · Copier 10.30.29.2)</text>
+
+  <!-- 라운지 -->
+  <rect class="room-lounge" x="620" y="280" width="280" height="170"/>
+  <text x="760" y="355" class="label-ko">라운지</text>
+  <text x="760" y="369" class="label-en">(Lounge)</text>
+  <text x="760" y="392" class="label-sm-ko">미팅 부스 · 폰부스 (Booths)</text>
+
+  <!-- CEO Office (차병곤) -->
+  <rect class="room-exec" x="910" y="280" width="200" height="170"/>
+  <text x="1010" y="355" class="exec-ko">CEO Office</text>
+  <text x="1010" y="371" class="seat-en">(차병곤 / Cha Byung-gon)</text>
+
+  <!-- ============ 중하 행 (y=460~620) — 코어 1 ============ -->
+  <!-- AD Business 대규모 좌석군 -->
+  <rect class="room-office" x="90" y="460" width="340" height="160"/>
+  <text x="260" y="530" class="label-ko">AD Business 좌석군</text>
+  <text x="260" y="544" class="label-en">(AD Business Seating)</text>
+  <text x="260" y="566" class="label-sm-ko">대규모 오픈 오피스 (~80석)</text>
+
+  <!-- 코어 1: 비상EV(화물) · 택배수신함 · EV · 비상계단 A · 정문 -->
+  <!-- 비상EV (38호기/2호기) -->
+  <rect class="cargo-ev" x="440" y="460" width="120" height="65"/>
+  <text x="500" y="483" class="seat-ko">비상 EV (화물)</text>
+  <text x="500" y="497" class="seat-en">(38호기/2호기)</text>
+  <text x="500" y="513" class="seat-en">음식물·폐기물</text>
+
+  <!-- 택배 수신함 -->
+  <rect class="room" x="565" y="460" width="100" height="65"/>
+  <text x="615" y="487" class="red-tag">★ 택배 수신함</text>
+  <text x="615" y="500" class="seat-en">(Mail Locker)</text>
+
+  <!-- EV 행 -->
+  <rect class="core" x="440" y="535" width="55" height="85"/>
+  <text x="467" y="582" class="seat-ko">EV</text>
+
+  <rect class="core" x="500" y="535" width="55" height="85"/>
+  <text x="527" y="582" class="seat-ko">EV</text>
+
+  <!-- 정수기/냉장고 -->
+  <rect class="room" x="560" y="535" width="55" height="85"/>
+  <text x="587" y="572" class="seat-ko">정수기</text>
+  <text x="587" y="585" class="seat-en">(Water)</text>
+  <text x="587" y="600" class="seat-ko">냉장고</text>
+
+  <!-- 정문 ① (택배수신함 ↔ EV 사이) -->
+  <rect class="door" x="620" y="525" width="60" height="20" rx="2"/>
+  <text x="650" y="540" class="door-label">정문 ① · Entry ①</text>
+
+  <!-- 비상계단 A -->
+  <rect class="stair" x="685" y="460" width="60" height="160"/>
+  <text x="715" y="545" class="stair-ko" transform="rotate(-90 715 545)">비상계단 A · Stairs A</text>
+
+  <!-- 미팅룸 1 (Game/무선) -->
+  <rect class="room-meeting" x="755" y="460" width="145" height="75"/>
+  <text x="827" y="495" class="label-sm-ko">미팅룸 1 (Game)</text>
+  <text x="827" y="509" class="label-sm-en">(Meeting Room 1 / 무선)</text>
+
+  <!-- 29층 택배보관함 -->
+  <rect class="room" x="755" y="540" width="145" height="80"/>
+  <text x="827" y="575" class="label-sm-ko">29층 택배보관함</text>
+  <text x="827" y="589" class="label-sm-en">(29F Parcel Locker)</text>
+
+  <!-- AD 좌석군 우측 -->
+  <rect class="room-office" x="910" y="460" width="200" height="160"/>
+  <text x="1010" y="530" class="label-ko">AD 좌석군</text>
+  <text x="1010" y="544" class="label-en">(AD Seating)</text>
+
+  <!-- ============ 남쪽 행 (y=630~790) — 코어 2 ============ -->
+  <!-- 미팅룸 5 + AD 좌석 (좌하) -->
+  <rect class="room-meeting" x="90" y="630" width="160" height="80"/>
+  <text x="170" y="665" class="label-sm-ko">미팅룸 5</text>
+  <text x="170" y="679" class="label-sm-en">(Meeting Room 5)</text>
+
+  <rect class="room-office" x="90" y="715" width="160" height="75"/>
+  <text x="170" y="748" class="label-sm-ko">AD 좌석군 (남측)</text>
+  <text x="170" y="762" class="label-sm-en">(AD South)</text>
+
+  <!-- 미팅룸 4 (Beauty) -->
+  <rect class="room-meeting" x="260" y="630" width="170" height="80"/>
+  <text x="345" y="665" class="label-sm-ko">미팅룸 4 (Beauty)</text>
+  <text x="345" y="679" class="label-sm-en">(Meeting Room 4 / 무선)</text>
+
+  <!-- 창고 29F-A (Partnership/MD/BDP) -->
+  <rect class="storage" x="260" y="715" width="170" height="75"/>
+  <text x="345" y="748" class="label-sm-ko">창고 29F-A</text>
+  <text x="345" y="762" class="label-sm-en">(Storage A · Partnership/MD/BDP)</text>
+
+  <!-- 화물 EV (39호기/1호기) -->
+  <rect class="cargo-ev" x="440" y="630" width="100" height="80"/>
+  <text x="490" y="665" class="seat-ko">화물 EV</text>
+  <text x="490" y="679" class="seat-en">(Cargo)</text>
+  <text x="490" y="693" class="seat-en">39호기/1호기</text>
+
+  <!-- 통신실 -->
+  <rect class="room" x="440" y="715" width="100" height="75"/>
+  <text x="490" y="748" class="label-sm-ko">통신실</text>
+  <text x="490" y="762" class="label-sm-en">(Telecom)</text>
+
+  <!-- 공조실 -->
+  <rect class="room" x="545" y="630" width="80" height="80"/>
+  <text x="585" y="665" class="label-sm-ko">공조실</text>
+  <text x="585" y="679" class="label-sm-en">(HVAC)</text>
+
+  <!-- 창고 29F-B (AD Solutions) -->
+  <rect class="storage" x="545" y="715" width="135" height="75"/>
+  <text x="612" y="748" class="label-sm-ko">창고 29F-B</text>
+  <text x="612" y="762" class="label-sm-en">(Storage B · AD Solutions)</text>
+
+  <!-- 비상계단 B (우측 코어) -->
+  <rect class="stair" x="630" y="630" width="60" height="80"/>
+  <text x="660" y="675" class="stair-ko">비상계단 B</text>
+  <text x="660" y="689" class="stair-ko" font-size="10">Stairs B</text>
+
+  <!-- CU택배 발송 / 시딩 보관 랙 -->
+  <rect class="room" x="695" y="630" width="120" height="80"/>
+  <text x="755" y="660" class="label-sm-ko">CU택배 발송</text>
+  <text x="755" y="674" class="label-sm-en">(CU Shipping)</text>
+  <text x="755" y="690" class="label-sm-ko">시딩 보관 랙</text>
+
+  <!-- OA복합기 ② -->
+  <rect class="room" x="695" y="715" width="120" height="75"/>
+  <text x="755" y="748" class="label-sm-ko">OA복합기 ②</text>
+  <text x="755" y="762" class="label-sm-en">(Copier 10.30.29.3)</text>
+
+  <!-- 창고 (미화) -->
+  <rect class="storage" x="820" y="630" width="100" height="80"/>
+  <text x="870" y="668" class="label-sm-ko">창고 (미화)</text>
+  <text x="870" y="682" class="label-sm-en">(Janitorial)</text>
+
+  <!-- PS · 소품실 -->
+  <rect class="room" x="820" y="715" width="100" height="75"/>
+  <text x="870" y="748" class="label-sm-ko">PS</text>
+  <text x="870" y="762" class="label-sm-en">(Props · Storage)</text>
+
+  <!-- 여자화장실 -->
+  <rect class="core" x="930" y="630" width="90" height="80"/>
+  <text x="975" y="668" class="label-sm-ko">여자화장실</text>
+  <text x="975" y="682" class="label-sm-en">(Women)</text>
+
+  <!-- 남자화장실 -->
+  <rect class="core" x="930" y="715" width="90" height="75"/>
+  <text x="975" y="748" class="label-sm-ko">남자화장실</text>
+  <text x="975" y="762" class="label-sm-en">(Men)</text>
+
+  <!-- 정문 ② (우측 코어, 비상계단 B 옆 — 전층 사용 시 후문/보조) -->
+  <rect class="door" x="1025" y="660" width="80" height="20" rx="2"/>
+  <text x="1065" y="675" class="door-label">정문 ② · Entry ②</text>
+  <text x="1065" y="700" class="label-sm-en">(보조 / Secondary)</text>
+
+  <!-- 우측 외벽 (코어) -->
+  <rect class="core" x="1030" y="710" width="80" height="80"/>
+  <text x="1070" y="748" class="label-sm-ko">코어/EV</text>
+  <text x="1070" y="762" class="label-sm-en">(Core)</text>
+
+  <!-- ============ 비상구 픽토그램 ============ -->
+  <use href="#exitSign" x="688" y="468" width="36" height="27"/>
+  <use href="#exitSign" x="635" y="638" width="36" height="27"/>
+
+  <!-- ============ 소방시설 ============ -->
+  <use href="#extinguisher" x="100" y="442" width="18" height="18"/>
+  <use href="#extinguisher" x="640" y="392" width="18" height="18"/>
+  <use href="#extinguisher" x="950" y="442" width="18" height="18"/>
+  <use href="#extinguisher" x="430" y="730" width="18" height="18"/>
+  <use href="#hydrant" x="678" y="615" width="20" height="20"/>
+  <use href="#hydrant" x="678" y="710" width="20" height="20"/>
+
+  <!-- 안내 메시지 -->
+  <g transform="translate(40,810)">
+    <rect width="700" height="80" fill="#fff" stroke="#CCC" rx="4"/>
+    <text x="14" y="22" class="legend" font-weight="700">범례 · Legend</text>
+
+    <use href="#exitSign" x="14" y="32" width="22" height="16"/>
+    <text x="42" y="44" class="legend">비상구 (Exit)</text>
+
+    <rect class="stair" x="140" y="34" width="14" height="14"/>
+    <text x="160" y="44" class="legend">비상계단 (Stairs)</text>
+
+    <rect class="cargo-ev" x="290" y="34" width="14" height="14"/>
+    <text x="310" y="44" class="legend">화물 EV (Cargo)</text>
+
+    <rect class="door" x="430" y="34" width="14" height="14"/>
+    <text x="450" y="44" class="legend">정문 (Main Entry)</text>
+
+    <rect class="room-exec" x="570" y="34" width="14" height="14"/>
+    <text x="590" y="44" class="legend">임원실 (Executive)</text>
+
+    <rect class="room-meeting" x="14" y="58" width="14" height="14"/>
+    <text x="34" y="68" class="legend">미팅룸 (Meeting)</text>
+
+    <rect class="room-lounge" x="140" y="58" width="14" height="14"/>
+    <text x="160" y="68" class="legend">라운지 (Lounge)</text>
+
+    <rect class="storage" x="290" y="58" width="14" height="14"/>
+    <text x="310" y="68" class="legend">창고 (Storage)</text>
+
+    <use href="#extinguisher" x="430" y="58" width="14" height="14"/>
+    <text x="450" y="68" class="legend">소화기 / 소화전</text>
+  </g>
+
+  <!-- 비상연락처 -->
+  <g transform="translate(760,810)">
+    <rect width="400" height="80" fill="#BF1E2D" rx="4"/>
+    <text x="20" y="26" font-size="14" font-weight="700" fill="#fff">화재신고 119 · Fire 119</text>
+    <text x="20" y="46" font-size="11" fill="#fff">관리실 (Building Mgmt)</text>
+    <text x="20" y="64" font-size="11" fill="#fff">GA Slack #ga-helpdesk</text>
+  </g>
+</svg>
