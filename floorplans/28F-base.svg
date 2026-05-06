@@ -234,8 +234,12 @@
   <use href="#extinguisher" x="640" y="312" width="18" height="18"/>
   <use href="#extinguisher" x="1090" y="535" width="18" height="18"/>
   <use href="#extinguisher" x="600" y="828" width="18" height="18"/>
-  <use href="#hydrant" x="430" y="305" width="20" height="20"/>
-  <use href="#hydrant" x="240" y="828" width="20" height="20"/>
+  <!-- 소화전 (Fire Hydrant) - 라벨 강화 -->
+  <use href="#hydrant" x="380" y="332" width="26" height="26"/>
+  <text x="393" y="372" font-size="9" fill="#BF1E2D" text-anchor="middle" font-weight="700">소화전</text>
+
+  <use href="#hydrant" x="240" y="828" width="26" height="26"/>
+  <text x="253" y="868" font-size="9" fill="#BF1E2D" text-anchor="middle" font-weight="700">소화전</text>
 
   <!-- ============ 범례 ============ -->
   <g transform="translate(40,985)">

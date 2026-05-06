@@ -83,6 +83,11 @@
       }
     </style>
 
+    <symbol id="hydrant" viewBox="0 0 24 24">
+      <rect width="24" height="24" rx="2" fill="#BF1E2D"/>
+      <text x="12" y="17" text-anchor="middle" font-size="13" font-weight="700" fill="#fff" font-family="sans-serif">소</text>
+    </symbol>
+
     <symbol id="exitSign" viewBox="0 0 40 30">
       <rect width="40" height="30" rx="3" fill="#00964F"/>
       <circle cx="13" cy="9" r="2.2" fill="#fff"/>
@@ -292,6 +297,13 @@
     <circle class="yah-dot" cx="0" cy="0" r="7" fill="#E60012"/>
     <circle cx="0" cy="0" r="2.5" fill="#fff"/>
   </g>
+
+  <!-- 소화전 픽토그램 -->
+  <use href="#hydrant" x="380" y="332" width="26" height="26"/>
+  <text x="393" y="372" font-size="9" fill="#BF1E2D" text-anchor="middle" font-weight="700">소화전</text>
+
+  <use href="#hydrant" x="240" y="828" width="26" height="26"/>
+  <text x="253" y="868" font-size="9" fill="#BF1E2D" text-anchor="middle" font-weight="700">소화전</text>
 
   <!-- 행동 요령 + 범례 -->
   <g transform="translate(40,950)">
