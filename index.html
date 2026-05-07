@@ -547,13 +547,25 @@
         <div class="card">
           <div class="card-title">유선 인터넷</div>
           <ul class="info-list">
-            <li><strong>회색 랜선</strong> 사용 (기본)</li>
-            <li>28층 회색 선 = 내부망 <span class="badge badge-green">복합기 가능</span></li>
-            <li>28층 파란 선 = 공인 IP <span class="badge badge-red">복합기 불가</span></li>
+            <li>각 자리의 <strong>회색 랜선</strong>을 사용해 주세요</li>
+            <li>공인(고정) IP 필요 시 <span class="badge badge-blue">#공통-ga-헬프데스크</span>로 신청해 주세요
+              <ul style="margin-top:6px; padding-left:16px; list-style:disc;">
+                <li>28층 공인 IP: 빨간 랜선</li>
+                <li>29층 공인 IP: 파란 랜선</li>
+              </ul>
+            </li>
           </ul>
-          <div class="alert alert-yellow" style="margin-top:16px;">
-            <span class="alert-icon">⚠️</span>
-            <span>랜선 색상을 반드시 확인하세요. 파란 선은 외부 공인 IP이며 복합기에 연결 불가합니다.</span>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:16px;">
+            <div style="background:#fff4e5; border-radius:10px; padding:14px;">
+              <div style="font-weight:700; font-size:13px; margin-bottom:10px;">28층 랜선 구분</div>
+              <div style="font-size:12px; margin-bottom:6px;"><strong>회색선</strong> — 내부망 전용, 복합기 사용 가능</div>
+              <div style="font-size:12px;"><strong>빨간선</strong> — 공인 IP 전용, 복합기 사용 불가</div>
+            </div>
+            <div style="background:#fff4e5; border-radius:10px; padding:14px;">
+              <div style="font-weight:700; font-size:13px; margin-bottom:10px;">29층 랜선 구분</div>
+              <div style="font-size:12px; margin-bottom:6px;"><strong>회색선</strong> — 내부망 전용, 복합기 사용 가능</div>
+              <div style="font-size:12px;"><strong>파란선</strong> — 공인 IP 전용, 복합기 사용 불가</div>
+            </div>
           </div>
         </div>
       </div>
