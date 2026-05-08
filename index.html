@@ -230,6 +230,50 @@ body {
 .crumbs { font-size: 12px; color: var(--text-2); flex: 1; }
 .crumbs strong { color: var(--text); font-weight: 600; }
 
+.product-tabs {
+  display: inline-flex;
+  background: var(--bg);
+  padding: 3px;
+  border-radius: 10px;
+  gap: 2px;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+  margin-right: auto;
+}
+.product-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 13px;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-2);
+  cursor: pointer;
+  text-decoration: none;
+  border: 0;
+  background: transparent;
+  font-family: inherit;
+  transition: background var(--duration), color var(--duration), box-shadow var(--duration);
+  white-space: nowrap;
+}
+.product-tab:hover:not(.active) {
+  color: var(--text);
+  background: rgba(255,255,255,0.65);
+}
+.product-tab.active {
+  background: var(--card);
+  color: var(--text);
+  box-shadow: 0 1px 3px rgba(20, 30, 60, 0.08), 0 0 0 1px rgba(20, 30, 60, 0.04);
+}
+.product-tab .ico { font-size: 14px; }
+.product-tab .ext {
+  font-size: 9px;
+  opacity: 0.55;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
 .cmdk-trigger {
   display: inline-flex;
   align-items: center;
@@ -930,7 +974,18 @@ section.kb.flash { animation: flash 1.6s ease-out; }
 <!-- ====== 메인 ====== -->
 <div id="main">
   <header id="header">
-    <div class="crumbs">GA Master Book / <strong>홈</strong></div>
+    <div class="product-tabs" role="tablist" aria-label="GA 산출물 전환">
+      <a class="product-tab onboarding" href="/onboarding.html" role="tab" aria-selected="false" title="신규입사자 온보딩 v1 (같은 도메인 내 이동)">
+        <span class="ico">📘</span>
+        <span>온보딩</span>
+        <span class="ext">v1</span>
+      </a>
+      <button class="product-tab master-book active" type="button" role="tab" aria-selected="true" aria-current="page" title="GA Master Book v2 — 전사 통합 안내서 (현재 페이지)">
+        <span class="ico">📕</span>
+        <span>마스터북</span>
+        <span class="new-badge">NEW</span>
+      </button>
+    </div>
     <button class="cmdk-trigger" id="cmdk-trigger" aria-label="명령 팔레트 열기">
       <span>⌘</span> 어디든 검색
       <kbd>Ctrl</kbd><kbd>K</kbd>
