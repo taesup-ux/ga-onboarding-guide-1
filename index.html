@@ -34,7 +34,6 @@
     color: var(--text);
     display: flex;
     min-height: 100vh;
-    min-width: 1024px;
   }
 
   /* ── 사이드바 ── */
@@ -43,7 +42,9 @@
     background: var(--navy);
     position: fixed;
     top: 0; left: 0;
-    height: 100vh;
+    height: 100vh;        /* fallback (구버전 브라우저) */
+    height: 100dvh;       /* 동적 viewport — iOS Safari 주소창 토글 대응 */
+    max-height: 100dvh;
     display: flex;
     flex-direction: column;
     z-index: 100;
@@ -87,11 +88,20 @@
     padding: 12px 22px;
     cursor: pointer;
     transition: background 0.18s, padding-left 0.18s;
+    border: 0;
     border-left: 3px solid transparent;
     text-decoration: none;
     color: rgba(255,255,255,0.65);
     font-size: 13px;
     font-weight: 500;
+    background: transparent;
+    font-family: inherit;
+    text-align: left;
+    width: 100%;
+  }
+  .sb-item:focus-visible {
+    outline: 2px solid var(--blue-light);
+    outline-offset: -2px;
   }
   .sb-item:hover {
     background: rgba(255,255,255,0.06);
@@ -439,9 +449,117 @@
   .p4 .priority-num { background: #f1f5f9; color: #64748b; }
   .priority-text { font-size: 13px; line-height: 1.6; color: var(--text); }
 
+  /* ── 비상대피도 floor-tab 데스크톱 기본 ── */
+  .floor-tab { min-width: 100px; }
+
+  /* ── 햄버거 + 백드롭 (기본 숨김, 모바일에서만 표시) ── */
+  #hamburger {
+    display: none;
+    width: 44px; height: 44px;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    padding: 0;
+    margin-right: 4px;
+    flex-shrink: 0;
+  }
+  #hamburger span {
+    display: block;
+    position: relative;
+    width: 22px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+  }
+  #hamburger span::before,
+  #hamburger span::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 22px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+  }
+  #hamburger span::before { top: -7px; }
+  #hamburger span::after  { top: 7px; }
+
+  #sidebar-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 95;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.28s ease;
+  }
+
   /* ── 반응형 ── */
   @media (max-width: 1280px) {
     .grid-3 { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ── 태블릿 + 모바일: 사이드바 드로어 ── */
+  @media (max-width: 1023px) {
+    #sidebar {
+      transform: translateX(-100%);
+      transition: transform 0.28s ease;
+      box-shadow: 4px 0 24px rgba(0,0,0,0.2);
+      z-index: 100;
+    }
+    #sidebar.is-open { transform: translateX(0); }
+    #main { margin-left: 0; }
+    #hamburger { display: inline-flex; }
+    #sidebar-backdrop { display: block; }
+    #sidebar-backdrop.is-visible { opacity: 1; pointer-events: auto; }
+    .grid-3 { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ── 모바일 전용 (<=767px) ── */
+  @media (max-width: 767px) {
+    html { font-size: 15px; }
+    #header { padding: 0 14px; height: 56px; }
+    .header-title, .header-divider { display: none; }
+    .header-logo { font-size: 16px; }
+    #content { padding: 20px 14px; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .floor-tab {
+      font-size: 12px;
+      padding: 10px 8px !important;
+      min-width: 0;
+    }
+    .section-icon-wrap { width: 44px; height: 44px; font-size: 20px; border-radius: 12px; }
+    .section-meta h1 { font-size: 18px; }
+    .section-header { gap: 12px; margin-bottom: 20px; padding-bottom: 14px; }
+    .card { padding: 18px 16px; border-radius: 12px; }
+    .sb-item { padding: 14px 22px; min-height: 44px; }
+    .check-item { padding: 14px 14px; }
+    .check-box { width: 22px; height: 22px; }
+  }
+
+  /* ── iOS Safe Area (노치/홈 인디케이터): 모바일 전용 ── */
+  @supports (padding: env(safe-area-inset-top)) {
+    @media (max-width: 767px) {
+      #header {
+        padding-top: env(safe-area-inset-top);
+        height: calc(56px + env(safe-area-inset-top));
+      }
+    }
+    @media (max-width: 1023px) {
+      #sidebar { padding-bottom: env(safe-area-inset-bottom); }
+    }
+  }
+
+  .tbl-wrap { -webkit-overflow-scrolling: touch; }
+
+  /* ── 사이드바 열렸을 때 body scroll-lock (iOS Safari 호환) ── */
+  body.sidebar-open {
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
   }
 
   /* ── 스크롤바 ── */
@@ -454,49 +572,52 @@
 </head>
 <body>
 
+<!-- 모바일 사이드바 백드롭 -->
+<div id="sidebar-backdrop" onclick="closeSidebar()" aria-hidden="true"></div>
+
 <!-- ── 사이드바 ── -->
-<nav id="sidebar">
+<nav id="sidebar" aria-label="섹션 메뉴">
   <div class="sb-brand">
     <div class="company">SANDBOX</div>
     <div class="doc-title">GA 온보딩 가이드</div>
   </div>
   <div class="sb-nav">
     <div class="sb-nav-label">섹션</div>
-    <a class="sb-item active" onclick="showSection('s01',this)">
+    <button type="button" class="sb-item active" onclick="showSection('s01',this)">
       <span class="icon">💻</span>
       <span class="label">IT 장비 세팅</span>
       <span class="badge-num">01</span>
-    </a>
-    <a class="sb-item" onclick="showSection('s02',this)">
+    </button>
+    <button type="button" class="sb-item" onclick="showSection('s02',this)">
       <span class="icon">🔧</span>
       <span class="label">업무툴 세팅</span>
       <span class="badge-num">02</span>
-    </a>
-    <a class="sb-item" onclick="showSection('s03',this)">
+    </button>
+    <button type="button" class="sb-item" onclick="showSection('s03',this)">
       <span class="icon">🏢</span>
       <span class="label">오피스 이용</span>
       <span class="badge-num">03</span>
-    </a>
-    <a class="sb-item" onclick="showSection('s04',this)">
+    </button>
+    <button type="button" class="sb-item" onclick="showSection('s04',this)">
       <span class="icon">📦</span>
       <span class="label">이동지원·법인차량</span>
       <span class="badge-num">04</span>
-    </a>
-    <a class="sb-item" onclick="showSection('s05',this)">
+    </button>
+    <button type="button" class="sb-item" onclick="showSection('s05',this)">
       <span class="icon">🚨</span>
       <span class="label">안전·보건</span>
       <span class="badge-num">05</span>
-    </a>
-    <a class="sb-item" onclick="showSection('s06',this)">
+    </button>
+    <button type="button" class="sb-item" onclick="showSection('s06',this)">
       <span class="icon">✅</span>
       <span class="label">완료 체크리스트</span>
       <span class="badge-num">06</span>
-    </a>
+    </button>
     <div class="sb-nav-label" style="margin-top:12px;">상세 자료</div>
-    <a class="sb-item" onclick="showSection('s07',this)">
+    <button type="button" class="sb-item" onclick="showSection('s07',this)">
       <span class="icon">📑</span>
       <span class="label">상세 가이드 (PPT)</span>
-    </a>
+    </button>
   </div>
   <div class="sb-footer">
     <div style="margin-bottom:6px; font-weight:600; color:rgba(255,255,255,0.5); font-size:10px; letter-spacing:1px; text-transform:uppercase;">문의처</div>
@@ -510,6 +631,7 @@
   <!-- 헤더 -->
   <header id="header">
     <div class="header-left">
+      <button id="hamburger" type="button" aria-label="메뉴 열기" aria-controls="sidebar" aria-expanded="false" onclick="toggleSidebar()"><span></span></button>
       <div class="header-logo">SANDBOX</div>
       <div class="header-divider"></div>
       <div class="header-title">GA 온보딩 가이드</div>
@@ -1055,9 +1177,9 @@
         <p style="color:#94a3b8; margin:0 0 16px; font-size:14px;">시작점에서 가까운 비상구로 이동하세요. 초록(A 루트) = SANDBOX 정문 → 비상계단 A · 청록(B 루트) = 쪽문 → 외부 공용통로 → 비상계단 B</p>
 
         <div class="floor-tabs" style="display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap;">
-          <button class="floor-tab" data-floor="21F" onclick="switchFloor('21F')" style="flex:1; min-width:100px; padding:12px 20px; border-radius:8px; border:2px solid #475569; background:transparent; color:#cbd5e1; font-weight:700; cursor:pointer; transition:all 0.2s;">21F · 회의실</button>
-          <button class="floor-tab active" data-floor="28F" onclick="switchFloor('28F')" style="flex:1; min-width:100px; padding:12px 20px; border-radius:8px; border:2px solid #3b82f6; background:#3b82f6; color:#fff; font-weight:700; cursor:pointer; transition:all 0.2s;">28F · 반층</button>
-          <button class="floor-tab" data-floor="29F" onclick="switchFloor('29F')" style="flex:1; min-width:100px; padding:12px 20px; border-radius:8px; border:2px solid #475569; background:transparent; color:#cbd5e1; font-weight:700; cursor:pointer; transition:all 0.2s;">29F · 전층</button>
+          <button class="floor-tab" data-floor="21F" onclick="switchFloor('21F')" style="flex:1; padding:12px 20px; border-radius:8px; border:2px solid #475569; background:transparent; color:#cbd5e1; font-weight:700; cursor:pointer; transition:all 0.2s;">21F · 회의실</button>
+          <button class="floor-tab active" data-floor="28F" onclick="switchFloor('28F')" style="flex:1; padding:12px 20px; border-radius:8px; border:2px solid #3b82f6; background:#3b82f6; color:#fff; font-weight:700; cursor:pointer; transition:all 0.2s;">28F · 반층</button>
+          <button class="floor-tab" data-floor="29F" onclick="switchFloor('29F')" style="flex:1; padding:12px 20px; border-radius:8px; border:2px solid #475569; background:transparent; color:#cbd5e1; font-weight:700; cursor:pointer; transition:all 0.2s;">29F · 전층</button>
         </div>
 
         <div class="floor-content" data-floor="21F" style="display:none; background:#1e293b; border-radius:8px; padding:60px 20px; text-align:center;">
@@ -1067,7 +1189,7 @@
         </div>
 
         <div class="floor-content" data-floor="28F" style="display:block; background:#fafafa; border-radius:8px; padding:8px; overflow-x:auto;">
-          <object data="floorplans/28F-evac-animated.svg" type="image/svg+xml" style="width:100%; min-width:900px; display:block;" aria-label="28F 비상대피 동선"></object>
+          <object data="floorplans/28F-evac-animated.svg" type="image/svg+xml" style="width:100%; min-width:600px; display:block;" aria-label="28F 비상대피 동선"></object>
         </div>
 
         <div class="floor-content" data-floor="29F" style="display:none; background:#fafafa; border-radius:8px; padding:8px; overflow-x:auto;">
@@ -1327,13 +1449,123 @@
 </div><!-- /main -->
 
 <script>
+  // ── 사이드바 드로어 (모바일) ──
+  let __sidebarSavedScrollY = 0;
+
+  function isDrawerMode() {
+    return window.matchMedia('(max-width: 1023px)').matches;
+  }
+
+  function setBackgroundInert(inertOn) {
+    // hamburger가 #main > #header 안에 있어서 main 전체를 inert하면
+    // hamburger도 비활성화됨 → inert 대상을 #content로 한정
+    const target = document.getElementById('content');
+    if (!target) return;
+    if (inertOn) {
+      target.setAttribute('inert', '');
+      target.setAttribute('aria-hidden', 'true');
+    } else {
+      target.removeAttribute('inert');
+      target.removeAttribute('aria-hidden');
+    }
+  }
+
+  function openSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const backdrop = document.getElementById('sidebar-backdrop');
+    const hamburger = document.getElementById('hamburger');
+    if (sidebar.classList.contains('is-open')) return;
+    __sidebarSavedScrollY = window.scrollY || window.pageYOffset || 0;
+    document.body.style.top = `-${__sidebarSavedScrollY}px`;
+    document.body.classList.add('sidebar-open');
+    sidebar.classList.add('is-open');
+    backdrop.classList.add('is-visible');
+    hamburger.setAttribute('aria-expanded', 'true');
+    if (isDrawerMode()) {
+      sidebar.setAttribute('role', 'dialog');
+      sidebar.setAttribute('aria-modal', 'true');
+      setBackgroundInert(true);
+    }
+    const firstItem = sidebar.querySelector('.sb-item');
+    if (firstItem) firstItem.focus({ preventScroll: true });
+  }
+
+  function closeSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const backdrop = document.getElementById('sidebar-backdrop');
+    const hamburger = document.getElementById('hamburger');
+    if (!sidebar.classList.contains('is-open')) return;
+    sidebar.classList.remove('is-open');
+    backdrop.classList.remove('is-visible');
+    hamburger.setAttribute('aria-expanded', 'false');
+    sidebar.removeAttribute('role');
+    sidebar.removeAttribute('aria-modal');
+    setBackgroundInert(false);
+    document.body.classList.remove('sidebar-open');
+    document.body.style.top = '';
+    window.scrollTo(0, __sidebarSavedScrollY);
+    // 포커스가 사이드바 안에 있었거나 비어있을 때만 hamburger로 복귀
+    // (사이드바 외부 포커스 강탈 방지)
+    const active = document.activeElement;
+    if (!active || active === document.body || sidebar.contains(active)) {
+      hamburger.focus({ preventScroll: true });
+    }
+  }
+
+  function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    if (sidebar.classList.contains('is-open')) closeSidebar();
+    else openSidebar();
+  }
+
+  // 뷰포트가 데스크톱(>1023px)으로 전환되면 드로어 상태 강제 정리
+  // (회전·리사이즈 시 #content inert / body.sidebar-open / focus trap 잔존 방지)
+  const __drawerMQ = window.matchMedia('(max-width: 1023px)');
+  const __onDrawerMQChange = (e) => {
+    if (!e.matches) {
+      const sidebar = document.getElementById('sidebar');
+      if (sidebar && sidebar.classList.contains('is-open')) closeSidebar();
+    }
+  };
+  if (__drawerMQ.addEventListener) {
+    __drawerMQ.addEventListener('change', __onDrawerMQChange);
+  } else if (__drawerMQ.addListener) {
+    __drawerMQ.addListener(__onDrawerMQChange);
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeSidebar();
+      return;
+    }
+    // 사이드바 열렸을 때 Tab 키 focus trap
+    if (e.key !== 'Tab') return;
+    const sidebar = document.getElementById('sidebar');
+    if (!sidebar.classList.contains('is-open')) return;
+    const focusable = sidebar.querySelectorAll(
+      'button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])'
+    );
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    const active = document.activeElement;
+    if (e.shiftKey && (active === first || !sidebar.contains(active))) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && (active === last || !sidebar.contains(active))) {
+      e.preventDefault();
+      first.focus();
+    }
+  });
+
   // ── 섹션 전환 ──
   function showSection(id, el) {
     document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
     document.querySelectorAll('.sb-item').forEach(i => i.classList.remove('active'));
     document.getElementById(id).classList.add('active');
     if (el) el.classList.add('active');
-    document.getElementById('content').scrollTop = 0;
+    closeSidebar();
+    window.scrollTo(0, 0);
   }
 
   // ── 체크박스 토글 ──
