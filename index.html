@@ -3,1379 +3,2097 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GA 온보딩 가이드 | SANDBOX</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<title>샌드박스네트워크 General Affairs Master Book (WIP)</title>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --navy: #1a2744;
-    --navy-mid: #243360;
-    --navy-light: #2e4080;
-    --blue: #4A90D9;
-    --blue-light: #6aaae8;
-    --blue-pale: #e8f2fb;
-    --bg: #f5f6fa;
-    --card: #ffffff;
-    --text: #1e2a45;
-    --text-secondary: #5a6a8a;
-    --border: #e2e8f4;
-    --success: #10b981;
-    --warning: #f59e0b;
-    --danger: #ef4444;
-    --sidebar-w: 260px;
-  }
+:root {
+  --navy: #1a2744;
+  --navy-mid: #243360;
+  --navy-light: #2e4080;
+  --blue: #4A90D9;
+  --blue-light: #6aaae8;
+  --blue-pale: #e8f2fb;
+  --bg: #f5f6fa;
+  --card: #ffffff;
+  --text: #1e2a45;
+  --text-2: #5a6a8a;
+  --text-3: #8a96b0;
+  --border: #e2e8f4;
+  --border-strong: #c9d4e8;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --new: #ff5722;
+  --new-glow: rgba(255, 87, 34, 0.22);
+  --highlight: #fff3a3;
+  --sidebar-w: 268px;
+  --header-h: 60px;
+  --radius-sm: 6px;
+  --radius: 10px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 1px 2px rgba(20, 30, 60, 0.04), 0 0 0 1px rgba(20, 30, 60, 0.04);
+  --shadow: 0 2px 8px rgba(20, 30, 60, 0.06), 0 0 0 1px rgba(20, 30, 60, 0.04);
+  --shadow-lg: 0 16px 48px rgba(20, 30, 60, 0.16), 0 0 0 1px rgba(20, 30, 60, 0.06);
+  --duration: 220ms;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
 
-  html { font-size: 14px; scroll-behavior: smooth; }
+  /* 담당자 컬러 (Owner badge) */
+  --owner-tsp: #4A90D9;   /* 태섭 - 파랑 */
+  --owner-jh:  #10b981;   /* 진호 - 초록 */
+  --owner-sh:  #f59e0b;   /* 승훈 - 주황 */
+  --owner-js:  #a855f7;   /* 재승 - 보라 */
+}
 
-  body {
-    font-family: 'Noto Sans KR', -apple-system, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    display: flex;
-    min-height: 100vh;
-    min-width: 1024px;
-  }
+html { font-size: 14px; scroll-behavior: smooth; }
 
-  /* ── 사이드바 ── */
-  #sidebar {
-    width: var(--sidebar-w);
-    background: var(--navy);
-    position: fixed;
-    top: 0; left: 0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    z-index: 100;
-    overflow-y: auto;
-  }
+body {
+  font-family: 'Pretendard Variable', Pretendard, 'Noto Sans KR', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
 
-  .sb-brand {
-    padding: 28px 22px 22px;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
   }
-  .sb-brand .company {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    color: var(--blue-light);
-    text-transform: uppercase;
-    margin-bottom: 4px;
-  }
-  .sb-brand .doc-title {
-    font-size: 15px;
-    font-weight: 700;
-    color: #ffffff;
-    line-height: 1.4;
-  }
+}
 
-  .sb-nav { padding: 16px 0; flex: 1; }
+/* ====== NEW 뱃지 ====== */
+.new-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: var(--new);
+  color: white;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  vertical-align: middle;
+  position: relative;
+  text-transform: uppercase;
+}
+.new-badge::before { content: "✦"; font-size: 8px; }
+.new-badge.glow { animation: newPulse 2.6s ease-in-out infinite; }
+@keyframes newPulse {
+  0%, 100% { box-shadow: 0 0 0 0 var(--new-glow); }
+  50% { box-shadow: 0 0 0 8px rgba(255, 87, 34, 0); }
+}
 
-  .sb-nav-label {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: rgba(255,255,255,0.35);
-    text-transform: uppercase;
-    padding: 0 22px 8px;
-  }
+/* ====== WIP 뱃지·배너 ====== */
+.wip-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: var(--warning);
+  color: white;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  vertical-align: middle;
+  text-transform: uppercase;
+}
+.wip-badge::before { content: "🚧"; font-size: 9px; }
 
-  .sb-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 22px;
-    cursor: pointer;
-    transition: background 0.18s, padding-left 0.18s;
-    border-left: 3px solid transparent;
-    text-decoration: none;
-    color: rgba(255,255,255,0.65);
-    font-size: 13px;
-    font-weight: 500;
-  }
-  .sb-item:hover {
-    background: rgba(255,255,255,0.06);
-    color: #ffffff;
-  }
-  .sb-item.active {
-    background: rgba(74,144,217,0.18);
-    border-left-color: var(--blue);
-    color: #ffffff;
-    font-weight: 600;
-  }
-  .sb-item .icon { font-size: 18px; width: 22px; text-align: center; flex-shrink: 0; }
-  .sb-item .label { flex: 1; }
-  .sb-item .badge-num {
-    font-size: 10px;
-    font-weight: 700;
-    background: rgba(255,255,255,0.12);
-    color: rgba(255,255,255,0.5);
-    padding: 2px 7px;
-    border-radius: 10px;
-  }
-  .sb-item.active .badge-num {
-    background: var(--blue);
-    color: #fff;
-  }
+.wip-banner {
+  margin: 0 0 24px 0;
+  padding: 12px 20px;
+  background: linear-gradient(90deg, #fef3c7, #fde68a, #fef3c7);
+  color: #78350f;
+  border: 1px solid #fcd34d;
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+  box-shadow: 0 1px 2px rgba(245, 158, 11, 0.1);
+}
+.wip-banner .icon { font-size: 18px; }
+.wip-banner strong { color: #78350f; font-weight: 800; }
+.wip-banner .meta { font-size: 11px; font-weight: 500; opacity: 0.85; }
 
-  .sb-footer {
-    padding: 18px 22px;
-    border-top: 1px solid rgba(255,255,255,0.08);
-    font-size: 11px;
-    color: rgba(255,255,255,0.3);
-    line-height: 1.7;
-  }
-  .sb-footer a { color: var(--blue-light); text-decoration: none; }
+/* Owner pill */
+.owner-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  background: rgba(74, 144, 217, 0.1);
+  color: var(--owner-tsp);
+  border: 1px solid rgba(74, 144, 217, 0.22);
+}
+.owner-pill.owner-jh { background: rgba(16, 185, 129, 0.1); color: #047857; border-color: rgba(16, 185, 129, 0.22); }
+.owner-pill.owner-sh { background: rgba(245, 158, 11, 0.1); color: #b45309; border-color: rgba(245, 158, 11, 0.25); }
+.owner-pill.owner-js { background: rgba(168, 85, 247, 0.1); color: #7e22ce; border-color: rgba(168, 85, 247, 0.22); }
+.owner-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; opacity: 0.9; }
 
-  /* ── 메인 ── */
-  #main {
-    margin-left: var(--sidebar-w);
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
+/* ====== 사이드바 ====== */
+#sidebar {
+  width: var(--sidebar-w);
+  background: var(--navy);
+  position: fixed;
+  top: 0; left: 0;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  z-index: 90;
+  overflow-y: auto;
+}
+.sb-brand {
+  padding: 22px 22px 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.sb-brand .company {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--blue-light);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.sb-brand .doc-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.35;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.sb-brand .doc-sub {
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.55);
+  margin-top: 4px;
+}
 
-  /* ── 헤더 ── */
-  #header {
-    background: var(--navy);
-    padding: 0 36px;
-    height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky;
-    top: 0;
-    z-index: 90;
-    box-shadow: 0 2px 12px rgba(26,39,68,0.25);
-  }
-  .header-left { display: flex; align-items: center; gap: 16px; }
-  .header-logo {
-    font-size: 18px;
-    font-weight: 900;
-    color: #ffffff;
-    letter-spacing: 1px;
-  }
-  .header-divider { width: 1px; height: 22px; background: rgba(255,255,255,0.2); }
-  .header-title {
-    font-size: 13px;
-    font-weight: 500;
-    color: rgba(255,255,255,0.75);
-  }
-  .header-right { display: flex; align-items: center; gap: 10px; }
-  .hbadge {
-    font-size: 11px;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 20px;
-    letter-spacing: 0.5px;
-  }
-  .hbadge-version { background: rgba(74,144,217,0.25); color: var(--blue-light); }
-  .hbadge-date { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); }
+.sb-nav { padding: 10px 0; flex: 1; }
+.sb-nav-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.35);
+  text-transform: uppercase;
+  padding: 14px 22px 6px;
+}
+.sb-item {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 8px 22px;
+  cursor: pointer;
+  transition: background var(--duration), color var(--duration);
+  border: 0;
+  border-left: 3px solid transparent;
+  text-decoration: none;
+  color: rgba(255,255,255,0.65);
+  font-size: 12.5px;
+  font-weight: 500;
+  background: transparent;
+  font-family: inherit;
+  text-align: left;
+  width: 100%;
+}
+.sb-item:hover { background: rgba(255,255,255,0.04); color: #fff; }
+.sb-item.active {
+  background: rgba(74, 144, 217, 0.1);
+  color: #fff;
+  border-left-color: var(--blue);
+  font-weight: 600;
+}
+.sb-icon { font-size: 13px; opacity: 0.9; width: 16px; text-align: center; }
+.sb-owner {
+  margin-left: auto;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.4px;
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.7);
+}
+.sb-owner.tsp { background: rgba(74, 144, 217, 0.22); color: #cfe1f6; }
+.sb-owner.jh  { background: rgba(16, 185, 129, 0.22); color: #b9f0d9; }
+.sb-owner.sh  { background: rgba(245, 158, 11, 0.22); color: #fde0b1; }
+.sb-owner.js  { background: rgba(168, 85, 247, 0.22); color: #e6cffb; }
 
-  /* ── 콘텐츠 영역 ── */
-  #content {
-    padding: 36px;
-    flex: 1;
-  }
+.sb-foot {
+  padding: 14px 22px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.5;
+}
 
-  /* ── 섹션 ── */
-  .section { display: none; }
-  .section.active { display: block; animation: fadeIn 0.25s ease; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+/* ====== 메인 ====== */
+#main {
+  margin-left: var(--sidebar-w);
+  width: calc(100% - var(--sidebar-w));
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-  /* ── 섹션 헤더 ── */
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 28px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid var(--border);
-  }
-  .section-icon-wrap {
-    width: 52px; height: 52px;
-    background: linear-gradient(135deg, var(--blue), var(--navy-light));
-    border-radius: 14px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 24px;
-    box-shadow: 0 4px 16px rgba(74,144,217,0.3);
-    flex-shrink: 0;
-  }
-  .section-meta .sec-num {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: var(--blue);
-    text-transform: uppercase;
-    margin-bottom: 2px;
-  }
-  .section-meta h1 {
-    font-size: 22px;
-    font-weight: 800;
-    color: var(--navy);
-    line-height: 1.2;
-  }
+/* ====== 헤더 ====== */
+#header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(245, 246, 250, 0.85);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid var(--border);
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  padding: 0 32px;
+  gap: 12px;
+}
+.crumbs { font-size: 12px; color: var(--text-2); flex: 1; }
+.crumbs strong { color: var(--text); font-weight: 600; }
 
-  /* ── 카드 ── */
-  .card {
-    background: var(--card);
-    border-radius: 14px;
-    padding: 24px 26px;
-    border: 1px solid var(--border);
-    box-shadow: 0 2px 8px rgba(26,39,68,0.05);
-    margin-bottom: 20px;
-  }
-  .card-title {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .card-title::before {
-    content: '';
-    display: inline-block;
-    width: 4px; height: 16px;
-    background: var(--blue);
-    border-radius: 2px;
-    flex-shrink: 0;
-  }
+.product-tabs {
+  display: inline-flex;
+  background: var(--bg);
+  padding: 3px;
+  border-radius: 10px;
+  gap: 2px;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+  margin-right: auto;
+}
+.product-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 13px;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-2);
+  cursor: pointer;
+  text-decoration: none;
+  border: 0;
+  background: transparent;
+  font-family: inherit;
+  transition: background var(--duration), color var(--duration), box-shadow var(--duration);
+  white-space: nowrap;
+}
+.product-tab:hover:not(.active) {
+  color: var(--text);
+  background: rgba(255,255,255,0.65);
+}
+.product-tab.active {
+  background: var(--card);
+  color: var(--text);
+  box-shadow: 0 1px 3px rgba(20, 30, 60, 0.08), 0 0 0 1px rgba(20, 30, 60, 0.04);
+}
+.product-tab .ico { font-size: 14px; }
+.product-tab .ext {
+  font-size: 9px;
+  opacity: 0.55;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
 
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+.cmdk-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px 7px 11px;
+  background: var(--card);
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  font-size: 12px;
+  color: var(--text-2);
+  cursor: pointer;
+  transition: transform var(--duration), border-color var(--duration);
+  font-family: inherit;
+  position: relative;
+}
+.cmdk-trigger:hover { transform: translateY(-1px); border-color: var(--blue); color: var(--text); }
+.cmdk-trigger kbd {
+  display: inline-block;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-2);
+  font-family: 'SF Mono', Menlo, monospace;
+}
 
-  /* ── 테이블 ── */
-  .tbl-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid var(--border); }
-  table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  thead { background: var(--navy); color: #ffffff; }
-  thead th { padding: 11px 14px; text-align: left; font-weight: 600; font-size: 12px; }
-  tbody tr:nth-child(odd) { background: #f9fafb; }
-  tbody tr:nth-child(even) { background: #ffffff; }
-  tbody tr:hover { background: var(--blue-pale); transition: background 0.15s; }
-  tbody td { padding: 10px 14px; color: var(--text); border-bottom: 1px solid #eef1f8; }
-  tbody tr:last-child td { border-bottom: none; }
+.hdr-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--success);
+  font-weight: 600;
+  padding: 5px 10px;
+  background: rgba(16, 185, 129, 0.08);
+  border-radius: 999px;
+  border: 1px solid rgba(16, 185, 129, 0.18);
+}
+.hdr-verified .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+  50% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+}
 
-  /* ── 배지 ── */
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    padding: 3px 9px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 600;
-    white-space: nowrap;
-  }
-  .badge-blue { background: var(--blue-pale); color: var(--blue); }
-  .badge-navy { background: #e8ecf5; color: var(--navy); }
-  .badge-green { background: #d1fae5; color: #065f46; }
-  .badge-yellow { background: #fef3c7; color: #92400e; }
-  .badge-red { background: #fee2e2; color: #991b1b; }
-  .badge-purple { background: #ede9fe; color: #5b21b6; }
+.hdr-profile {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 10px 4px 4px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform var(--duration);
+  font-family: inherit;
+}
+.hdr-profile:hover { transform: translateY(-1px); }
+.hdr-profile .avatar {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6aaae8, #4A90D9);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hdr-profile .name { font-size: 12px; font-weight: 600; color: var(--text); }
+.hdr-profile .dept { font-size: 10px; color: var(--text-3); }
 
-  /* ── 번호 배지 ── */
-  .step-badge {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px; height: 24px;
-    background: var(--blue);
-    color: #fff;
-    border-radius: 50%;
-    font-size: 12px;
-    font-weight: 700;
-    flex-shrink: 0;
-  }
+/* ====== 콘텐츠 ====== */
+#content {
+  padding: 32px 48px 80px;
+  max-width: 920px;
+  width: 100%;
+  margin: 0 auto;
+}
 
-  /* ── 알림 박스 ── */
-  .alert {
-    display: flex;
-    gap: 12px;
-    padding: 14px 16px;
-    border-radius: 10px;
-    font-size: 13px;
-    line-height: 1.6;
-    margin-top: 12px;
-  }
-  .alert-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
-  .alert-blue { background: var(--blue-pale); border-left: 3px solid var(--blue); color: #1e3a5f; }
-  .alert-yellow { background: #fffbeb; border-left: 3px solid var(--warning); color: #7c5800; }
-  .alert-red { background: #fef2f2; border-left: 3px solid var(--danger); color: #7f1d1d; }
-  .alert-green { background: #f0fdf4; border-left: 3px solid var(--success); color: #14532d; }
+/* Hero */
+.hero { margin-bottom: 22px; }
+.hero h1 {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.hero .greeting {
+  font-size: 14px;
+  color: var(--text-2);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.hero .greeting strong { color: var(--text); }
+.greeting-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  background: var(--blue-pale);
+  border-radius: 999px;
+  font-size: 11px;
+  color: var(--navy-light);
+  font-weight: 600;
+}
 
-  /* ── 리스트 ── */
-  .info-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-  .info-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: 13px;
-    line-height: 1.6;
-    color: var(--text);
-  }
-  .info-list li::before {
-    content: '';
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--blue);
-    flex-shrink: 0;
-    margin-top: 7px;
-  }
+/* 헬프데스크 단축 */
+.shortcut-row {
+  margin-top: 14px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.shortcut-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 12px;
+  color: var(--text-2);
+  text-decoration: none;
+  transition: transform var(--duration), border-color var(--duration);
+}
+.shortcut-link:hover { transform: translateY(-1px); border-color: var(--blue); color: var(--blue); }
+.shortcut-link .ico { font-size: 14px; }
 
-  /* ── 스텝 리스트 ── */
-  .step-list { display: flex; flex-direction: column; gap: 12px; }
-  .step-item { display: flex; align-items: flex-start; gap: 12px; font-size: 13px; line-height: 1.6; }
+/* What changed */
+.changed-card {
+  margin: 18px 0 28px;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, #fff7ed, #ffe7d4);
+  border: 1px solid #fed7aa;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: #7c2d12;
+}
+.changed-card .icon { font-size: 18px; }
+.changed-card a { color: #c2410c; font-weight: 600; text-decoration: underline; }
 
-  /* ── 체크리스트 ── */
-  .checklist { display: flex; flex-direction: column; gap: 0; }
-  .check-group { margin-bottom: 24px; }
-  .check-group-title {
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--navy);
-    padding: 10px 0;
-    margin-bottom: 8px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .check-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 11px 14px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.15s;
-    margin-bottom: 4px;
-    user-select: none;
-  }
-  .check-item:hover { background: var(--blue-pale); }
-  .check-item.checked { background: #f0fdf4; }
+/* ====== AI Ask ====== */
+.ai-ask {
+  margin: 28px 0;
+  padding: 24px;
+  background: linear-gradient(180deg, #ffffff, #fbfcff);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+.ai-ask::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(106, 170, 232, 0.08), transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(255, 87, 34, 0.04), transparent 50%);
+  pointer-events: none;
+}
+.ai-ask > * { position: relative; }
+.ai-ask .header {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+}
+.ai-ask .ai-icon {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #4A90D9, #6aaae8);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 18px;
+}
+.ai-ask .title {
+  font-size: 16px; font-weight: 700;
+  display: flex; align-items: center; gap: 8px;
+}
+.ai-ask .subtitle {
+  font-size: 12px; color: var(--text-2); margin-left: auto;
+}
+.ai-input-row {
+  display: flex; align-items: center; gap: 8px;
+  padding: 12px 14px;
+  background: var(--card);
+  border: 1.5px solid var(--border-strong);
+  border-radius: 12px;
+  transition: border-color var(--duration), box-shadow var(--duration);
+}
+.ai-input-row:focus-within {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 4px rgba(74, 144, 217, 0.12);
+}
+.ai-input-row input {
+  flex: 1; border: 0; outline: 0; background: transparent;
+  font-family: inherit; font-size: 15px; color: var(--text); min-width: 0;
+}
+.ai-input-row input::placeholder { color: var(--text-3); }
+.ai-mic, .ai-send {
+  width: 34px; height: 34px;
+  border-radius: 8px; border: 0;
+  background: var(--bg); color: var(--text-2);
+  cursor: pointer; font-size: 16px;
+  display: flex; align-items: center; justify-content: center;
+  transition: background var(--duration), color var(--duration), transform var(--duration);
+  font-family: inherit;
+}
+.ai-mic:hover { background: var(--blue-pale); color: var(--blue); }
+.ai-mic.recording {
+  background: var(--danger); color: #fff;
+  animation: micPulse 1.2s ease-in-out infinite;
+}
+@keyframes micPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+.ai-send { background: var(--blue); color: #fff; }
+.ai-send:hover { background: var(--navy-light); transform: translateY(-1px); }
 
-  .check-box {
-    width: 20px; height: 20px;
-    border: 2px solid var(--border);
-    border-radius: 5px;
-    flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.2s;
-    margin-top: 1px;
-    background: #fff;
-  }
-  .check-item.checked .check-box {
-    background: var(--success);
-    border-color: var(--success);
-  }
-  .check-tick {
-    color: #fff;
-    font-size: 12px;
-    font-weight: 700;
-    opacity: 0;
-    transition: opacity 0.15s;
-  }
-  .check-item.checked .check-tick { opacity: 1; }
-  .check-label {
-    font-size: 13px;
-    line-height: 1.6;
-    color: var(--text);
-    flex: 1;
-    transition: color 0.15s;
-  }
-  .check-item.checked .check-label {
-    color: var(--text-secondary);
-    text-decoration: line-through;
-    text-decoration-color: #10b98160;
-  }
+.ai-suggestions {
+  margin-top: 12px;
+  display: flex; gap: 6px; flex-wrap: wrap;
+}
+.ai-suggestions .pill {
+  display: inline-flex; align-items: center;
+  padding: 6px 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 12px; color: var(--text-2);
+  cursor: pointer;
+  transition: transform var(--duration), border-color var(--duration), color var(--duration);
+  font-family: inherit;
+}
+.ai-suggestions .pill:hover {
+  transform: translateY(-1px); border-color: var(--blue); color: var(--blue);
+}
 
-  .progress-wrap { margin-bottom: 24px; }
-  .progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-  .progress-label { font-size: 13px; font-weight: 600; color: var(--navy); }
-  .progress-count { font-size: 13px; font-weight: 700; color: var(--blue); }
-  .progress-bar-bg {
-    width: 100%; height: 8px;
-    background: var(--border);
-    border-radius: 99px;
-    overflow: hidden;
-  }
-  .progress-bar-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--blue), var(--success));
-    border-radius: 99px;
-    transition: width 0.4s ease;
-    width: 0%;
-  }
+.ai-answer {
+  margin-top: 16px;
+  padding: 18px 20px;
+  background: var(--card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  font-size: 14px; line-height: 1.7;
+  display: none;
+}
+.ai-answer.visible { display: block; }
+.ai-answer .meta {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 11px; color: var(--text-3);
+  margin-bottom: 10px; flex-wrap: wrap;
+}
+.ai-answer .meta .model {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 2px 7px; background: var(--bg);
+  border-radius: 4px; font-weight: 600; color: var(--text-2);
+}
+.ai-answer .body { color: var(--text); }
+.ai-answer .body p { margin-bottom: 10px; }
+.ai-answer .body ul { margin: 0 0 10px 20px; }
+.ai-answer .body li { margin-bottom: 4px; }
+.ai-cite {
+  display: inline-flex; align-items: center;
+  padding: 1px 7px; margin: 0 1px;
+  background: var(--blue-pale); color: var(--blue);
+  font-size: 11px; font-weight: 700;
+  border-radius: 4px; cursor: pointer;
+  border: 1px solid transparent;
+  vertical-align: middle; text-decoration: none;
+  transition: background var(--duration), border-color var(--duration);
+}
+.ai-cite:hover { background: #d6e8fa; border-color: var(--blue); }
 
-  /* ── 연락처 카드 ── */
-  .contact-card {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 16px 20px;
-    background: linear-gradient(135deg, var(--navy), var(--navy-light));
-    border-radius: 12px;
-    color: #fff;
-  }
-  .contact-icon { font-size: 24px; }
-  .contact-info { flex: 1; }
-  .contact-label { font-size: 11px; color: rgba(255,255,255,0.55); margin-bottom: 2px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
-  .contact-value { font-size: 14px; font-weight: 700; }
-  .contact-sub { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 2px; }
+.ai-followup {
+  margin-top: 14px; padding-top: 14px;
+  border-top: 1px dashed var(--border);
+}
+.ai-followup .label {
+  font-size: 11px; color: var(--text-3);
+  font-weight: 600; letter-spacing: 0.5px;
+  text-transform: uppercase; margin-bottom: 8px;
+}
+.ai-followup .row { display: flex; gap: 6px; flex-wrap: wrap; }
+.ai-followup .pill {
+  font-size: 12px; padding: 5px 11px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-2); cursor: pointer;
+  transition: transform var(--duration);
+}
+.ai-followup .pill:hover { transform: translateY(-1px); color: var(--blue); }
 
-  /* ── 우선순위 리스트 ── */
-  .priority-list { display: flex; flex-direction: column; gap: 8px; }
-  .priority-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 14px; background: #f9fafb; border-radius: 8px; border-left: 3px solid var(--border); }
-  .priority-item.p1 { border-left-color: var(--danger); }
-  .priority-item.p2 { border-left-color: var(--warning); }
-  .priority-item.p3 { border-left-color: var(--blue); }
-  .priority-item.p4 { border-left-color: #94a3b8; }
-  .priority-num { font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; margin-top: 1px; }
-  .p1 .priority-num { background: #fee2e2; color: #991b1b; }
-  .p2 .priority-num { background: #fef3c7; color: #92400e; }
-  .p3 .priority-num { background: var(--blue-pale); color: var(--blue); }
-  .p4 .priority-num { background: #f1f5f9; color: #64748b; }
-  .priority-text { font-size: 13px; line-height: 1.6; color: var(--text); }
+.typing-cursor {
+  display: inline-block;
+  width: 8px; height: 16px;
+  background: var(--blue);
+  vertical-align: text-bottom; margin-left: 2px;
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
 
-  /* ── 반응형 ── */
-  @media (max-width: 1280px) {
-    .grid-3 { grid-template-columns: 1fr 1fr; }
-  }
+/* ====== Top FAQ ====== */
+.faq-block { margin: 36px 0; }
+.faq-block .head {
+  display: flex; align-items: baseline;
+  gap: 10px; margin-bottom: 14px;
+}
+.faq-block .head h2 { font-size: 18px; font-weight: 700; }
+.faq-block .head .meta { font-size: 11px; color: var(--text-3); }
+.faq-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.faq-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 11px 14px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 13px; cursor: pointer;
+  transition: transform var(--duration), border-color var(--duration);
+}
+.faq-item:hover { transform: translateY(-1px); border-color: var(--blue); }
+.faq-rank { font-size: 11px; font-weight: 800; color: var(--text-3); width: 18px; }
+.faq-q { flex: 1; color: var(--text); }
+.faq-count {
+  font-size: 11px; color: var(--text-3);
+  background: var(--bg); padding: 2px 7px; border-radius: 999px;
+}
 
-  /* ── 스크롤바 ── */
-  ::-webkit-scrollbar { width: 6px; height: 6px; }
-  ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: rgba(74,144,217,0.3); border-radius: 3px; }
-  ::-webkit-scrollbar-thumb:hover { background: var(--blue); }
-  #sidebar::-webkit-scrollbar { width: 3px; }
+/* ====== KB 섹션 ====== */
+section.kb {
+  margin: 36px 0;
+  padding: 24px 28px;
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  scroll-margin-top: calc(var(--header-h) + 16px);
+  view-transition-name: var(--vt-name, none);
+}
+section.kb.flash { animation: flash 1.6s ease-out; }
+@keyframes flash {
+  0% { background: var(--highlight); box-shadow: 0 0 0 4px rgba(255, 220, 0, 0.4); }
+  100% { background: var(--card); box-shadow: var(--shadow-sm); }
+}
+
+.kb-head {
+  display: flex; align-items: flex-start;
+  gap: 12px; margin-bottom: 16px; flex-wrap: wrap;
+}
+.kb-head .icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  background: var(--blue-pale);
+  color: var(--blue);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.kb-head .title { flex: 1; min-width: 0; }
+.kb-head h2 {
+  font-size: 19px; font-weight: 700;
+  letter-spacing: -0.01em; line-height: 1.3;
+  margin-bottom: 4px;
+}
+.kb-head .anchor {
+  font-size: 11px; color: var(--text-3);
+  font-family: 'SF Mono', Menlo, monospace;
+}
+
+.verified-row {
+  display: flex; align-items: center;
+  gap: 10px; flex-wrap: wrap;
+  margin-top: 8px; font-size: 11px;
+}
+.verified-tag {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 3px 9px;
+  background: rgba(16, 185, 129, 0.08);
+  color: #047857;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 999px; font-weight: 600;
+}
+.verified-tag.warn {
+  background: rgba(245, 158, 11, 0.1); color: #b45309;
+  border-color: rgba(245, 158, 11, 0.25);
+}
+.verified-meta { color: var(--text-3); }
+.verified-meta strong { color: var(--text-2); }
+
+.kb-body { font-size: 14px; line-height: 1.75; color: var(--text); }
+.kb-body p { margin-bottom: 12px; }
+.kb-body ul, .kb-body ol { margin: 0 0 12px 22px; }
+.kb-body li { margin-bottom: 4px; }
+.kb-body strong { font-weight: 700; }
+.kb-body h3 {
+  font-size: 14px; font-weight: 700;
+  margin: 14px 0 6px; color: var(--navy);
+}
+.kb-body .scope {
+  display: inline-block; padding: 2px 8px;
+  background: var(--bg); border-radius: 4px;
+  font-size: 11px; color: var(--text-2);
+  font-weight: 600; margin-right: 4px;
+}
+
+.kb-foot {
+  margin-top: 20px; padding-top: 16px;
+  border-top: 1px dashed var(--border);
+  display: flex; align-items: center; gap: 14px;
+  flex-wrap: wrap;
+}
+.helpful {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--text-2);
+}
+.helpful .label { font-weight: 500; }
+.vote-btn {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 5px 11px;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 999px; cursor: pointer;
+  font-size: 12px; font-family: inherit;
+  color: var(--text-2);
+  transition: all var(--duration);
+}
+.vote-btn:hover { transform: translateY(-1px); border-color: var(--blue); color: var(--blue); }
+.vote-btn.active.up { background: rgba(16, 185, 129, 0.1); border-color: var(--success); color: #047857; }
+.vote-btn.active.down { background: rgba(239, 68, 68, 0.08); border-color: var(--danger); color: #b91c1c; }
+.vote-stat { font-size: 11px; color: var(--text-3); margin-left: 4px; }
+.vote-pct {
+  display: inline-flex; align-items: center;
+  gap: 5px; font-size: 11px; color: var(--text-2);
+}
+.vote-pct .bar {
+  display: inline-block; width: 60px; height: 5px;
+  background: var(--border); border-radius: 999px;
+  overflow: hidden; position: relative;
+}
+.vote-pct .bar > span {
+  position: absolute; top: 0; left: 0; height: 100%;
+  background: linear-gradient(90deg, var(--success), #6aaae8);
+  border-radius: 999px;
+  transition: width 0.6s var(--ease);
+}
+
+.kb-foot .right-actions { margin-left: auto; display: flex; gap: 6px; }
+.action-btn {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 5px 11px; background: transparent;
+  border: 1px solid var(--border); border-radius: 999px;
+  cursor: pointer; font-size: 12px;
+  font-family: inherit; color: var(--text-2);
+  transition: all var(--duration);
+}
+.action-btn:hover { border-color: var(--blue); color: var(--blue); }
+
+/* ====== 익명 피드백함 ====== */
+.feedback-box {
+  margin: 48px 0 24px;
+  padding: 28px;
+  background: linear-gradient(135deg, #fafbff, #f0f4ff);
+  border: 1px solid #d8e2f5;
+  border-radius: var(--radius-lg);
+  position: relative; overflow: hidden;
+}
+.feedback-box .head {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 14px;
+}
+.feedback-box h3 { font-size: 16px; font-weight: 700; }
+.feedback-box .desc {
+  font-size: 12px; color: var(--text-2);
+  margin-bottom: 14px; line-height: 1.6;
+}
+.feedback-box textarea {
+  width: 100%; min-height: 92px;
+  padding: 12px 14px;
+  border: 1.5px solid var(--border-strong);
+  border-radius: 10px;
+  font-family: inherit; font-size: 14px;
+  resize: vertical; background: #fff; outline: 0;
+  transition: border-color var(--duration), box-shadow var(--duration);
+}
+.feedback-box textarea:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 4px rgba(74, 144, 217, 0.12);
+}
+.feedback-row {
+  display: flex; align-items: center;
+  margin-top: 10px; gap: 10px;
+}
+.pipa-note { font-size: 11px; color: var(--text-3); flex: 1; }
+.pipa-note strong { color: var(--text-2); }
+.feedback-submit {
+  padding: 9px 18px;
+  background: var(--navy); color: #fff;
+  border: 0; border-radius: 8px;
+  font-size: 13px; font-weight: 600;
+  cursor: pointer; font-family: inherit;
+  transition: transform var(--duration), background var(--duration);
+}
+.feedback-submit:hover { transform: translateY(-1px); background: var(--navy-mid); }
+.feedback-submit:disabled { opacity: 0.6; cursor: progress; }
+
+/* ====== Cmd+K Palette ====== */
+.cmdk-overlay {
+  position: fixed; inset: 0;
+  background: rgba(20, 30, 60, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: none;
+  align-items: flex-start; justify-content: center;
+  padding-top: 12vh;
+  animation: fadeIn 180ms var(--ease);
+}
+.cmdk-overlay.open { display: flex; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.cmdk-panel {
+  width: min(620px, 92vw);
+  max-height: 70vh;
+  background: var(--card);
+  border-radius: 14px;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  animation: panelIn 220ms var(--ease);
+}
+@keyframes panelIn {
+  from { opacity: 0; transform: translateY(-8px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.cmdk-input-row {
+  display: flex; align-items: center;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  gap: 10px;
+}
+.cmdk-input-row .magn { color: var(--text-3); font-size: 16px; }
+.cmdk-input-row input {
+  flex: 1; border: 0; outline: 0;
+  font-family: inherit; font-size: 16px;
+  background: transparent; color: var(--text);
+}
+.cmdk-input-row input::placeholder { color: var(--text-3); }
+.cmdk-esc {
+  font-size: 10px; color: var(--text-3);
+  padding: 2px 6px; border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+.cmdk-scopes {
+  display: flex; gap: 6px;
+  padding: 8px 18px;
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+}
+.scope-chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 4px 10px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 11px; color: var(--text-2);
+  cursor: pointer; font-family: inherit;
+  white-space: nowrap;
+}
+.scope-chip.active { background: var(--navy); color: #fff; border-color: var(--navy); }
+
+.cmdk-list { overflow-y: auto; flex: 1; padding: 6px 0; }
+.cmdk-section-label {
+  font-size: 10px; font-weight: 700;
+  color: var(--text-3); letter-spacing: 1.2px;
+  padding: 10px 18px 4px;
+  text-transform: uppercase;
+}
+.cmdk-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 9px 18px; cursor: pointer;
+}
+.cmdk-row.focus { background: var(--blue-pale); }
+.cmdk-row .ico {
+  width: 24px; height: 24px;
+  border-radius: 6px; background: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px;
+}
+.cmdk-row .lbl { flex: 1; font-size: 13px; color: var(--text); }
+.cmdk-row .scope {
+  font-size: 10px; color: var(--text-3);
+  background: var(--bg);
+  padding: 2px 6px; border-radius: 4px;
+}
+.cmdk-row .hk {
+  font-size: 10px; color: var(--text-3);
+  font-family: 'SF Mono', Menlo, monospace;
+}
+.cmdk-empty {
+  padding: 24px 18px; text-align: center;
+  font-size: 12px; color: var(--text-3);
+}
+.cmdk-row.ai-fallback {
+  background: linear-gradient(135deg, rgba(74, 144, 217, 0.06), rgba(255, 87, 34, 0.04));
+  border-top: 1px solid var(--border);
+  margin-top: 4px;
+}
+.cmdk-row.ai-fallback .lbl {
+  display: flex; align-items: center; gap: 6px;
+}
+
+/* ====== Toast ====== */
+.toast {
+  position: fixed; bottom: 30px;
+  left: 50%; transform: translateX(-50%) translateY(20px);
+  background: var(--navy); color: #fff;
+  padding: 12px 20px; border-radius: 10px;
+  font-size: 13px; font-weight: 500;
+  box-shadow: var(--shadow-lg);
+  opacity: 0; pointer-events: none;
+  transition: opacity var(--duration), transform var(--duration);
+  z-index: 2000;
+  display: flex; align-items: center; gap: 8px;
+  max-width: 92vw;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ====== Footer ====== */
+.page-foot {
+  margin-top: 60px; padding-top: 24px;
+  border-top: 1px solid var(--border);
+  font-size: 11px; color: var(--text-3);
+  display: flex; flex-wrap: wrap;
+  gap: 14px; justify-content: space-between;
+}
+
+@media (max-width: 900px) {
+  #sidebar { transform: translateX(-100%); }
+  #main { margin-left: 0; width: 100%; }
+  #content { padding: 24px 20px 60px; }
+  .faq-list { grid-template-columns: 1fr; }
+  .hdr-profile .name, .hdr-profile .dept { display: none; }
+}
 </style>
 </head>
 <body>
 
-<!-- ── 사이드바 ── -->
-<nav id="sidebar">
+<!-- ====== 사이드바 ====== -->
+<nav id="sidebar" aria-label="섹션 메뉴">
   <div class="sb-brand">
-    <div class="company">SANDBOX</div>
-    <div class="doc-title">GA 온보딩 가이드</div>
+    <div class="company">SANDBOX NETWORK</div>
+    <div class="doc-title">General Affairs<br>Master Book <span class="wip-badge">WIP</span></div>
+    <div class="doc-sub">v2.0 mockup · 검토 중</div>
   </div>
   <div class="sb-nav">
-    <div class="sb-nav-label">섹션</div>
-    <a class="sb-item active" onclick="showSection('s01',this)">
-      <span class="icon">💻</span>
-      <span class="label">IT 장비 세팅</span>
-      <span class="badge-num">01</span>
-    </a>
-    <a class="sb-item" onclick="showSection('s02',this)">
-      <span class="icon">🔧</span>
-      <span class="label">업무툴 세팅</span>
-      <span class="badge-num">02</span>
-    </a>
-    <a class="sb-item" onclick="showSection('s03',this)">
-      <span class="icon">🏢</span>
-      <span class="label">오피스 이용</span>
-      <span class="badge-num">03</span>
-    </a>
-    <a class="sb-item" onclick="showSection('s04',this)">
-      <span class="icon">📦</span>
-      <span class="label">이동지원·법인차량</span>
-      <span class="badge-num">04</span>
-    </a>
-    <a class="sb-item" onclick="showSection('s05',this)">
-      <span class="icon">🚨</span>
-      <span class="label">안전·보건</span>
-      <span class="badge-num">05</span>
-    </a>
-    <a class="sb-item" onclick="showSection('s06',this)">
-      <span class="icon">✅</span>
-      <span class="label">완료 체크리스트</span>
-      <span class="badge-num">06</span>
-    </a>
-    <div class="sb-nav-label" style="margin-top:12px;">상세 자료</div>
-    <a class="sb-item" onclick="showSection('s07',this)">
-      <span class="icon">📑</span>
-      <span class="label">상세 가이드 (PPT)</span>
-    </a>
+    <div class="sb-nav-label">SPACE</div>
+    <button class="sb-item active" data-section="sec-space"><span class="sb-icon">🏢</span> 공간·좌석·인테리어 <span class="sb-owner tsp">태섭</span></button>
+    <button class="sb-item" data-section="sec-office"><span class="sb-icon">🛠</span> 오피스 서비스 <span class="sb-owner sh">승훈</span></button>
+    <button class="sb-item" data-section="sec-security"><span class="sb-icon">🔐</span> 보안·출입 <span class="sb-owner jh">진호</span></button>
+
+    <div class="sb-nav-label">IT · ASSET</div>
+    <button class="sb-item" data-section="sec-asset"><span class="sb-icon">💻</span> IT 자산·소모품 <span class="sb-owner jh">진호</span></button>
+    <button class="sb-item" data-section="sec-it"><span class="sb-icon">🌐</span> IT 협업·네트워크 <span class="sb-owner jh">진호</span></button>
+    <button class="sb-item" data-section="sec-license"><span class="sb-icon">🪪</span> 라이선스 <span class="sb-owner jh">진호</span></button>
+
+    <div class="sb-nav-label">GA SERVICE</div>
+    <button class="sb-item" data-section="sec-vehicle"><span class="sb-icon">🚗</span> 법인차량 <span class="sb-owner tsp">태섭</span></button>
+    <button class="sb-item" data-section="sec-mobility"><span class="sb-icon">📦</span> 출장·퀵·택배 <span class="sb-owner sh">승훈</span></button>
+    <button class="sb-item" data-section="sec-welfare"><span class="sb-icon">🎁</span> 복리후생·경조 <span class="sb-owner sh">승훈</span></button>
+    <button class="sb-item" data-section="sec-document"><span class="sb-icon">📜</span> 출납·증명·인감 <span class="sb-owner sh">승훈</span></button>
+    <button class="sb-item" data-section="sec-mailroom"><span class="sb-icon">✉️</span> 메일룸·운영지원 <span class="sb-owner js">재승</span></button>
   </div>
-  <div class="sb-footer">
-    <div style="margin-bottom:6px; font-weight:600; color:rgba(255,255,255,0.5); font-size:10px; letter-spacing:1px; text-transform:uppercase;">문의처</div>
-    <div>Slack: <a href="https://sandboxnetwork2.slack.com/archives/C03E08UCZS6" target="_blank">#공통-ga-헬프데스크</a></div>
-    <div style="margin-top:8px; color:rgba(255,255,255,0.2);">GA Team</div>
+  <div class="sb-foot">
+    GA팀 4명 — 진호 · 태섭 · 승훈 · 재승<br>
+    마지막 빌드 2026-05-08
   </div>
 </nav>
 
-<!-- ── 메인 ── -->
+<!-- ====== 메인 ====== -->
 <div id="main">
-  <!-- 헤더 -->
   <header id="header">
-    <div class="header-left">
-      <div class="header-logo">SANDBOX</div>
-      <div class="header-divider"></div>
-      <div class="header-title">GA 온보딩 가이드</div>
+    <div class="product-tabs" role="tablist" aria-label="GA 산출물 전환">
+      <a class="product-tab onboarding" href="/onboarding.html" role="tab" aria-selected="false" title="신규입사자 온보딩 v1 (같은 도메인 내 이동)">
+        <span class="ico">📘</span>
+        <span>온보딩</span>
+        <span class="ext">v1</span>
+      </a>
+      <button class="product-tab master-book active" type="button" role="tab" aria-selected="true" aria-current="page" title="샌드박스네트워크 General Affairs Master Book — WIP (현재 페이지)">
+        <span class="ico">📕</span>
+        <span>Master Book</span>
+        <span class="wip-badge">WIP</span>
+      </button>
     </div>
-    <div class="header-right">
-<span class="hbadge hbadge-date">General Affairs</span>
-    </div>
+    <button class="cmdk-trigger" id="cmdk-trigger" aria-label="명령 팔레트 열기">
+      <span>⌘</span> 어디든 검색
+      <kbd>Ctrl</kbd><kbd>K</kbd>
+      <span class="new-badge" style="margin-left: 4px;">NEW</span>
+    </button>
+    <span class="hdr-verified" title="이 페이지는 GA팀이 검증한 정보만 포함합니다">
+      <span class="dot"></span> 검증됨
+      <span class="new-badge">NEW</span>
+    </span>
+    <button class="hdr-profile" id="profile-btn" aria-label="프로필">
+      <span class="avatar">태</span>
+      <div>
+        <div class="name">심태섭님</div>
+        <div class="dept">GA · 부동산/공간/법인차량</div>
+      </div>
+      <span class="new-badge">NEW</span>
+    </button>
   </header>
 
-  <!-- 콘텐츠 -->
-  <div id="content">
+  <main id="content">
 
-    <!-- ───────────── SECTION 01 ───────────── -->
-    <section id="s01" class="section active">
-      <div class="section-header">
-        <div class="section-icon-wrap">💻</div>
-        <div class="section-meta">
-          <div class="sec-num">Section 01</div>
-          <h1>IT 장비 세팅</h1>
-        </div>
+    <!-- ===== WIP 배너 ===== -->
+    <div class="wip-banner" role="status" aria-label="작업 진행중 안내">
+      <span class="icon">🚧</span>
+      <div>
+        <strong>Work In Progress</strong> — 임원·내부 관계자 검토용 mockup입니다.
+        <span class="meta">콘텐츠·기능·디자인 모두 검토 후 변경 예정. 외부 공유 금지.</span>
+      </div>
+    </div>
+
+    <!-- ===== Hero ===== -->
+    <div class="hero">
+      <h1>안녕하세요, 태섭님 👋</h1>
+      <div class="greeting">
+        <span>GA가 도와드릴 수 있는 게 있을까요? 모르시면 그냥 물어보세요.</span>
+        <span class="greeting-meta">GA · 부동산/공간/법인차량 <span class="new-badge">NEW</span></span>
+      </div>
+      <div class="shortcut-row">
+        <a class="shortcut-link" href="https://app.slack.com/client/TMEUBKV1R/C03E08UCZS6" target="_blank" rel="noopener">
+          <span class="ico">💬</span> #공통-ga-헬프데스크
+        </a>
+        <a class="shortcut-link" href="#" onclick="event.preventDefault(); toast('주차권 문의는 #공통-주차권지급 채널로');">
+          <span class="ico">🅿️</span> #공통-주차권지급
+        </a>
+        <a class="shortcut-link" href="https://docs.google.com/spreadsheets/d/1jD-L99E22Qy0YZitDgYsDB4oWFkCiXYci9BmlwvkZQs/edit" target="_blank" rel="noopener">
+          <span class="ico">🪑</span> 자리배치도
+        </a>
+        <a class="shortcut-link" href="https://editor.petaad.com/sandbox/" target="_blank" rel="noopener">
+          <span class="ico">🪪</span> 명함 발급 (code: sandbox)
+        </a>
+        <a class="shortcut-link" href="#" onclick="event.preventDefault(); toast('가이드 자료실 — 비공개 Notion 페이지');">
+          <span class="ico">📚</span> 가이드 자료실
+        </a>
+      </div>
+    </div>
+
+    <!-- 변경 사항 디지털 -->
+    <div class="changed-card">
+      <span class="icon">📝</span>
+      <div>
+        <strong>지난 방문 후 3건 변경됨</strong> — 법인차량 운행일지 양식 (2026-05-06), 29F 비상대피 도면 (05-07), 정수기 렌탈 업체 변경 (05-04).
+        <a href="#" onclick="event.preventDefault();">변경 내역 보기 →</a>
+      </div>
+      <span class="new-badge glow">NEW</span>
+    </div>
+
+    <!-- ===== AI Ask ===== -->
+    <section class="ai-ask" aria-label="GA AI 어시스턴트">
+      <div class="header">
+        <div class="ai-icon">✨</div>
+        <div class="title">GA에게 물어보세요 <span class="new-badge glow">NEW</span></div>
+        <div class="subtitle">Claude Haiku 4.5 · 평균 0.4초 첫 응답</div>
+      </div>
+      <div class="ai-input-row">
+        <input id="ai-input" type="text" placeholder="예: 노트북 신청 어떻게 해요? / 법인차량 예약 / 출입증 발급 / 등기 발송" autocomplete="off">
+        <button class="ai-mic" id="ai-mic" aria-label="음성 입력" title="음성 입력 (NEW)">🎙️</button>
+        <button class="ai-send" id="ai-send" aria-label="질문 전송">→</button>
+      </div>
+      <div class="ai-suggestions" id="ai-suggestions">
+        <button class="pill" data-q="노트북 신청 어떻게 해요?">💻 노트북·모니터 신청</button>
+        <button class="pill" data-q="법인차량 예약은 어떻게 하나요?">🚗 법인차량 예약</button>
+        <button class="pill" data-q="출입증 발급 받고 싶어요">🪪 출입증·모바일카드</button>
+        <button class="pill" data-q="등기 어떻게 발송해요?">✉️ 등기·택배 발송</button>
       </div>
 
-      <div class="grid-2">
-        <!-- PC & 모바일 -->
-        <div class="card">
-          <div class="card-title">PC 및 모바일 장비</div>
-          <ul class="info-list">
-            <li>지급 PC 수령 후 초기 로그인 확인</li>
-            <li>모바일 업무 앱 설치 완료</li>
-            <li>장비 관련 문의: Slack <a href="https://sandboxnetwork2.slack.com/archives/C03E08UCZS6" target="_blank" style="text-decoration:none;"><span class="badge badge-blue">#공통-ga-헬프데스크</span></a></li>
-          </ul>
+      <div class="ai-answer" id="ai-answer">
+        <div class="meta">
+          <span class="model">✦ Haiku 4.5</span>
+          <span id="answer-timing">응답 0.42초 · 312 토큰</span>
         </div>
-
-        <!-- 유선 인터넷 -->
-        <div class="card">
-          <div class="card-title">유선 인터넷</div>
-          <ul class="info-list">
-            <li>각 자리의 <strong>회색 랜선</strong>을 사용해 주세요</li>
-            <li>공인(고정) IP 필요 시 Slack <a href="https://sandboxnetwork2.slack.com/archives/C03E08UCZS6" target="_blank" style="text-decoration:none;"><span class="badge badge-blue">#공통-ga-헬프데스크</span></a>로 신청해 주세요</li>
-            <li>28층 공인 IP: 빨간 랜선</li>
-            <li>29층 공인 IP: 파란 랜선</li>
-          </ul>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:16px;">
-            <div style="background:#fff4e5; border-radius:10px; padding:14px;">
-              <div style="font-weight:700; font-size:13px; margin-bottom:10px;">28층 랜선 구분</div>
-              <div style="font-size:12px; margin-bottom:6px;"><strong>회색선</strong> — 내부망 전용, 복합기 사용 가능</div>
-              <div style="font-size:12px;"><strong>빨간선</strong> — 공인 IP 전용, 복합기 사용 불가</div>
-            </div>
-            <div style="background:#fff4e5; border-radius:10px; padding:14px;">
-              <div style="font-weight:700; font-size:13px; margin-bottom:10px;">29층 랜선 구분</div>
-              <div style="font-size:12px; margin-bottom:6px;"><strong>회색선</strong> — 내부망 전용, 복합기 사용 가능</div>
-              <div style="font-size:12px;"><strong>파란선</strong> — 공인 IP 전용, 복합기 사용 불가</div>
-            </div>
-          </div>
+        <div class="body" id="ai-answer-body"></div>
+        <div class="ai-followup" id="ai-followup" style="display:none;">
+          <div class="label">관련해서 더 궁금한 게 있나요?</div>
+          <div class="row" id="ai-followup-row"></div>
         </div>
       </div>
+    </section>
 
-      <!-- Wi-Fi -->
-      <div class="card">
-        <div class="card-title">인터넷(Wi-Fi) 현황</div>
-        <div class="tbl-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>구분</th>
-                <th>사용 위치</th>
-                <th>SSID</th>
-                <th>비밀번호</th>
-                <th>용도</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><span class="badge badge-blue">임직원용</span></td>
-                <td>28~29층</td>
-                <td><strong>SANDBOX</strong></td>
-                <td><code>SandO@615</code></td>
-                <td>업무용</td>
-              </tr>
-              <tr>
-                <td><span class="badge badge-navy">게스트용</span></td>
-                <td>28~29층</td>
-                <td>SANDBOX_GUEST</td>
-                <td><code>sbguest4321</code></td>
-                <td>외부 방문자용</td>
-              </tr>
-              <tr>
-                <td><span class="badge badge-blue">스튜디오 임직원용</span></td>
-                <td>28층</td>
-                <td><strong>SANDBOXSTUDIO</strong></td>
-                <td><code>SandS@615</code></td>
-                <td>스튜디오 업무용</td>
-              </tr>
-              <tr>
-                <td><span class="badge badge-navy">스튜디오 게스트용</span></td>
-                <td>28층</td>
-                <td>SANDBOXSTUDIO_GUEST</td>
-                <td><code>ssguest4321</code></td>
-                <td>외부 방문자용</td>
-              </tr>
-              <tr>
-                <td><span class="badge badge-blue">21층 미팅룸</span></td>
-                <td>21층 Room 1~8</td>
-                <td><strong>Corner 4</strong></td>
-                <td><code>0318935004</code></td>
-                <td>회의실용</td>
-              </tr>
-              <tr>
-                <td><span class="badge badge-blue">21층 대회의실</span></td>
-                <td>21층 컨퍼런스 룸</td>
-                <td><strong>Corner 3</strong></td>
-                <td><code>0318935003</code></td>
-                <td>대회의실용</td>
-              </tr>
-            </tbody>
-          </table>
+    <!-- ===== Top FAQ ===== -->
+    <div class="faq-block">
+      <div class="head">
+        <h2>이번 주 자주 묻는 질문</h2>
+        <span class="meta">검색 로그 + 헬프데스크 기반 자동 갱신 · 최근 7일</span>
+        <span class="new-badge">NEW</span>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item" onclick="askAI('명함 발급 어떻게 해요?')">
+          <span class="faq-rank">01</span>
+          <span class="faq-q">명함 발급·재발급 (petaad)</span>
+          <span class="faq-count">38</span>
         </div>
-        <div class="alert alert-red" style="margin-top:14px;">
-          <span class="alert-icon">🚫</span>
-          <span>게스트용 Wi-Fi(GUEST SSID)는 임직원 업무에 사용이 금지됩니다. 반드시 임직원용 SSID를 사용하세요.</span>
+        <div class="faq-item" onclick="askAI('출입증 발급 받고 싶어요')">
+          <span class="faq-rank">02</span>
+          <span class="faq-q">출입증·모바일카드 발급</span>
+          <span class="faq-count">31</span>
+        </div>
+        <div class="faq-item" onclick="askAI('자리배치도 어디서 봐요?')">
+          <span class="faq-rank">03</span>
+          <span class="faq-q">자리배치도 확인</span>
+          <span class="faq-count">27</span>
+        </div>
+        <div class="faq-item" onclick="askAI('주차 등록 어떻게 해요?')">
+          <span class="faq-rank">04</span>
+          <span class="faq-q">정기·방문 주차 등록</span>
+          <span class="faq-count">24</span>
+        </div>
+        <div class="faq-item" onclick="askAI('노트북 신청 어떻게 해요?')">
+          <span class="faq-rank">05</span>
+          <span class="faq-q">노트북·모니터 신청</span>
+          <span class="faq-count">22</span>
+        </div>
+        <div class="faq-item" onclick="askAI('법인차량 예약은 어떻게 하나요?')">
+          <span class="faq-rank">06</span>
+          <span class="faq-q">법인차량 예약</span>
+          <span class="faq-count">17</span>
+        </div>
+        <div class="faq-item" onclick="askAI('등기 어떻게 발송해요?')">
+          <span class="faq-rank">07</span>
+          <span class="faq-q">등기·택배 발송</span>
+          <span class="faq-count">14</span>
+        </div>
+        <div class="faq-item" onclick="askAI('인감증명서 떼주세요')">
+          <span class="faq-rank">08</span>
+          <span class="faq-q">인감·증명서 발급</span>
+          <span class="faq-count">12</span>
         </div>
       </div>
+    </div>
 
-      <!-- 복합기 -->
-      <div class="card">
-        <div class="card-title">복합기 현황</div>
-        <div class="tbl-wrap">
-          <table>
-            <thead>
-              <tr><th>층</th><th>대수</th><th>기능 및 비고</th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><span class="badge badge-blue">29층</span></td>
-                <td>2대</td>
-                <td>복합기①: 프린트 / 스캔 &nbsp;|&nbsp; 복합기②: 프린트 / 스캔 / 팩스 <span class="badge badge-navy" style="margin-left:6px;">02-562-2287</span></td>
-              </tr>
-              <tr>
-                <td><span class="badge badge-navy">28층</span></td>
-                <td>1대</td>
-                <td>프린트 / 스캔</td>
-              </tr>
-            </tbody>
-          </table>
+    <!-- ===== 섹션 1: 공간·좌석·인테리어 ===== -->
+    <section class="kb" id="sec-space" style="--vt-name: sec-space;">
+      <div class="kb-head">
+        <div class="icon">🏢</div>
+        <div class="title">
+          <h2>공간·좌석·인테리어</h2>
+          <div class="anchor">#sec-space</div>
         </div>
-        <ul class="info-list" style="margin-top:14px;">
-          <li><a href="https://docs.google.com/spreadsheets/d/1jD-L99E22Qy0YZitDgYsDB4oWFkCiXYci9BmlwvkZQs/edit#gid=1179344745" target="_blank" style="color:var(--blue);">위치 안내 ↗</a></li>
-          <li><a href="https://docs.google.com/presentation/d/1Ys_rik8PDc9w8AF7xvamSkv4K2dvVKbMj4lVsRErdRY/edit#slide=id.g3ac142aadc_2_0" target="_blank" style="color:var(--blue);">복합기 설치 및 사용가이드 ↗</a></li>
+        <span class="owner-pill"><span class="dot"></span> 심태섭</span>
+      </div>
+      <div class="verified-row">
+        <span class="verified-tag">
+          <span>✓</span> 심태섭 검증
+          <span class="new-badge">NEW</span>
+        </span>
+        <span class="verified-meta">최종 검토 <strong>2026-04-28</strong> · 다음 검증 만료 <strong>D-52</strong></span>
+      </div>
+      <div class="kb-body">
+        <p>사무실·CR 임대차 계약, 인테리어 시공·하자보수, 부서·개인별 좌석 배정, 창고/소품실 사용, 이사 기획까지 공간 전반을 다룹니다.</p>
+        <h3>📋 다루는 일</h3>
+        <ul>
+          <li><span class="scope">계약</span> 사무실·기타 업무공간 임대차/전대차</li>
+          <li><span class="scope">계약</span> CR 숙소 임대차 및 비용 관리</li>
+          <li><span class="scope">시공</span> 공간 인테리어 시공·하자보수</li>
+          <li><span class="scope">좌석</span> 부서/개인별 좌석 배정 — <a href="https://docs.google.com/spreadsheets/d/1jD-L99E22Qy0YZitDgYsDB4oWFkCiXYci9BmlwvkZQs/edit" target="_blank" rel="noopener">자리배치도</a></li>
+          <li><span class="scope">창고</span> 부서별 창고 공간 배정·보관 관리</li>
+          <li><span class="scope">이사</span> 이사 기획 및 진행</li>
+        </ul>
+        <h3>💡 자주 묻는 케이스</h3>
+        <ul>
+          <li>좌석 이동 요청 — Slack DM 또는 #공통-ga-헬프데스크</li>
+          <li>회의실/팬트리/라운지 인테리어 변경 의견 → 태섭에게 직접</li>
+          <li>창고 공간 부족 — 부서별 슬롯 재할당 검토 가능</li>
         </ul>
       </div>
-    </section>
-
-    <!-- ───────────── SECTION 02 ───────────── -->
-    <section id="s02" class="section">
-      <div class="section-header">
-        <div class="section-icon-wrap">🔧</div>
-        <div class="section-meta">
-          <div class="sec-num">Section 02</div>
-          <h1>업무툴 세팅</h1>
+      <div class="kb-foot">
+        <div class="helpful">
+          <span class="label">이 내용이 도움됐나요?</span>
+          <button class="vote-btn" data-vote="up" data-section="sec-space">👍 <span class="vote-stat">42</span></button>
+          <button class="vote-btn" data-vote="down" data-section="sec-space">👎 <span class="vote-stat">2</span></button>
+          <span class="vote-pct"><span class="bar"><span style="width: 95%;"></span></span> 95% 도움됨</span>
+          <span class="new-badge">NEW</span>
         </div>
-      </div>
-
-      <div class="grid-2">
-        <!-- GWS -->
-        <div class="card">
-          <div class="card-title">Google Workspace</div>
-          <div class="step-list">
-            <div class="step-item">
-              <span class="step-badge">1</span>
-              <span>초기 비밀번호 변경</span>
-            </div>
-            <div class="step-item">
-              <span class="step-badge">2</span>
-              <span>프로필 사진 설정</span>
-            </div>
-            <div class="step-item">
-              <span class="step-badge">3</span>
-              <span>접속 URL: <a href="https://docs.google.com/presentation/d/1eMfAFW4kYn57RhMStI8FKIjVx1fv1wCEwdVpNxexz-Q/edit?slide=id.g508731239e_0_71#slide=id.g508731239e_0_71" target="_blank" style="color:var(--blue); text-decoration:underline;">이메일 서명 가이드 바로가기 ↗</a></span>
-            </div>
-            <div class="step-item">
-              <span class="step-badge">4</span>
-              <span>2FA 설정: <strong>계정관리 → 보안 → 2단계 인증</strong></span>
-            </div>
-          </div>
-          <div class="alert alert-red" style="margin-top:16px;">
-            <span class="alert-icon">🔐</span>
-            <span>보안 강화를 위해 <strong>2단계 인증(2FA)은 필수</strong>입니다. 로그인 직후 바로 설정하세요.</span>
-          </div>
-        </div>
-
-        <!-- Notion -->
-        <div class="card">
-          <div class="card-title">Notion</div>
-          <ul class="info-list">
-            <li>접속 URL: <a href="https://www.notion.so/sandboxinc/4c7be1a0fdeb44d795d369e5f4a92ec9" target="_blank" style="color:var(--blue); text-decoration:underline;">노션 바로가기 ↗</a></li>
-            <li>가입: 초대 링크는 입사 안내 메일에 포함되어 있습니다.</li>
-          </ul>
-          <div class="alert alert-blue" style="margin-top:16px;">
-            <span class="alert-icon">ℹ️</span>
-            <span>접속 후 팀스페이스 및 그룹스를 확인해 주세요.</span>
-          </div>
-        </div>
-
-        <!-- Slack -->
-        <div class="card">
-          <div class="card-title">Slack</div>
-          <div class="step-list">
-            <div class="step-item">
-              <span class="step-badge">1</span>
-              <span>가입: 초대 링크는 <strong>입사 안내 메일</strong>에 포함되어 있습니다.</span>
-            </div>
-            <div class="step-item">
-              <span class="step-badge">2</span>
-              <span>프로필 설정 — 이름 / 직책 / 프로필 사진</span>
-            </div>
-            <div class="step-item">
-              <span class="step-badge">3</span>
-              <span><a href="https://sandboxnetwork2.slack.com/archives/C03E08UCZS6" target="_blank" style="text-decoration:none;"><span class="badge badge-blue">#공통-ga-헬프데스크</span></a> 채널 (GA 관련 모든 문의)</span>
-            </div>
-            <div class="step-item">
-              <span class="step-badge">4</span>
-              <span>접속 URL: <a href="https://docs.google.com/presentation/d/1P7d1OnydFutYnSRA8c2ri6Pynnx3iO7CaanY93m64uk/edit?slide=id.p11#slide=id.p11" target="_blank" style="color:var(--blue); text-decoration:underline;">슬랙 프로필 설정 가이드 ↗</a></span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 그룹웨어 -->
-        <div class="card">
-          <div class="card-title">그룹웨어</div>
-          <ul class="info-list">
-            <li>접속 URL: <a href="http://gw.sandbox.co.kr" target="_blank" style="color:var(--blue); text-decoration:underline;">그룹웨어 바로가기 ↗</a></li>
-            <li>초기 로그인: 계정 정보는 입사 안내 메일에 포함되어 있습니다.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- 모바일 출입증 -->
-      <div class="card">
-        <div class="card-title">모바일 출입증 (에스원)</div>
-        <div class="step-list">
-          <div class="step-item">
-            <span class="step-badge">1</span>
-            <span><strong>에스원 모바일</strong> 앱 설치</span>
-          </div>
-          <div class="step-item">
-            <span class="step-badge">2</span>
-            <span>(구) 모바일카드 인증 로그인</span>
-          </div>
-          <div class="step-item">
-            <span class="step-badge">3</span>
-            <span>팝업 확인 창에서 <strong>'나중에'</strong> 클릭</span>
-          </div>
-          <div class="step-item">
-            <span class="step-badge">4</span>
-            <span>본인 인증 완료</span>
-          </div>
-          <div class="step-item">
-            <span class="step-badge">5</span>
-            <span>접속 URL: <a href="https://docs.google.com/presentation/d/1P7d1OnydFutYnSRA8c2ri6Pynnx3iO7CaanY93m64uk/edit?slide=id.p13#slide=id.p13" target="_blank" style="color:var(--blue); text-decoration:underline;">모바일 출입증 발급 및 앱 설치 가이드 ↗</a></span>
-          </div>
+        <div class="right-actions">
+          <button class="action-btn" onclick="suggestEdit('sec-space','심태섭')">✎ 수정 제안 <span class="new-badge">NEW</span></button>
         </div>
       </div>
     </section>
 
-    <!-- ───────────── SECTION 03 ───────────── -->
-    <section id="s03" class="section">
-      <div class="section-header">
-        <div class="section-icon-wrap">🏢</div>
-        <div class="section-meta">
-          <div class="sec-num">Section 03</div>
-          <h1>오피스 이용</h1>
+    <!-- ===== 섹션 2: 오피스 서비스 ===== -->
+    <section class="kb" id="sec-office" style="--vt-name: sec-office;">
+      <div class="kb-head">
+        <div class="icon">🛠</div>
+        <div class="title">
+          <h2>오피스 서비스 — 주차·렌탈·유지보수</h2>
+          <div class="anchor">#sec-office</div>
         </div>
+        <span class="owner-pill owner-sh"><span class="dot"></span> 이승훈</span>
       </div>
-
-      <!-- 회의실 현황 -->
-      <div class="card">
-        <div class="card-title">회의실 현황</div>
-        <div class="tbl-wrap">
-          <table>
-            <thead>
-              <tr><th>위치</th><th>개수</th><th>구성</th><th>예약 방법</th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><span class="badge badge-blue">21층 코너스페이스</span></td>
-                <td>9개</td>
-                <td>미팅룸 8개 + 대회의실 1개</td>
-                <td><span class="badge badge-green">Google Calendar</span></td>
-              </tr>
-              <tr>
-                <td><span class="badge badge-navy">29층</span></td>
-                <td>5개</td>
-                <td>일반 회의실</td>
-                <td><span class="badge badge-green">Google Calendar</span></td>
-              </tr>
-              <tr>
-                <td><span class="badge badge-purple">28층 1번 스튜디오</span></td>
-                <td>1개</td>
-                <td>대회의실 용도</td>
-                <td>유캔북미 예약 / PS팀 문의</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <div class="verified-row">
+        <span class="verified-tag">
+          <span>✓</span> 이승훈 검증
+        </span>
+        <span class="verified-meta">최종 검토 <strong>2026-04-30</strong> · 다음 검증 만료 <strong>D-54</strong></span>
       </div>
-
-      <div class="grid-2">
-        <!-- 사용 기준 -->
-        <div class="card">
-          <div class="card-title">회의실 사용 기준</div>
-          <ul class="info-list">
-            <li>21층 운영 시간: <strong>08:00 ~ 22:00</strong></li>
-            <li>일정 제목 형식: <span class="badge badge-navy">[팀명] + 미팅대상</span></li>
-            <li>예약 후 <strong>10분 미사용</strong> 시 노쇼 처리</li>
-          </ul>
-          <div class="alert alert-yellow" style="margin-top:14px;">
-            <span class="alert-icon">⏰</span>
-            <span>예약 후 10분 내에 입실하지 않으면 자동 노쇼 처리되어 타 팀이 사용할 수 있습니다.</span>
-          </div>
-        </div>
-
-        <!-- 28층 스튜디오 -->
-        <div class="card">
-          <div class="card-title">28층 스튜디오 이용 규칙</div>
-          <ul class="info-list">
-            <li>촬영 일정이 <strong>항상 선순위</strong></li>
-            <li>정기 예약 불가</li>
-            <li>사용 후 원상 복구 필수</li>
-          </ul>
-          <div class="alert alert-red" style="margin-top:14px;">
-            <span class="alert-icon">🎬</span>
-            <span>스튜디오 촬영 일정과 충돌 시 회의실 사용이 취소될 수 있습니다. 사전에 PS팀에 확인하세요.</span>
-          </div>
-        </div>
+      <div class="kb-body">
+        <p>사무실 운영에 필요한 주차, 렌탈 가전, 시설 유지보수, 복합기·파쇄기를 담당합니다.</p>
+        <h3>🅿️ 주차</h3>
+        <ul>
+          <li>정기주차 — 배정 원칙에 따라 등록·관리. 신청은 <strong>#공통-주차권지급</strong> 채널</li>
+          <li>방문주차 — 외부 미팅·방문자용 지원 프로세스 운영</li>
+        </ul>
+        <h3>🚰 렌탈</h3>
+        <ul>
+          <li>정수기·공기청정기·비데 — 신규/갱신/해지 관리</li>
+          <li>렌탈 업체 변경, 추가 설치 요청 → 승훈에게 직접</li>
+        </ul>
+        <h3>🔧 유지보수</h3>
+        <ul>
+          <li>사무공간·시설 이상유무 점검, 수리 요청·대응</li>
+          <li>복합기·파쇄기 관리</li>
+        </ul>
       </div>
-
-      <!-- 29층 우선순위 -->
-      <div class="card">
-        <div class="card-title">29층 회의실 우선순위 정책</div>
-        <div class="priority-list">
-          <div class="priority-item p1">
-            <span class="priority-num">1순위</span>
-            <span class="priority-text">주요 외부 미팅 · 경영 이벤트</span>
-          </div>
-          <div class="priority-item p2">
-            <span class="priority-num">2순위</span>
-            <span class="priority-text">CXO · 실장 리더 위클리</span>
-          </div>
-          <div class="priority-item p3">
-            <span class="priority-num">3순위</span>
-            <span class="priority-text">면접 (21층 3번 회의실 09:00~10:00 / 17:00~19:00 고정)</span>
-          </div>
-          <div class="priority-item p4">
-            <span class="priority-num">4순위</span>
-            <span class="priority-text">팀 위클리 · 1on1</span>
-          </div>
+      <div class="kb-foot">
+        <div class="helpful">
+          <span class="label">이 내용이 도움됐나요?</span>
+          <button class="vote-btn" data-vote="up" data-section="sec-office">👍 <span class="vote-stat">38</span></button>
+          <button class="vote-btn" data-vote="down" data-section="sec-office">👎 <span class="vote-stat">3</span></button>
+          <span class="vote-pct"><span class="bar"><span style="width: 93%;"></span></span> 93% 도움됨</span>
         </div>
-      </div>
-
-      <div class="grid-2">
-        <!-- 21층 코너스페이스 -->
-        <div class="card">
-          <div class="card-title">21층 코너스페이스</div>
-          <ul class="info-list">
-            <li>입장 시 <strong>사원증 필수</strong></li>
-            <li>코너 출입: <strong>각 팀별 출입 카드 보유</strong> (팀 내 확인)</li>
-            <li>공용 라운지 · BAR 사용 불가</li>
-            <li>미팅룸 · 폰부스 사용 불가</li>
-          </ul>
-        </div>
-
-        <!-- 라운지 / 분리수거 -->
-        <div class="card">
-          <div class="card-title">라운지 및 분리수거</div>
-          <div class="tbl-wrap" style="margin-bottom:14px;">
-            <table>
-              <thead><tr><th>종류</th><th>배출 방법</th></tr></thead>
-              <tbody>
-                <tr><td>일반 쓰레기</td><td>개인 쓰레기통 또는 라운지 일반 쓰레기통</td></tr>
-                <tr><td>재활용</td><td>라운지 재활용 쓰레기통 (개인 쓰레기통 배출 불가)</td></tr>
-                <tr><td>박스/대형</td><td>비상EV 통로 지정 자리</td></tr>
-                <tr><td>음식물</td><td>비상EV 통로 주황 박스 음식물 분리수거 통</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <ul class="info-list">
-            <li>공용 냉장고: 매주 <strong>금요일</strong> 일괄 폐기</li>
-            <li>회의실 내 식사·간식 반입 금지</li>
-          </ul>
+        <div class="right-actions">
+          <button class="action-btn" onclick="suggestEdit('sec-office','이승훈')">✎ 수정 제안</button>
         </div>
       </div>
     </section>
 
-    <!-- ───────────── SECTION 04 ───────────── -->
-    <section id="s04" class="section">
-      <div class="section-header">
-        <div class="section-icon-wrap">📦</div>
-        <div class="section-meta">
-          <div class="sec-num">Section 04</div>
-          <h1>이동지원·법인차량</h1>
+    <!-- ===== 섹션 3: 보안·출입 ===== -->
+    <section class="kb" id="sec-security" style="--vt-name: sec-security;">
+      <div class="kb-head">
+        <div class="icon">🔐</div>
+        <div class="title">
+          <h2>보안 — 정보보안·물리보안·출입</h2>
+          <div class="anchor">#sec-security</div>
         </div>
+        <span class="owner-pill owner-jh"><span class="dot"></span> 최진호</span>
       </div>
-
-      <!-- 주차 -->
-      <div class="card">
-        <div class="card-title">주차 안내</div>
-        <div class="grid-2" style="gap:16px; margin-bottom:16px;">
-          <div>
-            <ul class="info-list">
-              <li>신청: Slack <a href="https://sandboxnetwork2.slack.com/archives/C025WV4JFPV" target="_blank" style="color:var(--blue);"><span class="badge badge-blue">#공통-주차권신청</span></a></li>
-              <li>당일 <strong>18:00 이전</strong>까지 신청</li>
-              <li>개인 사유 입차 불가</li>
-              <li>무료 회차: <strong>10분</strong></li>
-            </ul>
-          </div>
-          <div class="tbl-wrap">
-            <table>
-              <thead><tr><th>구역</th><th>최대 높이</th></tr></thead>
-              <tbody>
-                <tr><td>지상 B1</td><td>3.3m</td></tr>
-                <tr><td>B1</td><td>3.2m</td></tr>
-                <tr><td>B2 · B3</td><td>2.3m</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+      <div class="verified-row">
+        <span class="verified-tag warn">
+          <span>⚠</span> 검증 만료 임박
+        </span>
+        <span class="verified-meta">최종 검토 <strong>2026-03-08</strong> · 다음 검증 만료 <strong>D-3</strong></span>
       </div>
-
-      <div class="grid-2">
-        <!-- 우편물 -->
-        <div class="card">
-          <div class="card-title">우편물</div>
-          <ul class="info-list">
-            <li><strong>28층 메일룸</strong>에서 직접 수령 (개별 전달 없음)</li>
-            <li>등기 발송: GA 자리 앞 발송함</li>
-            <li>발송 일정: <strong>월 · 수</strong>(고정), <strong>목</strong>(비정기) <strong>16시 이후</strong> 일괄 발송</li>
-          </ul>
+      <div class="kb-body">
+        <p>네트워크·PC 보안, 권한 설정, 출입증 발주, 사무실 출입 규정까지 회사의 정보·물리 보안을 책임집니다.</p>
+        <h3>🛡️ 정보보안</h3>
+        <ul>
+          <li>네트워크·개인 PC 보안</li>
+          <li>권한 설정 (계정·자산·라이선스)</li>
+          <li>정기 보안 점검</li>
+        </ul>
+        <h3>🚪 물리보안 · 출입</h3>
+        <ul>
+          <li>출입권한 설정</li>
+          <li>출입증·모바일카드 발주 관리</li>
+          <li>사무실 출입 규정</li>
+          <li>물리 보안 점검 (세콤·CCTV)</li>
+        </ul>
+        <p style="font-size:12px;color:var(--text-2);background:var(--bg);padding:10px 14px;border-radius:8px;">💡 출입증 분실·재발급은 <strong>#공통-ga-헬프데스크</strong>에 즉시 알려주세요. 분실 시 즉시 권한 차단 후 재발주.</p>
+      </div>
+      <div class="kb-foot">
+        <div class="helpful">
+          <span class="label">이 내용이 도움됐나요?</span>
+          <button class="vote-btn" data-vote="up" data-section="sec-security">👍 <span class="vote-stat">29</span></button>
+          <button class="vote-btn" data-vote="down" data-section="sec-security">👎 <span class="vote-stat">4</span></button>
+          <span class="vote-pct"><span class="bar"><span style="width: 88%;"></span></span> 88% 도움됨</span>
         </div>
-
-        <!-- 택배 -->
-        <div class="card">
-          <div class="card-title">택배</div>
-          <ul class="info-list">
-            <li>보관함: 28층 출입문 앞 / 29층 라운지 반대편</li>
-            <li>1주 초과 시 DM 안내</li>
-            <li>2주 초과 시 <span class="badge badge-red">자동 폐기</span></li>
-            <li>음식물 관련 택배: <strong>3일</strong> 초과 시 <span class="badge badge-red">자체 폐기</span></li>
-          </ul>
-        </div>
-
-        <!-- CU Post -->
-        <div class="card">
-          <div class="card-title">CU Post (무인 택배)</div>
-          <ul class="info-list">
-            <li>위치: 29층 남자화장실 우측</li>
-            <li>규격 제한: 가로+세로+높이 합 <strong>160cm 이하</strong>, <strong>20kg 이하</strong></li>
-            <li><a href="https://docs.google.com/presentation/d/1bmBlrSHBXH6p0UAKqfe_krT496SmOox8tJhwYQWQ66M/edit?usp=drive_link" target="_blank" style="color:var(--blue);">CU Post 상세 가이드 ↗</a></li>
-          </ul>
-        </div>
-
-        <!-- 해외 택배 -->
-        <div class="card">
-          <div class="card-title">해외 택배</div>
-          <ul class="info-list">
-            <li><strong>FedEx</strong>: 발송대행 가능 (<a href="https://docs.google.com/spreadsheets/d/1zbtuiaJQ3uj_9rVSNKvo7UUOmrnQWyiGUHdLVFP5nMg/edit?usp=drive_link" target="_blank" style="color:var(--blue);">발송 양식 ↗</a> 작성 후 GA 담당자 전달)</li>
-            <li>DHL / EMS: 개별 접수 및 결제</li>
-          </ul>
-        </div>
-
-        <!-- 퀵 서비스 -->
-        <div class="card">
-          <div class="card-title">퀵 서비스</div>
-          <div class="grid-2" style="gap:12px; margin-bottom:14px;">
-            <div>
-              <div style="font-size:12px; font-weight:700; color:var(--success); margin-bottom:8px;">✅ 퀵 발송 가능</div>
-              <ul class="info-list">
-                <li>시딩 — 신선식품</li>
-                <li>서류 — 당일 발송 필수 서류</li>
-                <li>택배 발송 불가 물품</li>
-              </ul>
-            </div>
-            <div>
-              <div style="font-size:12px; font-weight:700; color:var(--danger); margin-bottom:8px;">🚫 퀵 발송 불가</div>
-              <ul class="info-list">
-                <li>시딩 — 공산품 → <strong>CUpost</strong> 이용</li>
-                <li>서류 시딩 — 공산품 → <strong>CUpost</strong> 이용</li>
-                <li>일반 서류 → <strong>메일룸 등기 발송</strong></li>
-              </ul>
-            </div>
-          </div>
-          <ul class="info-list">
-            <li><a href="https://www.notion.so/sandboxinc/29529436cbac8046b75dc979bdd2b6ee?source=copy_link" target="_blank" style="color:var(--blue);">퀵서비스 가입 링크 ↗</a></li>
-            <li>아이디 · 이메일: 회사 Gmail 사용</li>
-            <li>배송 사유 필수 입력</li>
-            <li>취소 문의: <strong>1544-1020</strong></li>
-          </ul>
-        </div>
-
-        <!-- 명함 -->
-        <div class="card">
-          <div class="card-title">명함 제작</div>
-          <ul class="info-list">
-            <li><a href="http://editor.petaad.com/sandbox" target="_blank" style="color:var(--blue);">명함 제작 사이트 ↗</a></li>
-            <li>코드 : sandbox</li>
-            <li>부서1 = 상위 조직</li>
-            <li>부서2 = 주 조직</li>
-            <li>직책 = Flex 기준으로 입력</li>
-          </ul>
-        </div>
-
-        <!-- 법인차량 -->
-        <div class="card">
-          <div class="card-title">법인차량</div>
-          <ul class="info-list">
-            <li>키 수령: <strong>28층 GA 자리</strong></li>
-            <li>차량: 소나타 / 카니발</li>
-            <li>만 21세 이상 + 운전면허 소지자</li>
-            <li>업무 목적만 사용 가능</li>
-            <li><span class="badge badge-red">CR 운전 절대 불가</span></li>
-            <li>유류대 · 세차비: <strong>개인 법인카드</strong> 사용</li>
-          </ul>
-          <div class="alert alert-red" style="margin-top:12px;">
-            <span class="alert-icon">🚗</span>
-            <span>사고 발생 시: 사진 촬영 → 보험사 접수 → GA 보고. 인명/분쟁 시 <strong>112 신고 후 GA 연락</strong></span>
-          </div>
+        <div class="right-actions">
+          <button class="action-btn" onclick="suggestEdit('sec-security','최진호')">✎ 수정 제안</button>
         </div>
       </div>
     </section>
 
-    <!-- ───────────── SECTION 05 ───────────── -->
-    <section id="s05" class="section">
-      <div class="section-header">
-        <div class="section-icon-wrap">🚨</div>
-        <div class="section-meta">
-          <div class="sec-num">Section 05</div>
-          <h1>안전·보건</h1>
+    <!-- ===== 섹션 4: IT 자산·소모품 ===== -->
+    <section class="kb" id="sec-asset" style="--vt-name: sec-asset;">
+      <div class="kb-head">
+        <div class="icon">💻</div>
+        <div class="title">
+          <h2>IT 자산·소모품 — 노트북·모니터·비품</h2>
+          <div class="anchor">#sec-asset</div>
         </div>
+        <span class="owner-pill owner-jh"><span class="dot"></span> 최진호 · 임재승</span>
       </div>
-
-      <!-- 비상대피도 (맨 위 — 가장 잘 보이게) -->
-      <div class="card" style="border:2px solid #ef4444;">
-        <div class="card-title" style="color:#ef4444;">🚨 비상대피도 · Evacuation Map</div>
-        <p style="color:#94a3b8; margin:0 0 16px; font-size:14px;">시작점에서 가까운 비상구로 이동하세요. 초록(A 루트) = SANDBOX 정문 → 비상계단 A · 청록(B 루트) = 쪽문 → 외부 공용통로 → 비상계단 B</p>
-
-        <div class="floor-tabs" style="display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap;">
-          <button class="floor-tab" data-floor="21F" onclick="switchFloor('21F')" style="flex:1; min-width:100px; padding:12px 20px; border-radius:8px; border:2px solid #475569; background:transparent; color:#cbd5e1; font-weight:700; cursor:pointer; transition:all 0.2s;">21F · 회의실</button>
-          <button class="floor-tab active" data-floor="28F" onclick="switchFloor('28F')" style="flex:1; min-width:100px; padding:12px 20px; border-radius:8px; border:2px solid #3b82f6; background:#3b82f6; color:#fff; font-weight:700; cursor:pointer; transition:all 0.2s;">28F · 반층</button>
-          <button class="floor-tab" data-floor="29F" onclick="switchFloor('29F')" style="flex:1; min-width:100px; padding:12px 20px; border-radius:8px; border:2px solid #475569; background:transparent; color:#cbd5e1; font-weight:700; cursor:pointer; transition:all 0.2s;">29F · 전층</button>
-        </div>
-
-        <div class="floor-content" data-floor="21F" style="display:none; background:#1e293b; border-radius:8px; padding:60px 20px; text-align:center;">
-          <div style="font-size:48px; margin-bottom:12px;">🚧</div>
-          <p style="color:#fbbf24; font-weight:700; font-size:18px; margin:0 0 8px;">WIP · Work In Progress</p>
-          <p style="color:#94a3b8; font-size:14px; margin:0;">21F 비상대피도는 준비 중입니다.</p>
-        </div>
-
-        <div class="floor-content" data-floor="28F" style="display:block; background:#fafafa; border-radius:8px; padding:8px; overflow-x:auto;">
-          <object data="floorplans/28F-evac-animated.svg" type="image/svg+xml" style="width:100%; min-width:900px; display:block;" aria-label="28F 비상대피 동선"></object>
-        </div>
-
-        <div class="floor-content" data-floor="29F" style="display:none; background:#1e293b; border-radius:8px; padding:60px 20px; text-align:center;">
-          <div style="font-size:48px; margin-bottom:12px;">🚧</div>
-          <p style="color:#fbbf24; font-weight:700; font-size:18px; margin:0 0 8px;">WIP · Work In Progress</p>
-          <p style="color:#94a3b8; font-size:14px; margin:0;">29F 비상대피도는 준비 중입니다.</p>
-        </div>
-
-        <div class="alert alert-green" style="margin-top:16px;">
-          <span class="alert-icon">🟢</span>
-          <span>붉은 점멸 = 시작점 · 초록 점선 = A 루트 · 청록 점선 = B 루트 · 비상구 점등 = 출구 · 빨간 박스 = 소화기/소화전</span>
-        </div>
+      <div class="verified-row">
+        <span class="verified-tag">
+          <span>✓</span> 최진호 검증
+        </span>
+        <span class="verified-meta">최종 검토 <strong>2026-04-22</strong> · 다음 검증 만료 <strong>D-46</strong></span>
       </div>
-
-      <div class="grid-2">
-        <!-- 비상 연락 -->
-        <div class="card">
-          <div class="card-title">비상 연락</div>
-          <div style="display:flex; flex-direction:column; gap:10px;">
-            <div class="contact-card">
-              <div class="contact-icon">💬</div>
-              <div class="contact-info">
-                <div class="contact-label">Slack 채널</div>
-                <div class="contact-value"><a href="https://sandboxnetwork2.slack.com/archives/C03E08UCZS6" target="_blank" style="color:inherit; text-decoration:none;">#공통-ga-헬프데스크</a></div>
-                <div class="contact-sub">비상 상황 즉시 메시지</div>
-              </div>
-            </div>
-            <div class="contact-card" style="background: linear-gradient(135deg, #7f1d1d, #b91c1c);">
-              <div class="contact-icon">📞</div>
-              <div class="contact-info">
-                <div class="contact-label">긴급 연락</div>
-                <div class="contact-value">GA 구성원 직접 연락</div>
-                <div class="contact-sub">즉각 대응 가능</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 화재 대피 -->
-        <div class="card">
-          <div class="card-title">화재 대피 절차</div>
-          <div class="step-list">
-            <div class="step-item">
-              <span class="step-badge" style="background:#ef4444;">1</span>
-              <span>즉시 작업 중단</span>
-            </div>
-            <div class="step-item">
-              <span class="step-badge" style="background:#ef4444;">2</span>
-              <span><strong>비상계단 이용</strong> (엘리베이터 절대 금지)</span>
-            </div>
-            <div class="step-item">
-              <span class="step-badge" style="background:#ef4444;">3</span>
-              <span>비상구 방향 확인 후 이동</span>
-            </div>
-            <div class="step-item">
-              <span class="step-badge" style="background:#ef4444;">4</span>
-              <span>외부 집결지 이동 후 <strong>팀장에게 인원 보고</strong></span>
-            </div>
-          </div>
-          <div class="alert alert-red" style="margin-top:16px;">
-            <span class="alert-icon">🔥</span>
-            <span>화재 시 <strong>엘리베이터 사용 절대 금지</strong>. 반드시 비상계단을 이용하세요.</span>
-          </div>
-        </div>
+      <div class="kb-body">
+        <p>PC·모니터·외장하드·소프트웨어 같은 IT 유형자산과 일반 비품·소모품 구매·지급, 입사/퇴사 시 물품 지원을 담당합니다.</p>
+        <h3>🛒 자산관리·구매 (진호)</h3>
+        <ul>
+          <li>일반 비품·소모품 — 팀별 요청 구매 지원</li>
+          <li>IT 유형자산 — PC, 모니터, 외장하드, 소프트웨어 구매·지급·유지보수</li>
+        </ul>
+        <h3>📦 자산 운영 (재승)</h3>
+        <ul>
+          <li>지급·회수 관리</li>
+          <li>신규입사자 물품 지원 — PC/모니터/소모품/좌석표/웰컴키트</li>
+          <li>퇴사자 물품 회수</li>
+          <li>키보드·마우스 등 소모품 공급</li>
+          <li>전산장비 대여 (단기 사용)</li>
+        </ul>
       </div>
-
-      <!-- 소방시설 & AED -->
-      <div class="card">
-        <div class="card-title">소방시설 및 AED 위치</div>
-        <div class="tbl-wrap">
-          <table>
-            <thead>
-              <tr><th>시설</th><th>층</th><th>위치</th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><span class="badge badge-red">소화기</span></td>
-                <td>29층</td>
-                <td>IP Solutions 구역 좌측 / 비상EV 38호기 앞 / AD 구역 서버 근처 / CEO Office 근처</td>
-              </tr>
-              <tr>
-                <td><span class="badge badge-red">소화전</span></td>
-                <td>29층</td>
-                <td>OA 복합기① 옆 / 미팅룸 5 · 비상계단 근처</td>
-              </tr>
-              <tr>
-                <td><span class="badge badge-yellow">비상 EV</span></td>
-                <td>28 · 29층</td>
-                <td>38호기 (29층) / 2호기 (28층)</td>
-              </tr>
-              <tr>
-                <td><span class="badge badge-blue">AED</span></td>
-                <td>29층</td>
-                <td>라운지 보관함 (모델 A15)</td>
-              </tr>
-              <tr>
-                <td><span class="badge badge-green">상비약</span></td>
-                <td>29층</td>
-                <td>풀숲 캐비넷 앞</td>
-              </tr>
-              <tr>
-                <td><span class="badge badge-green">상비약</span></td>
-                <td>28층</td>
-                <td>복합기 옆</td>
-              </tr>
-            </tbody>
-          </table>
+      <div class="kb-foot">
+        <div class="helpful">
+          <span class="label">이 내용이 도움됐나요?</span>
+          <button class="vote-btn" data-vote="up" data-section="sec-asset">👍 <span class="vote-stat">54</span></button>
+          <button class="vote-btn" data-vote="down" data-section="sec-asset">👎 <span class="vote-stat">5</span></button>
+          <span class="vote-pct"><span class="bar"><span style="width: 92%;"></span></span> 92% 도움됨</span>
         </div>
-      </div>
-
-      <!-- AED 응급 절차 -->
-      <div class="card">
-        <div class="card-title">AED 응급 처치 절차</div>
-        <div class="step-list">
-          <div class="step-item">
-            <span class="step-badge" style="background:#10b981;">1</span>
-            <span><strong>119 신고</strong> 즉시</span>
-          </div>
-          <div class="step-item">
-            <span class="step-badge" style="background:#10b981;">2</span>
-            <span>주변에 <strong>AED 사용 가능 인원</strong> 요청</span>
-          </div>
-          <div class="step-item">
-            <span class="step-badge" style="background:#10b981;">3</span>
-            <span>29층 라운지 보관함 내 <strong>설명서 참고</strong>하여 사용</span>
-          </div>
-        </div>
-        <div class="alert alert-green" style="margin-top:16px;">
-          <span class="alert-icon">💚</span>
-          <span>AED 위치: 29층 라운지 보관함 (모델 A15). 평소에 위치를 미리 확인해 두세요.</span>
+        <div class="right-actions">
+          <button class="action-btn" onclick="suggestEdit('sec-asset','최진호 · 임재승')">✎ 수정 제안</button>
         </div>
       </div>
     </section>
 
-    <!-- ───────────── SECTION 06 ───────────── -->
-    <section id="s06" class="section">
-      <div class="section-header">
-        <div class="section-icon-wrap">✅</div>
-        <div class="section-meta">
-          <div class="sec-num">Section 06</div>
-          <h1>완료 체크리스트</h1>
+    <!-- ===== 섹션 5: 법인차량 ===== -->
+    <section class="kb" id="sec-vehicle" style="--vt-name: sec-vehicle;">
+      <div class="kb-head">
+        <div class="icon">🚗</div>
+        <div class="title">
+          <h2>법인차량 — 공용·임원·운영·사고대응</h2>
+          <div class="anchor">#sec-vehicle</div>
         </div>
+        <span class="owner-pill"><span class="dot"></span> 심태섭</span>
       </div>
-
-      <!-- 진행 바 -->
-      <div class="card">
-        <div class="progress-wrap" style="margin-bottom:0;">
-          <div class="progress-header">
-            <span class="progress-label">온보딩 완료율</span>
-            <span class="progress-count" id="prog-count">0 / 12</span>
-          </div>
-          <div class="progress-bar-bg">
-            <div class="progress-bar-fill" id="prog-bar"></div>
-          </div>
-        </div>
-        <div class="alert alert-blue" style="margin-top:16px;">
-          <span class="alert-icon">📋</span>
-          <span>모든 항목 완료 후 <strong>GA 담당자에게 공유</strong>해 주세요. 문의: <strong>ga@sandbox.co.kr</strong> 또는 <a href="https://sandboxnetwork2.slack.com/archives/C03E08UCZS6" target="_blank" style="color:inherit;"><strong>#공통-ga-헬프데스크</strong></a></span>
-        </div>
+      <div class="verified-row">
+        <span class="verified-tag">
+          <span>✓</span> 심태섭 검증
+        </span>
+        <span class="verified-meta">최종 검토 <strong>2026-05-04</strong> · 다음 검증 만료 <strong>D-58</strong></span>
       </div>
-
-      <!-- IT 세팅 체크리스트 -->
-      <div class="card">
-        <div class="checklist">
-          <div class="check-group">
-            <div class="check-group-title">
-              <span>💻</span> IT 세팅
-            </div>
-            <div class="check-item" onclick="toggleCheck(this)">
-              <div class="check-box"><span class="check-tick">✓</span></div>
-              <div class="check-label">Google Workspace 로그인 및 초기 비밀번호 변경</div>
-            </div>
-            <div class="check-item" onclick="toggleCheck(this)">
-              <div class="check-box"><span class="check-tick">✓</span></div>
-              <div class="check-label">Google Workspace 2FA(2단계 인증) 설정</div>
-            </div>
-            <div class="check-item" onclick="toggleCheck(this)">
-              <div class="check-box"><span class="check-tick">✓</span></div>
-              <div class="check-label">Notion 접속 및 팀스페이스 확인</div>
-            </div>
-            <div class="check-item" onclick="toggleCheck(this)">
-              <div class="check-box"><span class="check-tick">✓</span></div>
-              <div class="check-label">Slack 필수 채널 가입 (#공통-ga-헬프데스크 포함)</div>
-            </div>
-            <div class="check-item" onclick="toggleCheck(this)">
-              <div class="check-box"><span class="check-tick">✓</span></div>
-              <div class="check-label">그룹웨어 로그인 및 위임전결규정 확인</div>
-            </div>
-          </div>
-
-          <div class="check-group">
-            <div class="check-group-title">
-              <span>🏢</span> 오피스 세팅
-            </div>
-            <div class="check-item" onclick="toggleCheck(this)">
-              <div class="check-box"><span class="check-tick">✓</span></div>
-              <div class="check-label">모바일 출입증 (에스원) 설치 및 인증 완료</div>
-            </div>
-            <div class="check-item" onclick="toggleCheck(this)">
-              <div class="check-box"><span class="check-tick">✓</span></div>
-              <div class="check-label">임직원용 Wi-Fi(SANDBOX) 연결 확인</div>
-            </div>
-            <div class="check-item" onclick="toggleCheck(this)">
-              <div class="check-box"><span class="check-tick">✓</span></div>
-              <div class="check-label">복합기 위치 확인 (28층 / 29층)</div>
-            </div>
-            <div class="check-item" onclick="toggleCheck(this)">
-              <div class="check-box"><span class="check-tick">✓</span></div>
-              <div class="check-label">주차권 신청 방법 확인 (#공용-주차권신청)</div>
-            </div>
-            <div class="check-item" onclick="toggleCheck(this)">
-              <div class="check-box"><span class="check-tick">✓</span></div>
-              <div class="check-label">회의실 예약 방법 확인 (Google Calendar)</div>
-            </div>
-          </div>
-        </div>
+      <div class="kb-body">
+        <p>공용·임원 법인차량 배차·관리, 차량 규정 수립, 벌과금·사고 대응까지 전사 차량 운영을 책임집니다.</p>
+        <h3>🚙 공용 법인차량</h3>
+        <ul>
+          <li>배차, 내·외부 체크, 관제, 계약 관리</li>
+          <li>운행일지 작성·관리 (월간 리포트)</li>
+        </ul>
+        <h3>🚘 임원 법인차량</h3>
+        <ul>
+          <li>임원별 차량 관리</li>
+          <li>정기/반기 점검 수검</li>
+          <li>계약·인수·인계 관리</li>
+        </ul>
+        <h3>📋 규정·운영</h3>
+        <ul>
+          <li>차량 수배·배차·이용 규정 및 정책 수립/업데이트</li>
+          <li>연간 전사 차량 운영 기획, 데이터 스태킹</li>
+          <li>벌과금 추적·집행, 개선</li>
+          <li>사고 시 보험사 외 피해 대응</li>
+        </ul>
       </div>
-
-      <!-- 완료 후 안내 -->
-      <div class="card" style="background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); border:none;">
-        <div style="display:flex; align-items:center; gap:18px; color:#fff;">
-          <div style="font-size:40px;">🎉</div>
-          <div>
-            <div style="font-size:16px; font-weight:700; margin-bottom:6px;">온보딩을 환영합니다!</div>
-            <div style="font-size:13px; color:rgba(255,255,255,0.7); line-height:1.7;">
-              모든 체크리스트 완료 후 GA 담당자에게 완료 공유를 부탁드립니다.<br>
-              궁금한 사항은 언제든지 <strong style="color:var(--blue-light);">#공통-ga-헬프데스크</strong> 또는 <strong style="color:var(--blue-light);">ga@sandbox.co.kr</strong>로 연락주세요.
-            </div>
-          </div>
+      <div class="kb-foot">
+        <div class="helpful">
+          <span class="label">이 내용이 도움됐나요?</span>
+          <button class="vote-btn" data-vote="up" data-section="sec-vehicle">👍 <span class="vote-stat">31</span></button>
+          <button class="vote-btn" data-vote="down" data-section="sec-vehicle">👎 <span class="vote-stat">2</span></button>
+          <span class="vote-pct"><span class="bar"><span style="width: 94%;"></span></span> 94% 도움됨</span>
+        </div>
+        <div class="right-actions">
+          <button class="action-btn" onclick="suggestEdit('sec-vehicle','심태섭')">✎ 수정 제안</button>
         </div>
       </div>
     </section>
 
-    <section id="s07" class="section">
-      <div class="section-header">
-        <div class="section-icon-wrap">📑</div>
-        <div class="section-meta">
-          <div class="sec-num">상세 자료</div>
-          <h1>상세 가이드 (원본 PPT)</h1>
+    <!-- ===== 섹션 6: 이동지원 ===== -->
+    <section class="kb" id="sec-mobility" style="--vt-name: sec-mobility;">
+      <div class="kb-head">
+        <div class="icon">📦</div>
+        <div class="title">
+          <h2>이동지원 — 출장·퀵·택배·카카오택시</h2>
+          <div class="anchor">#sec-mobility</div>
         </div>
+        <span class="owner-pill owner-sh"><span class="dot"></span> 이승훈</span>
       </div>
-      <div class="card" style="padding: 0; overflow: hidden; border-radius: 12px;">
-        <div style="padding: 16px 20px; background: var(--navy); color:#fff; display:flex; align-items:center; gap:10px;">
-          <span style="font-size:15px; font-weight:600;">GA 온보딩 가이드</span>
-          <span style="font-size:12px; color:rgba(255,255,255,0.5);">— 원본 슬라이드 전체 보기</span>
-          <a href="https://docs.google.com/presentation/d/1P7d1OnydFutYnSRA8c2ri6Pynnx3iO7CaanY93m64uk/edit" target="_blank" style="margin-left:auto; font-size:12px; color:var(--blue-light); text-decoration:none; font-weight:500;">새 탭에서 열기 ↗</a>
+      <div class="verified-row">
+        <span class="verified-tag">
+          <span>✓</span> 이승훈 검증
+        </span>
+        <span class="verified-meta">최종 검토 <strong>2026-04-26</strong> · 다음 검증 만료 <strong>D-49</strong></span>
+      </div>
+      <div class="kb-body">
+        <p>임직원 이동·물류 서비스를 GA가 일괄 계약·운영합니다. <strong>출장비 한도·정산은 회계팀</strong>이며, GA는 운영 지원만 담당합니다.</p>
+        <h3>✈️ 출장</h3>
+        <ul>
+          <li>출장 서비스 계약 및 관리 (항공·숙박 제휴)</li>
+          <li>제휴 한도·승인 절차 안내</li>
+        </ul>
+        <h3>🏍 퀵서비스 · 택배</h3>
+        <ul>
+          <li>임직원 퀵·택배 서비스 계약 및 비용 관리</li>
+          <li>발송 신청 → 메일룸 (재승)</li>
+        </ul>
+        <h3>🚖 카카오택시</h3>
+        <ul>
+          <li>정규 구성원 외 인력(인턴 등) 등록·변경·삭제</li>
+          <li>정규직은 인사팀 시스템 연동</li>
+        </ul>
+      </div>
+      <div class="kb-foot">
+        <div class="helpful">
+          <span class="label">이 내용이 도움됐나요?</span>
+          <button class="vote-btn" data-vote="up" data-section="sec-mobility">👍 <span class="vote-stat">26</span></button>
+          <button class="vote-btn" data-vote="down" data-section="sec-mobility">👎 <span class="vote-stat">4</span></button>
+          <span class="vote-pct"><span class="bar"><span style="width: 87%;"></span></span> 87% 도움됨</span>
         </div>
-        <iframe
-          src="https://docs.google.com/presentation/d/1P7d1OnydFutYnSRA8c2ri6Pynnx3iO7CaanY93m64uk/embed?start=false&loop=false&delayms=0"
-          frameborder="0"
-          width="100%"
-          style="height: calc(100vh - 200px); min-height: 600px; display: block;"
-          allowfullscreen>
-        </iframe>
+        <div class="right-actions">
+          <button class="action-btn" onclick="suggestEdit('sec-mobility','이승훈')">✎ 수정 제안</button>
+        </div>
       </div>
     </section>
 
-  </div><!-- /content -->
-</div><!-- /main -->
+    <!-- ===== 섹션 7: 출납·증명 ===== -->
+    <section class="kb" id="sec-document" style="--vt-name: sec-document;">
+      <div class="kb-head">
+        <div class="icon">📜</div>
+        <div class="title">
+          <h2>출납·증명 — 계약서·인감·법인등기·인증서</h2>
+          <div class="anchor">#sec-document</div>
+        </div>
+        <span class="owner-pill owner-sh"><span class="dot"></span> 이승훈</span>
+      </div>
+      <div class="verified-row">
+        <span class="verified-tag">
+          <span>✓</span> 이승훈 검증
+        </span>
+        <span class="verified-meta">최종 검토 <strong>2026-04-30</strong> · 다음 검증 만료 <strong>D-54</strong></span>
+      </div>
+      <div class="kb-body">
+        <p>회사 공식 문서·인감·증명서 발급과 입찰·보증보험까지 총무성 대관 업무를 담당합니다.</p>
+        <h3>📑 계약서 (날인본)</h3>
+        <ul>
+          <li>전사 계약서 보관·데이터 관리</li>
+          <li>인감 날인 — 사전 결재 + 사유 명시 후 진행</li>
+        </ul>
+        <h3>🛡️ 보험 · 입찰</h3>
+        <ul>
+          <li>보증보험 계약 진행</li>
+          <li>나라장터 입찰 프로세스 지원</li>
+        </ul>
+        <h3>📋 증명</h3>
+        <ul>
+          <li>증명서·공인인증서 갱신 관리</li>
+          <li>법인등기부등본·인감증명서 구비</li>
+        </ul>
+      </div>
+      <div class="kb-foot">
+        <div class="helpful">
+          <span class="label">이 내용이 도움됐나요?</span>
+          <button class="vote-btn" data-vote="up" data-section="sec-document">👍 <span class="vote-stat">19</span></button>
+          <button class="vote-btn" data-vote="down" data-section="sec-document">👎 <span class="vote-stat">1</span></button>
+          <span class="vote-pct"><span class="bar"><span style="width: 95%;"></span></span> 95% 도움됨</span>
+        </div>
+        <div class="right-actions">
+          <button class="action-btn" onclick="suggestEdit('sec-document','이승훈')">✎ 수정 제안</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 섹션 8: 메일룸·운영지원 ===== -->
+    <section class="kb" id="sec-mailroom" style="--vt-name: sec-mailroom;">
+      <div class="kb-head">
+        <div class="icon">✉️</div>
+        <div class="title">
+          <h2>메일룸·운영지원 — 우편·등기·택배·일선 응대</h2>
+          <div class="anchor">#sec-mailroom</div>
+        </div>
+        <span class="owner-pill owner-js"><span class="dot"></span> 임재승</span>
+      </div>
+      <div class="verified-row">
+        <span class="verified-tag">
+          <span>✓</span> 임재승 검증
+        </span>
+        <span class="verified-meta">최종 검토 <strong>2026-04-29</strong> · 다음 검증 만료 <strong>D-53</strong></span>
+      </div>
+      <div class="kb-body">
+        <p>임직원 우편 수발신, 크리에이터 팬선물 택배 발송, 그리고 GA 전반 1차 응대를 담당합니다.</p>
+        <h3>📬 메일룸·등기·택배</h3>
+        <ul>
+          <li>임직원 우편 수발신 지원</li>
+          <li>등기·택배 발송 신청</li>
+          <li>크리에이터 택배 (팬선물) 발송</li>
+          <li>메일룸 공간·물품 관리</li>
+        </ul>
+        <h3>💬 공간·시설·장비 1차 응대</h3>
+        <ul>
+          <li>이용 관련 초기 문의 응대</li>
+          <li>분류 후 담당자(태섭/승훈/진호)에게 전달</li>
+          <li>주차권 지급 지원</li>
+        </ul>
+      </div>
+      <div class="kb-foot">
+        <div class="helpful">
+          <span class="label">이 내용이 도움됐나요?</span>
+          <button class="vote-btn" data-vote="up" data-section="sec-mailroom">👍 <span class="vote-stat">22</span></button>
+          <button class="vote-btn" data-vote="down" data-section="sec-mailroom">👎 <span class="vote-stat">2</span></button>
+          <span class="vote-pct"><span class="bar"><span style="width: 92%;"></span></span> 92% 도움됨</span>
+        </div>
+        <div class="right-actions">
+          <button class="action-btn" onclick="suggestEdit('sec-mailroom','임재승')">✎ 수정 제안</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 익명 피드백함 ===== -->
+    <section class="feedback-box" aria-label="익명 피드백">
+      <div class="head">
+        <span style="font-size: 22px;">📮</span>
+        <h3>익명으로 GA에게 한 마디</h3>
+        <span class="new-badge glow">NEW</span>
+      </div>
+      <p class="desc">불편·제안·아이디어 모두 익명으로 받습니다. AI가 자동 분류해서 담당자(태섭/승훈/진호/재승) Slack DM으로 전달하고, GA팀이 주간 Pulse 리포트로 종합 답변합니다.</p>
+      <textarea id="feedback-text" placeholder="예: 폰부스 방음이 약해요 / 정수기 교체 자주 필요해요 / 23층 좌석 재배치 요청 / 메일룸 위치 안내 표지 없음"></textarea>
+      <div class="feedback-row">
+        <div class="pipa-note">
+          <strong>PIPA 보호 가이드</strong> · 사번·이메일·IP 미수집 · 개인 식별 정보는 LLM 분류 전 자동 마스킹 · 5인 미만 부서는 통계 집계 제외
+        </div>
+        <button class="feedback-submit" id="feedback-submit">익명 전송 →</button>
+      </div>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer class="page-foot">
+      <div>
+        <strong>샌드박스네트워크 General Affairs Master Book</strong> · v2.0 mockup · <span class="wip-badge">WIP</span> · 책임자 <strong>심태섭 (GA)</strong> · 메인 채널 <strong>#공통-ga-헬프데스크</strong>
+      </div>
+      <div>
+        주간 활성 312명 · 도움됨 평균 92% · 평균 응답 0.4초
+      </div>
+    </footer>
+  </main>
+</div>
+
+<!-- ====== Cmd+K Palette ====== -->
+<div class="cmdk-overlay" id="cmdk" role="dialog" aria-label="명령 팔레트">
+  <div class="cmdk-panel" role="document">
+    <div class="cmdk-input-row">
+      <span class="magn">⌕</span>
+      <input id="cmdk-input" type="text" placeholder="섹션·단축링크·담당자 검색  또는  자연어로 질문" autocomplete="off">
+      <span class="cmdk-esc">ESC</span>
+    </div>
+    <div class="cmdk-scopes" id="cmdk-scopes">
+      <button class="scope-chip active" data-scope="all">전체</button>
+      <button class="scope-chip" data-scope="section">📄 섹션</button>
+      <button class="scope-chip" data-scope="link">🔗 단축</button>
+      <button class="scope-chip" data-scope="owner">👤 담당자</button>
+      <button class="scope-chip" data-scope="ai">✨ AI 답변</button>
+    </div>
+    <div class="cmdk-list" id="cmdk-list"></div>
+  </div>
+</div>
+
+<!-- ====== Toast ====== -->
+<div class="toast" id="toast"></div>
 
 <script>
-  // ── 섹션 전환 ──
-  function showSection(id, el) {
-    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-    document.querySelectorAll('.sb-item').forEach(i => i.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-    if (el) el.classList.add('active');
-    document.getElementById('content').scrollTop = 0;
-  }
+// ============ 데이터 ============
+const COMMANDS = [
+  // 섹션
+  { id:'sec-space',     title:'공간·좌석·인테리어', section:'섹션', icon:'🏢', kw:'space 공간 좌석 자리 인테리어 부동산 창고 이사 cr', scope:'section' },
+  { id:'sec-office',    title:'오피스 서비스 (주차·렌탈·유지보수)', section:'섹션', icon:'🛠', kw:'office 주차 렌탈 정수기 공기청정기 비데 유지보수 복합기 파쇄기', scope:'section' },
+  { id:'sec-security',  title:'보안·출입', section:'섹션', icon:'🔐', kw:'security 보안 출입증 모바일카드 세콤 cctv 권한', scope:'section' },
+  { id:'sec-asset',     title:'IT 자산·소모품', section:'섹션', icon:'💻', kw:'asset 자산 노트북 pc 모니터 외장하드 소프트웨어 비품 소모품 키보드 마우스', scope:'section' },
+  { id:'sec-it',        title:'IT 협업·네트워크 (그룹웨어/Slack/AWS)', section:'섹션', icon:'🌐', kw:'it 협업 google slack notion 더존 erp front 네트워크 wifi 와이파이 aws gcp 도메인 인터넷전화', scope:'section' },
+  { id:'sec-license',   title:'라이선스 (MS·Adobe·폰트)', section:'섹션', icon:'🪪', kw:'license 라이선스 ms office adobe 한글 산돌 210 폰트 jira github soundstripe', scope:'section' },
+  { id:'sec-vehicle',   title:'법인차량 (공용·임원)', section:'섹션', icon:'🚗', kw:'vehicle 법인차량 차량 공용 임원 배차 운행일지 사고 벌과금', scope:'section' },
+  { id:'sec-mobility',  title:'이동지원 (출장·퀵·택배·카카오택시)', section:'섹션', icon:'📦', kw:'mobility 출장 퀵 택배 카카오택시 카택시 인턴', scope:'section' },
+  { id:'sec-welfare',   title:'복리후생·경조 (명절·행사·화환)', section:'섹션', icon:'🎁', kw:'welfare 복리후생 명절 선물 사내행사 경조 화환 경조사', scope:'section' },
+  { id:'sec-document',  title:'출납·증명·인감·계약서', section:'섹션', icon:'📜', kw:'document 출납 증명 인감 인감증명서 법인등기부 계약서 공인인증서 보증보험 나라장터 입찰', scope:'section' },
+  { id:'sec-mailroom',  title:'메일룸·등기·택배·운영지원', section:'섹션', icon:'✉️', kw:'mail 메일룸 우편 등기 택배 팬선물 크리에이터', scope:'section' },
 
-  // ── 체크박스 토글 ──
-  const TOTAL = 12;
+  // 단축 링크
+  { id:'lnk-helpdesk',  title:'#공통-ga-헬프데스크', section:'단축', icon:'💬', kw:'slack 헬프데스크 helpdesk 문의 ga', scope:'link', url:'https://app.slack.com/client/TMEUBKV1R/C03E08UCZS6' },
+  { id:'lnk-parking',   title:'#공통-주차권지급', section:'단축', icon:'🅿️', kw:'parking 주차 주차권', scope:'link', toast:'주차권 문의 → #공통-주차권지급 채널' },
+  { id:'lnk-seatmap',   title:'자리배치도 (Google Sheets)', section:'단축', icon:'🪑', kw:'seatmap 자리 좌석 배치도', scope:'link', url:'https://docs.google.com/spreadsheets/d/1jD-L99E22Qy0YZitDgYsDB4oWFkCiXYci9BmlwvkZQs/edit' },
+  { id:'lnk-card',      title:'명함 발급 (petaad, code: sandbox)', section:'단축', icon:'🪪', kw:'card 명함 명함발급 petaad', scope:'link', url:'https://editor.petaad.com/sandbox/' },
+  { id:'lnk-guide',     title:'가이드 자료실 (Notion)', section:'단축', icon:'📚', kw:'guide 가이드 자료실', scope:'link', toast:'가이드 자료실 — 비공개 Notion 페이지' },
 
-  function toggleCheck(el) {
-    el.classList.toggle('checked');
-    updateProgress();
-  }
+  // 담당자
+  { id:'own-jh',  title:'최진호 — IT·보안·자산구매·라이선스', section:'담당자', icon:'😀', kw:'진호 jh choi 최진호 it 보안 자산 라이선스', scope:'owner', toast:'최진호 → IT·네트워크·보안·자산구매·라이선스 (#공통-ga-헬프데스크)' },
+  { id:'own-tsp', title:'심태섭 — 부동산·공간·법인차량', section:'담당자', icon:'😀', kw:'태섭 tsp shim 심태섭 부동산 공간 좌석 법인차량 인테리어', scope:'owner', toast:'심태섭 → 부동산·공간·인테리어·좌석·법인차량 (#공통-ga-헬프데스크)' },
+  { id:'own-sh',  title:'이승훈 — 오피스 서비스·이동지원·복리후생·출납', section:'담당자', icon:'😀', kw:'승훈 sh lee 이승훈 오피스 주차 렌탈 출장 복리후생 출납 인감 계약서', scope:'owner', toast:'이승훈 → 오피스 서비스·이동지원·복리후생·출납·증명 (#공통-ga-헬프데스크)' },
+  { id:'own-js',  title:'임재승 — 메일룸·소모품·장비세팅·일선 응대', section:'담당자', icon:'😀', kw:'재승 js lim 임재승 메일룸 등기 택배 소모품 장비', scope:'owner', toast:'임재승 → 메일룸·등기·소모품·장비세팅·일선 응대 (#공통-ga-헬프데스크)' },
+];
 
-  function updateProgress() {
-    const checked = document.querySelectorAll('.check-item.checked').length;
-    const pct = (checked / TOTAL) * 100;
-    document.getElementById('prog-bar').style.width = pct + '%';
-    document.getElementById('prog-count').textContent = checked + ' / ' + TOTAL;
+// ============ 유틸 ============
+const $ = (s) => document.querySelector(s);
+const $$ = (s) => document.querySelectorAll(s);
+function toast(msg, ms=2400){
+  const t = $('#toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => t.classList.remove('show'), ms);
+}
+window.toast = toast;
 
-    // 100% 완료 시 축하 메시지
-    if (checked === TOTAL) {
-      document.getElementById('prog-count').style.color = '#10b981';
+// ============ 섹션 이동 ============
+function navigateSection(secId){
+  const target = document.getElementById(secId);
+  if(!target) return;
+  const go = () => {
+    target.scrollIntoView({behavior:'smooth', block:'start'});
+    target.classList.remove('flash');
+    void target.offsetWidth;
+    target.classList.add('flash');
+  };
+  if(document.startViewTransition) document.startViewTransition(go);
+  else go();
+}
+
+$$('.sb-item').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const sec = btn.dataset.section;
+    if(document.getElementById(sec)){
+      $$('.sb-item').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      navigateSection(sec);
     } else {
-      document.getElementById('prog-count').style.color = 'var(--blue)';
+      toast(`${btn.textContent.trim().split(/\s+/).slice(0,3).join(' ')} — 다음 v2.1에서 콘텐츠 추가 예정`);
     }
+  });
+});
+
+// ============ AI Ask Mock ============
+const AI_RESPONSES = {
+  laptop: {
+    body: `<p>태섭님, 노트북·모니터 신청은 다음 절차로 진행하시면 됩니다.</p>
+<ul>
+  <li>입사자 → 입사 D-3 전 GA가 자동 셋업 (PC/모니터/소모품/좌석표/웰컴키트) <a class="ai-cite" data-cite="sec-asset">[#sec-asset]</a></li>
+  <li>추가 신청 → <strong>#공통-ga-헬프데스크</strong> Slack에 모델·사유 남겨주세요</li>
+  <li>구매·지급 담당 — <strong>최진호</strong> (IT 유형자산)</li>
+  <li>실제 세팅 지원 — <strong>임재승</strong> (좌석 위치까지 셋업)</li>
+  <li>분실·파손 — 즉시 #공통-ga-헬프데스크 신고. 진호가 보안 권한 차단 후 재발주 <a class="ai-cite" data-cite="sec-security">[#sec-security]</a></li>
+</ul>`,
+    followup: ['외장하드·키보드 추가 신청', '듀얼 모니터 받을 수 있어요?', '맥북/씽크패드 변경 가능?'],
+    timing: '0.38초 · 287 토큰 (캐시 hit)'
+  },
+  vehicle: {
+    body: `<p>태섭님, 법인차량 예약은 다음 절차로 진행하시면 됩니다.</p>
+<ul>
+  <li>공용 차량 — 차량 운영 시스템에서 배차 신청 후 운행일지 작성 <a class="ai-cite" data-cite="sec-vehicle">[#sec-vehicle]</a></li>
+  <li>임원 차량 — 별도 관리, 직접 차량 담당자와 조율</li>
+  <li>이용 규정·정책 → 차량 규정 페이지 참고</li>
+  <li>벌과금·사고 발생 시 즉시 차량 담당자에게 연락 (보험사 연계 처리)</li>
+  <li>전체 운영·정책·계약 담당 — <strong>심태섭</strong> (본인이시네요 😅)</li>
+</ul>`,
+    followup: ['공용차량 운행일지 양식', '주말 출장 차량 가능?', '사고 시 처리 절차'],
+    timing: '0.41초 · 264 토큰 (캐시 hit)'
+  },
+  access: {
+    body: `<p>태섭님, 출입증·모바일카드 발급은 다음 경로로 처리하시면 됩니다.</p>
+<ul>
+  <li>발급 신청 — <strong>#공통-ga-헬프데스크</strong> Slack에 사번·소속·발급 사유 남겨주세요 <a class="ai-cite" data-cite="sec-security">[#sec-security]</a></li>
+  <li>담당 — <strong>최진호</strong> (출입권한 설정·출입증 발주 관리)</li>
+  <li>분실 시 → 즉시 신고 → 권한 차단 → 재발주 (보통 영업일 기준 2-3일)</li>
+  <li>모바일카드는 출입권한 등록 후 별도 앱 가이드 안내</li>
+  <li>사무실 출입 규정도 함께 안내드립니다</li>
+</ul>`,
+    followup: ['모바일카드 앱 설치 방법', '외부 방문자 출입 절차', '출입권한 변경 (부서 이동)'],
+    timing: '0.39초 · 248 토큰 (캐시 hit)'
+  },
+  mail: {
+    body: `<p>태섭님, 등기·택배 발송은 메일룸을 통해 신청하시면 됩니다.</p>
+<ul>
+  <li>등기·택배 신청 — 메일룸에서 직접 또는 <strong>#공통-ga-헬프데스크</strong> 메시지 <a class="ai-cite" data-cite="sec-mailroom">[#sec-mailroom]</a></li>
+  <li>담당 — <strong>임재승</strong> (메일룸·우편·등기·택배 통합 운영)</li>
+  <li>크리에이터 팬선물 택배 — 별도 프로세스, 임재승에게 사전 협의</li>
+  <li>퀵서비스는 <strong>이승훈</strong>이 계약·비용 관리 — 신청은 메일룸 통합 <a class="ai-cite" data-cite="sec-mobility">[#sec-mobility]</a></li>
+  <li>임직원 우편 수신 시 메일룸에 보관, 도착 시 사내 알림</li>
+</ul>`,
+    followup: ['크리에이터 팬선물 발송 절차', '국제 등기 가능한가요?', '메일룸 운영 시간'],
+    timing: '0.36초 · 256 토큰 (캐시 hit)'
+  },
+  card: {
+    body: `<p>태섭님, 명함은 외부 발주 시스템을 통해 직접 신청하시면 됩니다.</p>
+<ul>
+  <li>발주 사이트 — <a href="https://editor.petaad.com/sandbox/" target="_blank" rel="noopener">petaad 사이트</a> (코드: <strong>sandbox</strong>)</li>
+  <li>운영 담당 — <strong>이승훈</strong> (명함 신청 프로세스)</li>
+  <li>배송분 배부 — <strong>임재승</strong> (수령 시 사내 알림)</li>
+  <li>재발급도 동일 사이트에서 진행, 기존 정보 자동 불러오기</li>
+</ul>`,
+    followup: ['명함 디자인 변경 가능?', '직급 변경 시 재발급', '대량 명함 발주 (이벤트용)'],
+    timing: '0.34초 · 218 토큰 (캐시 hit)'
+  },
+  parking: {
+    body: `<p>태섭님, 주차 등록은 다음 경로로 진행하시면 됩니다.</p>
+<ul>
+  <li>정기주차 등록 — <strong>#공통-주차권지급</strong> Slack 채널에 차량번호·기간 신청 <a class="ai-cite" data-cite="sec-office">[#sec-office]</a></li>
+  <li>방문주차 — 외부 방문자 사전 등록 시 GA가 게이트 통과 처리</li>
+  <li>구매·정기 배정 담당 — <strong>이승훈</strong></li>
+  <li>일선 지급 지원 — <strong>임재승</strong></li>
+  <li>배정 원칙은 사내 정책 페이지 참고</li>
+</ul>`,
+    followup: ['방문주차 사전 등록 방법', '주차 추가 배정 가능?', '카풀 차량 등록'],
+    timing: '0.37초 · 234 토큰 (캐시 hit)'
+  },
+  seal: {
+    body: `<p>태섭님, 인감·증명서 발급은 다음 절차로 처리하시면 됩니다.</p>
+<ul>
+  <li>인감 날인 → 사전 결재 + 사유 명시 후 진행 <a class="ai-cite" data-cite="sec-document">[#sec-document]</a></li>
+  <li>법인등기부등본·인감증명서 — 항시 구비 (사본 발급 가능)</li>
+  <li>공인인증서 갱신 — 정기 관리, 만료 전 사전 안내</li>
+  <li>전체 담당 — <strong>이승훈</strong> (계약서·날인·증명·보증보험·나라장터 입찰)</li>
+  <li>긴급 날인 필요 시 → 사유 + 결재 라인 명시해서 #공통-ga-헬프데스크</li>
+</ul>`,
+    followup: ['긴급 날인 절차', '나라장터 입찰 지원', '공인인증서 만료일 확인'],
+    timing: '0.40초 · 271 토큰 (캐시 hit)'
+  },
+  default: {
+    body: `<p>태섭님, 질문 잘 받았습니다. GA가 다루는 영역인지 먼저 확인해드릴게요.</p>
+<ul>
+  <li>공간·좌석·인테리어·법인차량 → <strong>심태섭</strong> <a class="ai-cite" data-cite="sec-space">[#sec-space]</a></li>
+  <li>오피스 서비스·이동지원·복리후생·출납·증명 → <strong>이승훈</strong> <a class="ai-cite" data-cite="sec-office">[#sec-office]</a></li>
+  <li>IT·자산구매·라이선스·보안 → <strong>최진호</strong> <a class="ai-cite" data-cite="sec-it">[#sec-it]</a></li>
+  <li>메일룸·소모품·장비세팅·1차 응대 → <strong>임재승</strong> <a class="ai-cite" data-cite="sec-mailroom">[#sec-mailroom]</a></li>
+</ul>
+<p>문의가 어디 영역인지 모르시면 <strong>#공통-ga-헬프데스크</strong>에 그냥 남겨주세요. 재승님이 먼저 받아서 담당자에게 전달드립니다.</p>`,
+    followup: ['헬프데스크 응답 SLA', '담당자 연락처 한 번에 보기', '연차·급여·복지는 어디로?'],
+    timing: '0.42초 · 312 토큰 (캐시 hit)'
+  }
+};
+
+function pickAIResponse(q){
+  const s = q.toLowerCase();
+  if(s.match(/노트북|모니터|장비|맥북|macbook|laptop|키보드|마우스|소모품|비품/)) return AI_RESPONSES.laptop;
+  if(s.match(/법인차량|차량|배차|운행일지/)) return AI_RESPONSES.vehicle;
+  if(s.match(/출입증|모바일카드|출입|보안|세콤|cctv/)) return AI_RESPONSES.access;
+  if(s.match(/등기|택배|메일룸|우편|발송|팬선물/)) return AI_RESPONSES.mail;
+  if(s.match(/명함|petaad/)) return AI_RESPONSES.card;
+  if(s.match(/주차|주차권|parking/)) return AI_RESPONSES.parking;
+  if(s.match(/인감|증명서|법인등기|공인인증서|계약서|날인|입찰/)) return AI_RESPONSES.seal;
+  return AI_RESPONSES.default;
+}
+
+let typing = false;
+async function streamText(targetEl, html, perTok=12){
+  typing = true;
+  targetEl.innerHTML = '';
+  const tmp = document.createElement('div');
+  tmp.innerHTML = html;
+  const finalHTML = tmp.innerHTML;
+  const chunks = finalHTML.match(/(<[^>]+>|[^<]{1,8})/g) || [finalHTML];
+  let buf = '';
+  for(const c of chunks){
+    if(!typing){ targetEl.innerHTML = finalHTML; return; }
+    buf += c;
+    targetEl.innerHTML = buf + '<span class="typing-cursor"></span>';
+    await new Promise(r => setTimeout(r, perTok));
+  }
+  targetEl.innerHTML = finalHTML;
+  typing = false;
+}
+
+async function askAI(question){
+  if(!question || !question.trim()) return;
+  $('#ai-input').value = question;
+  const ans = $('#ai-answer');
+  const body = $('#ai-answer-body');
+  const followup = $('#ai-followup');
+  const followupRow = $('#ai-followup-row');
+  const timing = $('#answer-timing');
+
+  ans.classList.add('visible');
+  followup.style.display = 'none';
+  body.innerHTML = '<span class="typing-cursor"></span>';
+  ans.scrollIntoView({behavior:'smooth', block:'center'});
+
+  const r = pickAIResponse(question);
+  await new Promise(rs => setTimeout(rs, 280));
+  timing.textContent = r.timing;
+  await streamText(body, r.body, 11);
+
+  body.querySelectorAll('.ai-cite').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      navigateSection(el.dataset.cite);
+    });
+  });
+
+  followupRow.innerHTML = '';
+  r.followup.forEach(q => {
+    const b = document.createElement('button');
+    b.className = 'pill';
+    b.textContent = q;
+    b.addEventListener('click', () => askAI(q));
+    followupRow.appendChild(b);
+  });
+  followup.style.display = 'block';
+}
+window.askAI = askAI;
+
+$('#ai-send').addEventListener('click', () => askAI($('#ai-input').value));
+$('#ai-input').addEventListener('keydown', (e) => {
+  if(e.key === 'Enter') askAI($('#ai-input').value);
+});
+$$('.ai-suggestions .pill').forEach(p => {
+  p.addEventListener('click', () => askAI(p.dataset.q));
+});
+
+// 음성 입력
+const mic = $('#ai-mic');
+mic.addEventListener('click', () => {
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!SR){
+    toast('🎙️ 음성 인식 미지원 브라우저 — Chrome·Edge·Safari로 시도해주세요');
+    return;
+  }
+  if(mic.classList.contains('recording')){
+    if(mic._rec) mic._rec.stop();
+    return;
+  }
+  const rec = new SR();
+  rec.lang = 'ko-KR';
+  rec.interimResults = true;
+  rec.onresult = (ev) => {
+    const txt = Array.from(ev.results).map(r => r[0].transcript).join('');
+    $('#ai-input').value = txt;
+  };
+  rec.onend = () => mic.classList.remove('recording');
+  rec.onerror = () => { mic.classList.remove('recording'); toast('🎙️ 인식 오류'); };
+  mic._rec = rec;
+  mic.classList.add('recording');
+  rec.start();
+});
+
+// ============ 도움됐나요 ============
+function loadVotes(){
+  try { return JSON.parse(localStorage.getItem('ga-votes') || '{}'); } catch(e){ return {}; }
+}
+function saveVotes(v){ localStorage.setItem('ga-votes', JSON.stringify(v)); }
+const myVotes = loadVotes();
+
+$$('.vote-btn').forEach(btn => {
+  const sec = btn.dataset.section;
+  const v = btn.dataset.vote;
+  if(myVotes[sec] === v) btn.classList.add('active', v);
+
+  btn.addEventListener('click', () => {
+    const prev = myVotes[sec];
+    if(prev === v){
+      delete myVotes[sec];
+      btn.classList.remove('active', v);
+    } else {
+      myVotes[sec] = v;
+      $$(`.vote-btn[data-section="${sec}"]`).forEach(b => b.classList.remove('active','up','down'));
+      btn.classList.add('active', v);
+    }
+    saveVotes(myVotes);
+    toast(v === 'up' ? '👍 의견 감사합니다' : '👎 더 나은 콘텐츠로 개선하겠습니다');
+  });
+});
+
+// 수정 제안
+function suggestEdit(secId, owner){
+  toast(`✎ 수정 제안 — ${owner} 담당자 Slack DM으로 전달됨 (mock)`);
+}
+window.suggestEdit = suggestEdit;
+
+// 익명 피드백
+$('#feedback-submit').addEventListener('click', async () => {
+  const txt = $('#feedback-text').value.trim();
+  const btn = $('#feedback-submit');
+  if(!txt){ toast('내용을 입력해주세요'); return; }
+  btn.disabled = true;
+  btn.textContent = 'AI 분류 중...';
+  await new Promise(r => setTimeout(r, 800));
+  // 카테고리 추정 mock
+  const s = txt.toLowerCase();
+  let cat = '운영지원·재승';
+  if(s.match(/좌석|자리|공간|인테리어|창고|이사|cr/)) cat = '공간·태섭';
+  else if(s.match(/주차|렌탈|정수기|공기청정기|복합기|파쇄기|시설|유지보수/)) cat = '오피스 서비스·승훈';
+  else if(s.match(/노트북|모니터|pc|장비|소모품|키보드|마우스|라이선스|wifi|와이파이|네트워크/)) cat = 'IT·자산·진호';
+  else if(s.match(/출입|보안|세콤|cctv/)) cat = '보안·진호';
+  else if(s.match(/차량|법인차/)) cat = '법인차량·태섭';
+  else if(s.match(/출장|퀵|택배|카카오택시/)) cat = '이동지원·승훈';
+  else if(s.match(/명절|행사|경조|화환|복리/)) cat = '복리후생·승훈';
+  else if(s.match(/인감|증명|계약서|법인등기|입찰/)) cat = '출납·증명·승훈';
+  else if(s.match(/메일룸|등기|우편|팬선물/)) cat = '메일룸·재승';
+  btn.textContent = 'Slack 라우팅 중...';
+  await new Promise(r => setTimeout(r, 500));
+  btn.disabled = false;
+  btn.textContent = '익명 전송 →';
+  $('#feedback-text').value = '';
+  toast(`📮 전송 완료 — 카테고리 "${cat}"로 #공통-ga-헬프데스크 익명 전달됨`);
+});
+
+// 프로필 (Google SSO mock)
+$('#profile-btn').addEventListener('click', () => {
+  toast('🔐 Google Workspace SSO 연결됨 — sandbox-network.com 도메인 검증');
+});
+
+// ============ Cmd+K ============
+const cmdk = $('#cmdk');
+const cmdkInput = $('#cmdk-input');
+const cmdkList = $('#cmdk-list');
+let activeScope = 'all';
+let focusIdx = 0;
+let renderedItems = [];
+
+function openCmdK(){
+  cmdk.classList.add('open');
+  cmdkInput.value = '';
+  setTimeout(() => cmdkInput.focus(), 50);
+  renderCmdK('');
+}
+function closeCmdK(){ cmdk.classList.remove('open'); }
+
+$('#cmdk-trigger').addEventListener('click', openCmdK);
+window.addEventListener('keydown', (e) => {
+  if((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k'){
+    e.preventDefault();
+    cmdk.classList.contains('open') ? closeCmdK() : openCmdK();
+  }
+  if(e.key === 'Escape' && cmdk.classList.contains('open')){
+    closeCmdK();
+  }
+});
+cmdk.addEventListener('click', (e) => { if(e.target === cmdk) closeCmdK(); });
+
+$$('.scope-chip').forEach(c => {
+  c.addEventListener('click', () => {
+    activeScope = c.dataset.scope;
+    $$('.scope-chip').forEach(x => x.classList.remove('active'));
+    c.classList.add('active');
+    renderCmdK(cmdkInput.value);
+    cmdkInput.focus();
+  });
+});
+
+function fuzzyScore(q, item){
+  if(!q) return 1;
+  const t = (item.title + ' ' + item.kw).toLowerCase();
+  const qq = q.toLowerCase();
+  if(t.includes(qq)) return 100 - (t.indexOf(qq));
+  let i = 0, score = 0;
+  for(const ch of qq){
+    const idx = t.indexOf(ch, i);
+    if(idx === -1) return 0;
+    score += 1;
+    i = idx + 1;
+  }
+  return score;
+}
+
+function renderCmdK(q){
+  const filtered = COMMANDS
+    .filter(c => activeScope === 'all' || c.scope === activeScope)
+    .map(c => ({...c, score: fuzzyScore(q, c)}))
+    .filter(c => c.score > 0)
+    .sort((a,b) => b.score - a.score)
+    .slice(0, 10);
+
+  renderedItems = filtered.slice();
+  cmdkList.innerHTML = '';
+
+  if(!filtered.length && q.trim()){
+    const empty = document.createElement('div');
+    empty.className = 'cmdk-empty';
+    empty.textContent = `"${q}" 검색결과 없음`;
+    cmdkList.appendChild(empty);
+  } else {
+    if(!q){
+      const lbl = document.createElement('div');
+      lbl.className = 'cmdk-section-label';
+      lbl.textContent = '추천 · 최근';
+      cmdkList.appendChild(lbl);
+    }
+    filtered.forEach((item, i) => {
+      const row = document.createElement('div');
+      row.className = 'cmdk-row' + (i === 0 ? ' focus' : '');
+      row.dataset.idx = i;
+      row.innerHTML = `
+        <span class="ico">${item.icon}</span>
+        <span class="lbl">${item.title}</span>
+        <span class="scope">${item.section}</span>
+      `;
+      row.addEventListener('click', () => executeCmd(item));
+      row.addEventListener('mouseenter', () => {
+        focusIdx = i;
+        $$('.cmdk-row').forEach(r => r.classList.remove('focus'));
+        row.classList.add('focus');
+      });
+      cmdkList.appendChild(row);
+    });
   }
 
-  // 비상대피도 층 탭 전환
-  function switchFloor(floor) {
-    document.querySelectorAll('.floor-tab').forEach(btn => {
-      const isActive = btn.dataset.floor === floor;
-      btn.classList.toggle('active', isActive);
-      btn.style.background = isActive ? '#3b82f6' : 'transparent';
-      btn.style.color = isActive ? '#fff' : '#cbd5e1';
-      btn.style.borderColor = isActive ? '#3b82f6' : '#475569';
+  if(q.trim().length >= 2 && (activeScope === 'all' || activeScope === 'ai')){
+    const ai = document.createElement('div');
+    ai.className = 'cmdk-row ai-fallback';
+    ai.innerHTML = `
+      <span class="ico">✨</span>
+      <span class="lbl">AI에게 묻기 — "<strong>${q}</strong>" <span class="new-badge">NEW</span></span>
+      <span class="hk">↵</span>
+    `;
+    ai.addEventListener('click', () => {
+      closeCmdK();
+      askAI(q);
     });
-    document.querySelectorAll('.floor-content').forEach(content => {
-      content.style.display = content.dataset.floor === floor ? 'block' : 'none';
-    });
+    cmdkList.appendChild(ai);
+    renderedItems.push({__ai: true, q});
   }
 
-  // 초기화
-  updateProgress();
+  focusIdx = 0;
+}
+
+function executeCmd(item){
+  closeCmdK();
+  if(item.__ai){ askAI(item.q); return; }
+  if(item.scope === 'link'){
+    if(item.url) window.open(item.url, '_blank', 'noopener');
+    else if(item.toast) toast(item.toast);
+    return;
+  }
+  if(item.scope === 'owner'){
+    if(item.toast) toast(item.toast);
+    return;
+  }
+  navigateSection(item.id);
+  const sb = document.querySelector(`.sb-item[data-section="${item.id}"]`);
+  if(sb){
+    $$('.sb-item').forEach(b => b.classList.remove('active'));
+    sb.classList.add('active');
+  }
+}
+
+cmdkInput.addEventListener('input', (e) => renderCmdK(e.target.value));
+cmdkInput.addEventListener('keydown', (e) => {
+  const rows = cmdkList.querySelectorAll('.cmdk-row');
+  if(e.key === 'ArrowDown'){
+    e.preventDefault();
+    focusIdx = Math.min(focusIdx + 1, rows.length - 1);
+    rows.forEach((r, i) => r.classList.toggle('focus', i === focusIdx));
+    rows[focusIdx]?.scrollIntoView({block: 'nearest'});
+  } else if(e.key === 'ArrowUp'){
+    e.preventDefault();
+    focusIdx = Math.max(focusIdx - 1, 0);
+    rows.forEach((r, i) => r.classList.toggle('focus', i === focusIdx));
+    rows[focusIdx]?.scrollIntoView({block: 'nearest'});
+  } else if(e.key === 'Enter'){
+    e.preventDefault();
+    const item = renderedItems[focusIdx];
+    if(item) executeCmd(item);
+  }
+});
+
+renderCmdK('');
+
+// 인사
+setTimeout(() => toast('💡 ⌘K (Ctrl+K) 으로 어디든 즉시 이동해보세요'), 1100);
 </script>
 </body>
 </html>
