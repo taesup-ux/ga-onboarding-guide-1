@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GA Master Book — Sandbox Network (Mockup v2)</title>
+<title>샌드박스네트워크 General Affairs Master Book (WIP)</title>
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -86,6 +86,43 @@ body {
   0%, 100% { box-shadow: 0 0 0 0 var(--new-glow); }
   50% { box-shadow: 0 0 0 8px rgba(255, 87, 34, 0); }
 }
+
+/* ====== WIP 뱃지·배너 ====== */
+.wip-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: var(--warning);
+  color: white;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  vertical-align: middle;
+  text-transform: uppercase;
+}
+.wip-badge::before { content: "🚧"; font-size: 9px; }
+
+.wip-banner {
+  margin: 0 0 24px 0;
+  padding: 12px 20px;
+  background: linear-gradient(90deg, #fef3c7, #fde68a, #fef3c7);
+  color: #78350f;
+  border: 1px solid #fcd34d;
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+  box-shadow: 0 1px 2px rgba(245, 158, 11, 0.1);
+}
+.wip-banner .icon { font-size: 18px; }
+.wip-banner strong { color: #78350f; font-weight: 800; }
+.wip-banner .meta { font-size: 11px; font-weight: 500; opacity: 0.85; }
 
 /* Owner pill */
 .owner-pill {
@@ -944,8 +981,8 @@ section.kb.flash { animation: flash 1.6s ease-out; }
 <nav id="sidebar" aria-label="섹션 메뉴">
   <div class="sb-brand">
     <div class="company">SANDBOX NETWORK</div>
-    <div class="doc-title">GA Master Book <span class="new-badge glow">NEW</span></div>
-    <div class="doc-sub">v2.0 · General Affairs 통합 안내서</div>
+    <div class="doc-title">General Affairs<br>Master Book <span class="wip-badge">WIP</span></div>
+    <div class="doc-sub">v2.0 mockup · 검토 중</div>
   </div>
   <div class="sb-nav">
     <div class="sb-nav-label">SPACE</div>
@@ -980,10 +1017,10 @@ section.kb.flash { animation: flash 1.6s ease-out; }
         <span>온보딩</span>
         <span class="ext">v1</span>
       </a>
-      <button class="product-tab master-book active" type="button" role="tab" aria-selected="true" aria-current="page" title="GA Master Book v2 — 전사 통합 안내서 (현재 페이지)">
+      <button class="product-tab master-book active" type="button" role="tab" aria-selected="true" aria-current="page" title="샌드박스네트워크 General Affairs Master Book — WIP (현재 페이지)">
         <span class="ico">📕</span>
-        <span>마스터북</span>
-        <span class="new-badge">NEW</span>
+        <span>Master Book</span>
+        <span class="wip-badge">WIP</span>
       </button>
     </div>
     <button class="cmdk-trigger" id="cmdk-trigger" aria-label="명령 팔레트 열기">
@@ -1006,6 +1043,15 @@ section.kb.flash { animation: flash 1.6s ease-out; }
   </header>
 
   <main id="content">
+
+    <!-- ===== WIP 배너 ===== -->
+    <div class="wip-banner" role="status" aria-label="작업 진행중 안내">
+      <span class="icon">🚧</span>
+      <div>
+        <strong>Work In Progress</strong> — 임원·내부 관계자 검토용 mockup입니다.
+        <span class="meta">콘텐츠·기능·디자인 모두 검토 후 변경 예정. 외부 공유 금지.</span>
+      </div>
+    </div>
 
     <!-- ===== Hero ===== -->
     <div class="hero">
@@ -1522,7 +1568,7 @@ section.kb.flash { animation: flash 1.6s ease-out; }
     <!-- ===== Footer ===== -->
     <footer class="page-foot">
       <div>
-        <strong>GA Master Book</strong> · v2.0 mockup · 책임자 <strong>심태섭 (GA)</strong> · 메인 채널 <strong>#공통-ga-헬프데스크</strong>
+        <strong>샌드박스네트워크 General Affairs Master Book</strong> · v2.0 mockup · <span class="wip-badge">WIP</span> · 책임자 <strong>심태섭 (GA)</strong> · 메인 채널 <strong>#공통-ga-헬프데스크</strong>
       </div>
       <div>
         주간 활성 312명 · 도움됨 평균 92% · 평균 응답 0.4초
