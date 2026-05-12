@@ -609,12 +609,17 @@
       <span class="badge-num">05</span>
     </button>
     <button type="button" class="sb-item" onclick="showSection('s06',this)">
-      <span class="icon">✅</span>
-      <span class="label">완료 체크리스트</span>
+      <span class="icon">🗺️</span>
+      <span class="label">오피스 투어 맵</span>
       <span class="badge-num">06</span>
     </button>
-    <div class="sb-nav-label" style="margin-top:12px;">상세 자료</div>
     <button type="button" class="sb-item" onclick="showSection('s07',this)">
+      <span class="icon">✅</span>
+      <span class="label">완료 체크리스트</span>
+      <span class="badge-num">07</span>
+    </button>
+    <div class="sb-nav-label" style="margin-top:12px;">상세 자료</div>
+    <button type="button" class="sb-item" onclick="showSection('s08',this)">
       <span class="icon">📑</span>
       <span class="label">상세 가이드 (PPT)</span>
     </button>
@@ -1386,9 +1391,42 @@
     <!-- ───────────── SECTION 06 ───────────── -->
     <section id="s06" class="section">
       <div class="section-header">
-        <div class="section-icon-wrap">✅</div>
+        <div class="section-icon-wrap">🗺️</div>
         <div class="section-meta">
           <div class="sec-num">Section 06</div>
+          <h1>오피스 투어 맵 · Office Tour Map</h1>
+        </div>
+      </div>
+
+      <div class="card" style="border:2px solid #FF8A65;">
+        <div class="card-title" style="color:#FF8A65;">🗺️ 오피스 투어 맵 · Office Tour Map</div>
+        <p style="color:#94a3b8; margin:0 0 16px; font-size:14px;">신규 입사자 오피스 투어 동선 — 28층(분리수거→메일룸→스튜디오) / 29층(분리수거→라운지→사무공간 한바퀴). 21층은 온보딩 미팅룸 안내만 (동선 제외).</p>
+
+        <div class="floor-tabs" style="display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap;">
+          <button class="floor-tab active" data-floor="28F" onclick="switchTourFloor('28F')" style="flex:1; padding:12px 20px; border-radius:8px; border:2px solid #FF8A65; background:#FF8A65; color:#fff; font-weight:700; cursor:pointer; transition:all 0.2s;">28F · 반층 (시작)</button>
+          <button class="floor-tab" data-floor="29F" onclick="switchTourFloor('29F')" style="flex:1; padding:12px 20px; border-radius:8px; border:2px solid #475569; background:transparent; color:#cbd5e1; font-weight:700; cursor:pointer; transition:all 0.2s;">29F · 전층 (메인)</button>
+        </div>
+
+        <div class="tour-content" data-floor="28F" style="display:block; background:#fafafa; border-radius:8px; padding:8px; overflow-x:auto;">
+          <object data="floorplans/28F-tour.svg" type="image/svg+xml" style="width:100%; min-width:600px; display:block;" aria-label="28F 오피스 투어 동선"></object>
+        </div>
+
+        <div class="tour-content" data-floor="29F" style="display:none; background:#fafafa; border-radius:8px; padding:8px; overflow-x:auto;">
+          <object data="floorplans/29F-tour.svg" type="image/svg+xml" style="width:100%; min-width:900px; display:block;" aria-label="29F 오피스 투어 동선"></object>
+        </div>
+
+        <div class="alert alert-blue" style="margin-top:16px;">
+          <span class="alert-icon">📍</span>
+          <span>점선 동선은 GA 구성원 안내 순서. 번호 마커 ①→② 순으로 진행. 21F는 온보딩 미팅룸에서 시작 (대회의실만 안내).</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="s07" class="section">
+      <div class="section-header">
+        <div class="section-icon-wrap">✅</div>
+        <div class="section-meta">
+          <div class="sec-num">Section 07</div>
           <h1>완료 체크리스트</h1>
         </div>
       </div>
@@ -1482,7 +1520,7 @@
       </div>
     </section>
 
-    <section id="s07" class="section">
+    <section id="s08" class="section">
       <div class="section-header">
         <div class="section-icon-wrap">📑</div>
         <div class="section-meta">
@@ -1651,16 +1689,34 @@
     }
   }
 
-  // 비상대피도 층 탭 전환
+  // 비상대피도 층 탭 전환 (s05 카드 내부로 스코프 한정)
   function switchFloor(floor) {
-    document.querySelectorAll('.floor-tab').forEach(btn => {
+    const card = document.querySelector('#s05 .card');
+    if (!card) return;
+    card.querySelectorAll('.floor-tab').forEach(btn => {
       const isActive = btn.dataset.floor === floor;
       btn.classList.toggle('active', isActive);
       btn.style.background = isActive ? '#3b82f6' : 'transparent';
       btn.style.color = isActive ? '#fff' : '#cbd5e1';
       btn.style.borderColor = isActive ? '#3b82f6' : '#475569';
     });
-    document.querySelectorAll('.floor-content').forEach(content => {
+    card.querySelectorAll('.floor-content').forEach(content => {
+      content.style.display = content.dataset.floor === floor ? 'block' : 'none';
+    });
+  }
+
+  // 오피스 투어 맵 층 탭 전환 (s06 카드 내부로 스코프 한정)
+  function switchTourFloor(floor) {
+    const card = document.querySelector('#s06 .card');
+    if (!card) return;
+    card.querySelectorAll('.floor-tab').forEach(btn => {
+      const isActive = btn.dataset.floor === floor;
+      btn.classList.toggle('active', isActive);
+      btn.style.background = isActive ? '#3b82f6' : 'transparent';
+      btn.style.color = isActive ? '#fff' : '#cbd5e1';
+      btn.style.borderColor = isActive ? '#3b82f6' : '#475569';
+    });
+    card.querySelectorAll('.tour-content').forEach(content => {
       content.style.display = content.dataset.floor === floor ? 'block' : 'none';
     });
   }
