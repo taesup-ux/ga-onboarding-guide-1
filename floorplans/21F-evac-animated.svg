@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 1500 760" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<style>
+  text{font-family:Pretendard,"Apple SD Gothic Neo",sans-serif}
+  .bg{fill:#f0f0f0}
+  .wall{fill:none;stroke:#111;stroke-width:3}
+  .corr{fill:#c8c8c8}
+  .room{fill:#FFF8E1;stroke:#D4A017;stroke-width:1}
+  .conf{fill:#FCE4EC;stroke:#C2185B;stroke-width:2}
+  .sandbox{fill:#FCE7F3;stroke:#DB2777;stroke-width:1.5}
+  .core{fill:#ECECEC;stroke:#888;stroke-width:1}
+  .stair{fill:#DCEEDC;stroke:#3A7E3A;stroke-width:2}
+  .ev{fill:#E8E8E8;stroke:#555;stroke-width:1}
+  .stor{fill:#F5F0E8;stroke:#8B6F47;stroke-width:1;stroke-dasharray:3 2}
+  .util{fill:#fff;stroke:#999;stroke-width:1}
+  .other{fill:#EFF5FF;stroke:#9BB4D1;stroke-width:1;stroke-dasharray:6 4}
+  .door{fill:none;stroke:#0288D1;stroke-width:2.5;stroke-dasharray:8 4}
+  .pillar{fill:#222}
+
+  .tk{font-size:13px;fill:#222;text-anchor:middle;font-weight:650}
+  .te{font-size:10px;fill:#666;text-anchor:middle}
+  .ts{font-size:11px;fill:#333;text-anchor:middle;font-weight:550}
+  .tx{font-size:9px;fill:#888;text-anchor:middle}
+  .tst{font-size:12px;fill:#1a5e20;text-anchor:middle;font-weight:800}
+  .tc{font-size:11px;fill:#444;text-anchor:middle;font-weight:700}
+  .tit{font-size:22px;font-weight:800;fill:#111}
+  .tdoor{font-size:10px;fill:#0277BD;text-anchor:middle;font-weight:700}
+
+  .rt{fill:none;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:13 8}
+  .r1{stroke:#00964F;filter:drop-shadow(0 0 3px rgba(0,150,79,.5));animation:f 2.0s linear infinite}
+  .r2{stroke:#0288D1;filter:drop-shadow(0 0 3px rgba(2,136,209,.5));animation:f 2.2s linear infinite}
+  .r3{stroke:#FF6F00;filter:drop-shadow(0 0 3px rgba(255,111,0,.5));animation:f 2.4s linear infinite}
+  .r4{stroke:#7B1FA2;filter:drop-shadow(0 0 3px rgba(123,31,162,.5));animation:f 2.6s linear infinite}
+  .r5{stroke:#C62828;filter:drop-shadow(0 0 3px rgba(198,40,40,.5));animation:f 2.8s linear infinite}
+  .r6{stroke:#5D4037;filter:drop-shadow(0 0 3px rgba(93,64,55,.5));animation:f 3.0s linear infinite}
+  .r7{stroke:#F57F17;filter:drop-shadow(0 0 3px rgba(245,127,23,.5));animation:f 3.2s linear infinite}
+  .r8{stroke:#1565C0;filter:drop-shadow(0 0 3px rgba(21,101,192,.5));animation:f 3.4s linear infinite}
+  .r9{stroke:#AD1457;filter:drop-shadow(0 0 3px rgba(173,20,87,.5));animation:f 3.6s linear infinite}
+  @keyframes f{from{stroke-dashoffset:0}to{stroke-dashoffset:-42}}
+
+  .yr{animation:rn 1.6s ease-out infinite}
+  @keyframes rn{0%{r:12;opacity:1}100%{r:34;opacity:0}}
+  .yp{animation:pls 1.6s ease-in-out infinite}
+  @keyframes pls{0%,100%{opacity:1}50%{opacity:.65}}
+  .bp{animation:bpa 1.3s ease-in-out infinite;transform-origin:center;transform-box:fill-box}
+  @keyframes bpa{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+</style>
+<symbol id="ext" viewBox="0 0 24 24"><rect width="24" height="24" rx="2" fill="#BF1E2D"/><rect x="9" y="6" width="6" height="13" fill="#fff" rx="1"/><rect x="10" y="3" width="4" height="3" fill="#fff"/></symbol>
+<symbol id="es" viewBox="0 0 40 30"><rect width="40" height="30" rx="3" fill="#00964F"/><circle cx="13" cy="9" r="2.2" fill="#fff"/><path d="M9 26L13 17L18 19L22 14L17 11L11 13L8 18Z" fill="#fff"/><rect x="26" y="8" width="9" height="16" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M22 18L34 18L31 15M34 18L31 21" stroke="#fff" stroke-width="1.8" fill="none"/></symbol>
+</defs>
+
+<rect class="bg" width="1500" height="760"/>
+<text x="38" y="44" class="tit">21F · 비상대피 동선 (v1)</text>
+<text x="38" y="63" style="font-size:12px;fill:#555">SANDBOX 코너스페이스 용산역점 점유부 · 회의실 9개 · 좌우 비상계단 2갈래</text>
+
+<!-- 호실 1 (SANDBOX Meeting Room) -->
+<rect class="sandbox" x="80" y="85" width="260" height="280"/>
+<rect class="pillar" x="115" y="90" width="75" height="55"/>
+<rect class="room" x="200" y="90" width="135" height="55"/>
+<text x="267" y="113" class="ts">ROOM 1</text><text x="267" y="128" class="tx">(4인 · 4 pax)</text>
+<rect class="room" x="180" y="150" width="155" height="140"/>
+<text x="257" y="215" class="ts">ROOM 2</text><text x="257" y="232" class="tx">(6인 · 6 pax)</text>
+<rect class="stor" x="85" y="295" width="250" height="65"/>
+<text x="210" y="324" class="ts">GA Storage</text><text x="210" y="340" class="tx">(수납 · Storage)</text>
+<text x="210" y="380" class="tdoor">SANDBOX Meeting Room</text>
+
+<!-- 호실 2 부분1 (SANDBOX 4개 회의실) -->
+<rect class="sandbox" x="490" y="85" width="305" height="280"/>
+<rect class="pillar" x="585" y="90" width="75" height="55"/>
+<rect class="room" x="495" y="155" width="145" height="95"/>
+<text x="567" y="200" class="ts">ROOM 3</text><text x="567" y="215" class="tx">(6인)</text>
+<rect class="room" x="645" y="155" width="145" height="95"/>
+<text x="717" y="200" class="ts">ROOM 5</text><text x="717" y="215" class="tx">(6인)</text>
+<rect class="room" x="495" y="255" width="145" height="100"/>
+<text x="567" y="300" class="ts">ROOM 4</text><text x="567" y="315" class="tx">(6인)</text>
+<rect class="room" x="645" y="255" width="145" height="100"/>
+<text x="717" y="300" class="ts">ROOM 6</text><text x="717" y="315" class="tx">(6인)</text>
+<text x="640" y="380" class="tdoor" style="letter-spacing:3px;font-size:11px">S A N D B O X</text>
+
+<!-- 호실 2 부분2 (ROOM 7/8) -->
+<rect class="sandbox" x="845" y="85" width="200" height="370"/>
+<rect class="pillar" x="900" y="90" width="75" height="55"/>
+<rect class="room" x="850" y="155" width="190" height="115"/>
+<text x="945" y="207" class="ts">ROOM 7</text><text x="945" y="223" class="tx">(8인 · 8 pax)</text>
+<rect class="room" x="850" y="290" width="190" height="160"/>
+<text x="945" y="365" class="ts">ROOM 8</text><text x="945" y="380" class="tx">(6인)</text>
+
+<!-- 호실 2 부분3 (Conference Room 20인) -->
+<rect class="conf" x="1060" y="85" width="195" height="370"/>
+<rect class="pillar" x="1100" y="90" width="75" height="55"/>
+<text x="1158" y="265" class="tk" style="fill:#880E4F">Conference Room</text>
+<text x="1158" y="283" class="ts" style="fill:#C2185B;font-weight:800">(20인 · 20 pax)</text>
+<text x="1158" y="300" class="tx" style="fill:#AD1457">대회의실</text>
+<text x="1100" y="475" class="tdoor">SANDBOX Conference Room</text>
+
+<!-- 여자 화장실 (공용) -->
+<rect class="other" x="1270" y="85" width="155" height="370"/>
+<text x="1347" y="265" class="ts">여자 화장실</text>
+<text x="1347" y="282" class="tx">(W. Restroom · 공용)</text>
+
+<!-- 메인도어 미닫이 -->
+<line class="door" x1="80" y1="385" x2="340" y2="385"/>
+<text x="380" y="395" class="tdoor" style="text-anchor:start">메인 도어 (미닫이)</text>
+<text x="380" y="408" class="tx" style="text-anchor:start;font-size:9px;fill:#0277BD">Main Door (Sliding)</text>
+<line class="door" x1="845" y1="460" x2="1255" y2="460"/>
+<text x="1000" y="488" class="tdoor">메인 도어 (미닫이) · Main Door</text>
+
+<!-- 정수기 + 에어컨 컨트롤러 -->
+<rect class="util" x="345" y="90" width="140" height="295"/>
+<text x="415" y="220" class="ts">정수기</text>
+<text x="415" y="238" class="tx">(Water · 에어컨 컨트롤러)</text>
+
+<!-- 공용 복도 -->
+<rect class="corr" x="70" y="490" width="1360" height="35"/>
+<text x="750" y="513" class="tc">공용 복도 · Common Corridor (코너스페이스 공용 영역)</text>
+
+<!-- 코너 스페이스 후문 박스 + EV 6대 -->
+<rect fill="#E0E0E0" stroke="#666" stroke-width="1.5" x="345" y="540" width="780" height="180"/>
+<text x="735" y="563" class="tk" style="font-size:14px">코너 스페이스 후문 · CORNER SPACE Back Door (E/V Zone)</text>
+<rect class="core" x="355" y="575" width="120" height="60"/><text x="415" y="612" class="ts">EV</text>
+<rect class="core" x="485" y="575" width="120" height="60"/><text x="545" y="612" class="ts">EV</text>
+<rect class="core" x="615" y="575" width="120" height="60"/><text x="675" y="612" class="ts">EV</text>
+<rect class="core" x="745" y="575" width="120" height="60"/><text x="805" y="612" class="ts">EV</text>
+<rect class="core" x="875" y="575" width="120" height="60"/><text x="935" y="612" class="ts">EV</text>
+<rect class="core" x="1005" y="575" width="115" height="60"/><text x="1062" y="612" class="ts">EV</text>
+<text x="735" y="675" class="tx">고층부 E/V · 출입불가 (Building Core)</text>
+<text x="735" y="691" class="tx" style="font-size:8px">코너스페이스 정문은 박스 반대편 (남측)</text>
+
+<!-- 비상계단 A (좌) -->
+<rect class="stair" x="180" y="555" width="155" height="135"/>
+<text x="257" y="618" class="tst">비상계단 A</text>
+<text x="257" y="635" class="tst" style="font-size:10px">(Stairs · West)</text>
+<use href="#es" x="237" y="640" width="40" height="30"/>
+
+<!-- 비상계단 B (우) -->
+<rect class="stair" x="1140" y="555" width="155" height="135"/>
+<text x="1217" y="618" class="tst">비상계단 B</text>
+<text x="1217" y="635" class="tst" style="font-size:10px">(Stairs · East)</text>
+<use href="#es" x="1197" y="640" width="40" height="30"/>
+
+<text x="125" y="558" class="tx" transform="rotate(-90 125 558)">복도</text>
+
+<!-- 동선 -->
+<path class="rt r1" d="M 267 145 L 267 290 L 267 385 L 267 510 L 257 555"/>
+<path class="rt r2" d="M 257 290 L 257 385 L 257 510 L 257 555"/>
+<path class="rt r3" d="M 567 250 L 567 385 L 567 510 L 480 510 L 350 510 L 280 555"/>
+<path class="rt r4" d="M 567 355 L 567 385 L 567 510 L 350 510 L 280 555"/>
+<path class="rt r5" d="M 717 250 L 717 385 L 920 460 L 1100 510 L 1217 555"/>
+<path class="rt r6" d="M 717 355 L 920 460 L 1100 510 L 1217 555"/>
+<path class="rt r7" d="M 945 270 L 945 460 L 1100 510 L 1217 555"/>
+<path class="rt r8" d="M 945 450 L 945 460 L 1100 510 L 1217 555"/>
+<path class="rt r9" d="M 1158 450 L 1158 510 L 1217 555"/>
+
+<!-- 분기점 -->
+<g transform="translate(280,470)">
+  <polygon class="bp" points="0,-12 4,-4 12,-4 6,2 8,10 0,5 -8,10 -6,2 -12,-4 -4,-4" fill="#FFD700" stroke="#FF6F00" stroke-width="1.5"/>
+  <text style="font-size:10px;font-weight:800;fill:#4a2000;text-anchor:middle" y="-19">분기점 A</text>
+</g>
+<g transform="translate(1100,470)">
+  <polygon class="bp" points="0,-12 4,-4 12,-4 6,2 8,10 0,5 -8,10 -6,2 -12,-4 -4,-4" fill="#FFD700" stroke="#FF6F00" stroke-width="1.5"/>
+  <text style="font-size:10px;font-weight:800;fill:#4a2000;text-anchor:middle" y="-19">분기점 B</text>
+</g>
+
+<!-- 출발지 마커 -->
+<g transform="translate(330,115)"><circle class="yr" cx="0" cy="0" r="12" fill="none" stroke="#00964F" stroke-width="3"/><circle class="yp" cx="0" cy="0" r="14" fill="#00964F"/><text style="font-size:12px;font-weight:800;text-anchor:middle;fill:#fff" y="4">1</text></g>
+<g transform="translate(205,170)"><circle class="yr" cx="0" cy="0" r="12" fill="none" stroke="#0288D1" stroke-width="3"/><circle class="yp" cx="0" cy="0" r="14" fill="#0288D1"/><text style="font-size:12px;font-weight:800;text-anchor:middle;fill:#fff" y="4">2</text></g>
+<g transform="translate(516,175)"><circle class="yr" cx="0" cy="0" r="12" fill="none" stroke="#FF6F00" stroke-width="3"/><circle class="yp" cx="0" cy="0" r="14" fill="#FF6F00"/><text style="font-size:12px;font-weight:800;text-anchor:middle;fill:#fff" y="4">3</text></g>
+<g transform="translate(516,275)"><circle class="yr" cx="0" cy="0" r="12" fill="none" stroke="#7B1FA2" stroke-width="3"/><circle class="yp" cx="0" cy="0" r="14" fill="#7B1FA2"/><text style="font-size:12px;font-weight:800;text-anchor:middle;fill:#fff" y="4">4</text></g>
+<g transform="translate(666,175)"><circle class="yr" cx="0" cy="0" r="12" fill="none" stroke="#C62828" stroke-width="3"/><circle class="yp" cx="0" cy="0" r="14" fill="#C62828"/><text style="font-size:12px;font-weight:800;text-anchor:middle;fill:#fff" y="4">5</text></g>
+<g transform="translate(666,275)"><circle class="yr" cx="0" cy="0" r="12" fill="none" stroke="#5D4037" stroke-width="3"/><circle class="yp" cx="0" cy="0" r="14" fill="#5D4037"/><text style="font-size:12px;font-weight:800;text-anchor:middle;fill:#fff" y="4">6</text></g>
+<g transform="translate(870,180)"><circle class="yr" cx="0" cy="0" r="12" fill="none" stroke="#F57F17" stroke-width="3"/><circle class="yp" cx="0" cy="0" r="14" fill="#F57F17"/><text style="font-size:12px;font-weight:800;text-anchor:middle;fill:#fff" y="4">7</text></g>
+<g transform="translate(870,315)"><circle class="yr" cx="0" cy="0" r="12" fill="none" stroke="#1565C0" stroke-width="3"/><circle class="yp" cx="0" cy="0" r="14" fill="#1565C0"/><text style="font-size:12px;font-weight:800;text-anchor:middle;fill:#fff" y="4">8</text></g>
+<g transform="translate(1085,400)"><circle class="yr" cx="0" cy="0" r="12" fill="none" stroke="#AD1457" stroke-width="3"/><circle class="yp" cx="0" cy="0" r="14" fill="#AD1457"/><text style="font-size:12px;font-weight:800;text-anchor:middle;fill:#fff" y="4">9</text></g>
+
+<!-- 비상구 픽토그램 -->
+<use href="#ext" x="180" y="540" width="16" height="16"/>
+<use href="#ext" x="1280" y="540" width="16" height="16"/>
+
+<!-- 행동요령 박스 -->
+<g transform="translate(38,728)">
+  <rect width="1390" height="28" fill="#fff" stroke="#ccc" rx="4"/>
+  <text x="12" y="12" font-size="11" font-weight="800" fill="#222">화재 시 행동요령 · In Case of Fire</text>
+  <text x="12" y="24" font-size="10" fill="#333">① 가까운 비상구 선택  ②  <tspan fill="#BF1E2D" font-weight="700">엘리베이터 사용 금지</tspan>  ③ 자세 낮추고 입·코 가림  ④ 119 신고 + GA Slack #공통-ga-헬프데스크  ·  좌측(1·2·3·4) → 비상계단 A  |  우측(5·6·7·8·9) → 비상계단 B</text>
+</g>
+</svg>
