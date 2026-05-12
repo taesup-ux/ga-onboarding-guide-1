@@ -50,8 +50,8 @@
 </defs>
 
 <rect class="bg" width="1500" height="870"/>
-<text x="38" y="44" class="tit">21F · 비상대피 동선</text>
-<text x="38" y="63" style="font-size:12px;fill:#555">SANDBOX 코너스페이스 용산역점 · 호실 1 (ROOM 1~8) + 호실 2 (Conference Room) + 화장실 가로 면 + 비상계단</text>
+<text x="38" y="44" class="tit">21F · 샌드박스 회의실</text>
+<text x="38" y="63" style="font-size:12px;fill:#555">SANDBOX 코너스페이스 용산역점 · 호실 1 (ROOM 1~8) + 호실 2 (Conference Room) + 화장실 + 비상계단</text>
 
 <!-- 코너스페이스 공용복도 (외곽 전체 - 좌·상·우 회색 띠) -->
 <rect fill="#D6D6D6" stroke="none" x="55" y="80" width="1440" height="730"/>
@@ -233,57 +233,34 @@
 
 <!-- ============ 비상대피 동선 (A루트 초록 + B루트 파랑) ============ -->
 <!-- A루트: 룸간 벽 회피 — R1/2 우측 + R3/4 좌측 → Gap A(x=345) 합류 / R5/6 우측 + R7/8 좌측 → Gap B(x=683) 합류 → 내부 복도 → 메인도어 ① → 공용 복도 → 비상계단 A 고층/저층 -->
-<path class="rt r-a" d="
-  M 275 130 H 345
-  M 275 235 H 345
-  M 412 156 H 345
-  M 412 254 H 345
-  M 345 130 V 365
-  M 637 156 H 683
-  M 637 254 H 683
-  M 787 220 H 683
-  M 787 320 H 683
-  M 683 156 V 365
-  M 683 365 H 330
-  M 330 365 V 475
-  M 330 475 H 958
-  M 513 475 V 745
-  M 513 745 H 390
-  M 958 475 V 745
-  M 958 745 H 835
-"/>
+
 <!-- B루트: Conference Room → 메인도어 ② (x=965) → 공용 복도 → 비상계단 B (외부 우측) -->
-<path class="rt r-b" d="
-  M 965 305 V 475
-  M 965 475 H 1255
-  M 1255 475 V 555
-"/>
+
 
 <!-- ============ 출발점 마커 — 모든 회의실 (텍스트 좌/우 분기) ============ -->
 <!-- ROOM 1: 텍스트 우측 -->
-<g transform="translate(275,130)"><circle class="start-ring" cx="0" cy="0" r="8" fill="none" stroke="#E60012" stroke-width="3"/><circle class="start-dot" cx="0" cy="0" r="7" fill="#E60012"/><circle cx="0" cy="0" r="2.5" fill="#fff"/></g>
-<!-- ROOM 2: 텍스트 우측 -->
-<g transform="translate(275,235)"><circle class="start-ring" cx="0" cy="0" r="8" fill="none" stroke="#E60012" stroke-width="3"/><circle class="start-dot" cx="0" cy="0" r="7" fill="#E60012"/><circle cx="0" cy="0" r="2.5" fill="#fff"/></g>
-<!-- ROOM 3: 텍스트 좌측 -->
-<g transform="translate(412,156)"><circle class="start-ring" cx="0" cy="0" r="8" fill="none" stroke="#E60012" stroke-width="3"/><circle class="start-dot" cx="0" cy="0" r="7" fill="#E60012"/><circle cx="0" cy="0" r="2.5" fill="#fff"/></g>
-<!-- ROOM 4: 텍스트 좌측 -->
-<g transform="translate(412,254)"><circle class="start-ring" cx="0" cy="0" r="8" fill="none" stroke="#E60012" stroke-width="3"/><circle class="start-dot" cx="0" cy="0" r="7" fill="#E60012"/><circle cx="0" cy="0" r="2.5" fill="#fff"/></g>
-<!-- ROOM 5: 텍스트 우측 -->
-<g transform="translate(637,156)"><circle class="start-ring" cx="0" cy="0" r="8" fill="none" stroke="#E60012" stroke-width="3"/><circle class="start-dot" cx="0" cy="0" r="7" fill="#E60012"/><circle cx="0" cy="0" r="2.5" fill="#fff"/></g>
-<!-- ROOM 6: 텍스트 우측 -->
-<g transform="translate(637,254)"><circle class="start-ring" cx="0" cy="0" r="8" fill="none" stroke="#E60012" stroke-width="3"/><circle class="start-dot" cx="0" cy="0" r="7" fill="#E60012"/><circle cx="0" cy="0" r="2.5" fill="#fff"/></g>
-<!-- ROOM 7: 가로 중앙 (텍스트 아래 비여백, true center 근접) -->
-<g transform="translate(787,220)"><circle class="start-ring" cx="0" cy="0" r="8" fill="none" stroke="#E60012" stroke-width="3"/><circle class="start-dot" cx="0" cy="0" r="7" fill="#E60012"/><circle cx="0" cy="0" r="2.5" fill="#fff"/></g>
-<!-- ROOM 8: 가로 중앙 (텍스트 위 비여백, true center 근접) -->
-<g transform="translate(787,320)"><circle class="start-ring" cx="0" cy="0" r="8" fill="none" stroke="#E60012" stroke-width="3"/><circle class="start-dot" cx="0" cy="0" r="7" fill="#E60012"/><circle cx="0" cy="0" r="2.5" fill="#fff"/></g>
-<!-- Conference Room: 대회의실 글자(y=283) 바로 밑 -->
-<g transform="translate(965,305)"><circle class="start-ring" cx="0" cy="0" r="8" fill="none" stroke="#E60012" stroke-width="3"/><circle class="start-dot" cx="0" cy="0" r="7" fill="#E60012"/><circle cx="0" cy="0" r="2.5" fill="#fff"/></g>
 
-<!-- 행동요령 박스 -->
-<g transform="translate(38,820)">
-  <rect width="1440" height="38" fill="#fff" stroke="#ccc" rx="4"/>
-  <text x="12" y="16" font-size="12" font-weight="800" fill="#222">화재 시 행동요령 · In Case of Fire</text>
-  <text x="12" y="32" font-size="10" fill="#333">① 가까운 비상구 선택  ②  <tspan fill="#BF1E2D" font-weight="700">엘리베이터 사용 금지</tspan>  ③ 자세 낮추고 입·코 가림  ④ 119 신고 + GA Slack #공통-ga-헬프데스크  ⑤ 회의실 → 메인도어 → 공용 복도 → 비상계단</text>
+<!-- ROOM 2: 텍스트 우측 -->
+
+<!-- ROOM 3: 텍스트 좌측 -->
+
+<!-- ROOM 4: 텍스트 좌측 -->
+
+<!-- ROOM 5: 텍스트 우측 -->
+
+<!-- ROOM 6: 텍스트 우측 -->
+
+<!-- ROOM 7: 가로 중앙 (텍스트 아래 비여백, true center 근접) -->
+
+<!-- ROOM 8: 가로 중앙 (텍스트 위 비여백, true center 근접) -->
+
+<!-- Conference Room: 대회의실 글자(y=283) 바로 밑 -->
+
+
+<!-- 담당자 표기 -->
+<g transform="translate(38,830)">
+  <rect width="300" height="28" fill="#fff" stroke="#ccc" rx="4"/>
+  <text x="12" y="19" font-size="13" font-weight="700" fill="#333">담당자: <tspan fill="#3F51B5" font-weight="800">@GA 임재승</tspan></text>
 </g>
 
 </svg>

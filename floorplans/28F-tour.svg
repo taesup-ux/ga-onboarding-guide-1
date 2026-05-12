@@ -81,6 +81,24 @@
         0%, 100% { opacity: 1; }
         50% { opacity: 0.7; }
       }
+
+      /* 오피스 투어 동선 — 코랄 점선 (맨날 쓰던 크기) */
+      .tour-rt {
+        fill: none;
+        stroke: #FF8A65;
+        stroke-width: 5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 12 7;
+        opacity: 0.9;
+        animation: tourflow 2.5s linear infinite;
+      }
+      @keyframes tourflow {
+        from { stroke-dashoffset: 0; }
+        to { stroke-dashoffset: -38; }
+      }
+      .tour-stop { fill: #FF8A65; stroke: #fff; stroke-width: 2.5; filter: drop-shadow(0 1px 3px rgba(0,0,0,0.3)); }
+      .tour-num { fill: #fff; font-size: 11px; font-weight: 800; text-anchor: middle; dominant-baseline: central; }
     </style>
 
     <symbol id="hydrant" viewBox="0 0 24 24">
@@ -95,12 +113,16 @@
       <rect x="26" y="8" width="9" height="16" fill="none" stroke="#fff" stroke-width="1.5"/>
       <path d="M22 18 L34 18 L31 15 M34 18 L31 21" stroke="#fff" stroke-width="1.8" fill="none"/>
     </symbol>
+
+    <marker id="tour-arrow" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#FF8A65" opacity="0.95"/>
+    </marker>
   </defs>
 
   <rect width="1200" height="1050" fill="#FAFAFA"/>
 
-  <text x="40" y="40" class="title">28F · 비상대피 동선</text>
-  <text x="40" y="58" class="subtitle">28F Evacuation Routes · SANDBOX 용산 헤링턴스퀘어 센트럴파크타워 (반층)</text>
+  <text x="40" y="40" class="title">28F · CS / GA / 메일룸 / 스튜디오</text>
+  <text x="40" y="58" class="subtitle">SANDBOX 용산 헤링턴스퀘어 센트럴파크타워 (반층)</text>
 
   <g transform="translate(1140,75)">
     <circle r="22" fill="#fff" stroke="#333" stroke-width="1.5"/>
@@ -125,9 +147,12 @@
   <text x="670" y="210" class="label-ko">사무 좌석</text>
   <text x="670" y="226" class="label-en">(Office Seating)</text>
 
-  <rect class="room-prod" x="915" y="130" width="195" height="170"/>
-  <text x="1012" y="210" class="label-ko">메일룸</text>
-  <text x="1012" y="226" class="label-en">(Mail Room)</text>
+  <g style="cursor:help">
+    <title>메일룸 — 임직원 등기 수령 및 발송 접수</title>
+    <rect class="room-prod" x="915" y="130" width="195" height="170"/>
+    <text x="1012" y="210" class="label-ko">메일룸</text>
+    <text x="1012" y="226" class="label-en">(Mail Room)</text>
+  </g>
 
   <!-- 중간 -->
   <rect class="room-util" x="90" y="285" width="160" height="145"/>
@@ -241,62 +266,55 @@
   <!-- ============================================ -->
 
   <!-- 좌측 시작점 3개 → 내부 통로 분기점 (442, 365) -->
-  <path class="route-a" d="M 170 200 L 442 365"/>   <!-- Studio 2 우측아래 대각선 -->
-  <path class="route-a" d="M 340 250 L 442 365"/>   <!-- 부조정실 → 내부 통로 -->
-  <path class="route-a" d="M 170 480 L 442 365"/>   <!-- Studio 1 우측위 대각선 -->
+     <!-- Studio 2 우측아래 대각선 -->
+     <!-- 부조정실 → 내부 통로 -->
+     <!-- Studio 1 우측위 대각선 -->
 
   <!-- 내부 통로 분기점 → 메인 분기점 (665, 510) - ㄱ자 직선 (가로 → 세로) -->
-  <path class="route-a" d="M 442 365 L 665 365 L 665 510"/>
+  
 
   <!-- 우측 시작점 3개 → 메인 분기점 (각자 다른 경로로 겹침 X) -->
-  <path class="route-a" d="M 575 230 L 665 230 L 665 510"/>      <!-- 위쪽 사무 좌석 → 분기점 (가로 → 세로) -->
-  <path class="route-a" d="M 1012 240 L 1012 510 L 665 510"/>    <!-- 메일룸 → 분기점 (세로 → 가로, 사무 좌석 가운데 통과) -->
+        <!-- 위쪽 사무 좌석 → 분기점 (가로 → 세로) -->
+      <!-- 메일룸 → 분기점 (세로 → 가로, 사무 좌석 가운데 통과) -->
 
   <!-- A 루트 (초록): 분기점 → 정문 → 가로 통로 → 비상계단 A -->
-  <path class="route-a" d="M 665 510 L 665 605 L 629 605 L 442 612 L 310 570"/>
+  
 
   <!-- B 루트 (청록): 분기점 → 좌측 통로 아래 → 쪽문 → 외부 → 비상계단 B -->
-  <path class="route-b" d="M 665 510 L 665 720 L 665 800 L 632 870"/>
+  
 
   <!-- ============================================ -->
   <!--           시작점 6개                            -->
   <!-- ============================================ -->
 
-  <g transform="translate(170,200)">
-    <circle class="yah-ring" cx="0" cy="0" r="8" fill="none" stroke="#E60012" stroke-width="3"/>
-    <circle class="yah-dot" cx="0" cy="0" r="7" fill="#E60012"/>
-    <circle cx="0" cy="0" r="2.5" fill="#fff"/>
-  </g>
+  
 
-  <g transform="translate(340,250)">
-    <circle class="yah-ring" cx="0" cy="0" r="8" fill="none" stroke="#E60012" stroke-width="3"/>
-    <circle class="yah-dot" cx="0" cy="0" r="7" fill="#E60012"/>
-    <circle cx="0" cy="0" r="2.5" fill="#fff"/>
-  </g>
+  
 
-  <g transform="translate(575,230)">
-    <circle class="yah-ring" cx="0" cy="0" r="8" fill="none" stroke="#E60012" stroke-width="3"/>
-    <circle class="yah-dot" cx="0" cy="0" r="7" fill="#E60012"/>
-    <circle cx="0" cy="0" r="2.5" fill="#fff"/>
-  </g>
+  
 
-  <g transform="translate(1012,240)">
-    <circle class="yah-ring" cx="0" cy="0" r="8" fill="none" stroke="#E60012" stroke-width="3"/>
-    <circle class="yah-dot" cx="0" cy="0" r="7" fill="#E60012"/>
-    <circle cx="0" cy="0" r="2.5" fill="#fff"/>
-  </g>
+  
 
-  <g transform="translate(170,480)">
-    <circle class="yah-ring" cx="0" cy="0" r="8" fill="none" stroke="#E60012" stroke-width="3"/>
-    <circle class="yah-dot" cx="0" cy="0" r="7" fill="#E60012"/>
-    <circle cx="0" cy="0" r="2.5" fill="#fff"/>
-  </g>
+  
 
-  <g transform="translate(900,510)">
-    <circle class="yah-ring" cx="0" cy="0" r="8" fill="none" stroke="#E60012" stroke-width="3"/>
-    <circle class="yah-dot" cx="0" cy="0" r="7" fill="#E60012"/>
-    <circle cx="0" cy="0" r="2.5" fill="#fff"/>
-  </g>
+  
+
+
+  <!-- ============================================ -->
+  <!--   오피스 투어 동선 (2개 경로) -->
+  <!--   [A] 방문 경로: ① SANDBOX 정문 → 쪽문통로 ↑ → ② 메일룸 → 내부통로 ← → ③ 스튜디오 2 → ④ 스튜디오 1 -->
+  <!--   [B] 비상안내 경로: ① SANDBOX 정문 → 쪽문통로 ↓ → ⑤ 쪽문 → 공용통로 → ⑥ 비상계단 B -->
+  <!-- ============================================ -->
+  <path class="tour-rt" marker-end="url(#tour-arrow)" d="M 629 605 H 665 V 215 H 1012 V 365 H 260 V 200 H 170 V 475"/>
+  <path class="tour-rt" marker-end="url(#tour-arrow)" d="M 629 605 H 665 V 895 H 632"/>
+
+  <!-- 번호 정류점 마커 -->
+  <g transform="translate(629,605)"><circle class="tour-stop" r="11"/><text class="tour-num" y="0">1</text></g>
+  <g transform="translate(1012,215)"><circle class="tour-stop" r="11"/><text class="tour-num" y="0">2</text></g>
+  <g transform="translate(170,200)"><circle class="tour-stop" r="11"/><text class="tour-num" y="0">3</text></g>
+  <g transform="translate(170,475)"><circle class="tour-stop" r="11"/><text class="tour-num" y="0">4</text></g>
+  <g transform="translate(665,731)"><circle class="tour-stop" r="11"/><text class="tour-num" y="0">5</text></g>
+  <g transform="translate(632,895)"><circle class="tour-stop" r="11"/><text class="tour-num" y="0">6</text></g>
 
   <!-- 소화전 픽토그램 -->
   <use href="#hydrant" x="380" y="332" width="26" height="26" class="exit-pulse"/>
@@ -305,14 +323,9 @@
   <use href="#hydrant" x="240" y="828" width="26" height="26" class="exit-pulse"/>
   <text x="253" y="868" font-size="9" fill="#BF1E2D" text-anchor="middle" font-weight="700">소화전</text>
 
-  <!-- 행동 요령 + 범례 -->
-  <g transform="translate(40,950)">
-    <rect width="1120" height="80" fill="#fff" stroke="#CCC" rx="4"/>
-    <text x="20" y="22" font-size="14" font-weight="700" fill="#222">화재 시 행동요령 · In Case of Fire</text>
-    <text x="20" y="44" font-size="12" fill="#333">
-      <tspan fill="#00964F" font-weight="700">━━ A 루트 (초록):</tspan> SANDBOX 정문 → EV ZONE → 비상계단 A · <tspan fill="#0288D1" font-weight="700">━━ B 루트 (청록):</tspan> 쪽문 → 외부 공용통로 → 비상계단 B
-    </text>
-    <text x="20" y="62" font-size="12" fill="#333">① 가까운 비상구 선택 · ② <tspan fill="#BF1E2D" font-weight="700">엘리베이터 사용 금지</tspan> · ③ 자세 낮추고 입·코 가림 · ④ 119 신고 + GA Slack #ga-helpdesk</text>
-    <text x="20" y="76" font-size="11" fill="#666">붉은 점멸 점 = 시작점 (You are here)</text>
+  <!-- 담당자 표기 -->
+  <g transform="translate(40,970)">
+    <rect width="300" height="32" fill="#fff" stroke="#CCC" rx="4"/>
+    <text x="16" y="22" font-size="14" font-weight="700" fill="#333">담당자: <tspan fill="#3F51B5" font-weight="800">@GA 임재승</tspan></text>
   </g>
 </svg>

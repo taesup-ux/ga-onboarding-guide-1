@@ -50,10 +50,17 @@ text{font-family:Pretendard,"Apple SD Gothic Neo",sans-serif}
 @keyframes rn{0%{r:10;opacity:1}100%{r:28;opacity:0}}
 .yp{animation:pls 1.4s ease-in-out infinite}
 @keyframes pls{0%,100%{opacity:1}50%{opacity:.65}}
+
+/* 오피스 투어 동선 — 코랄(부드러운) 작은 점선 */
+.tour-rt{fill:none;stroke:#FF8A65;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:12 7;opacity:0.9;animation:tourflow 2.5s linear infinite}
+@keyframes tourflow{from{stroke-dashoffset:0}to{stroke-dashoffset:-38}}
+.tour-stop{fill:#FF8A65;stroke:#fff;stroke-width:2.5;filter:drop-shadow(0 1px 3px rgba(0,0,0,0.3))}
+.tour-num{fill:#fff;font-size:11px;font-weight:800;text-anchor:middle;dominant-baseline:central}
 </style>
 <symbol id="ext" viewBox="0 0 24 24"><rect width="24" height="24" rx="2" fill="#BF1E2D"/><rect x="9" y="6" width="6" height="13" fill="#fff" rx="1"/><rect x="10" y="3" width="4" height="3" fill="#fff"/></symbol>
 <symbol id="hyd" viewBox="0 0 24 24"><rect width="24" height="24" rx="2" fill="#BF1E2D"/><text x="12" y="17" text-anchor="middle" font-size="13" font-weight="700" fill="#fff" font-family="sans-serif">소</text></symbol>
 <symbol id="es" viewBox="0 0 40 30"><rect width="40" height="30" rx="3" fill="#00964F"/><circle cx="13" cy="9" r="2.2" fill="#fff"/><path d="M9 26L13 17L18 19L22 14L17 11L11 13L8 18Z" fill="#fff"/><rect x="26" y="8" width="9" height="16" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M22 18L34 18L31 15M34 18L31 21" stroke="#fff" stroke-width="1.8" fill="none"/></symbol>
+<marker id="tour-arrow" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#FF8A65" opacity="0.95"/></marker>
 </defs>
 
 <!-- ================================================================= -->
@@ -63,8 +70,8 @@ text{font-family:Pretendard,"Apple SD Gothic Neo",sans-serif}
 <!-- 외곽 — X축 축소: 1335 → 1200 -->
 <rect fill="#fafafa" width="1260" height="1050"/>
 <path fill="none" stroke="#1f2933" stroke-width="3" d="M63 60 L1200 60 L1200 940 L63 940 Z"/>
-<text x="33" y="35" class="tit">29F · 비상대피 동선 · Evacuation Route</text>
-<text x="33" y="50" style="font-size:12px;fill:#555">SANDBOX 용산 헤링턴스퀘어 센트럴파크타워 29F (전층 · Whole Floor) · v9</text>
+<text x="33" y="35" class="tit">29F · HQ</text>
+<text x="33" y="50" style="font-size:12px;fill:#555">SANDBOX 용산 헤링턴스퀘어 센트럴파크타워 29F (전층 · Whole Floor)</text>
 
 <!-- ─── 상단 사무 좌석 (전체 병합) — w 1211 → 1076 (우측 끝 1143) ─── -->
 <rect class="of" x="67" y="64" width="1076" height="125"/>
@@ -79,9 +86,12 @@ text{font-family:Pretendard,"Apple SD Gothic Neo",sans-serif}
 <rect class="cab" x="1165" y="144" width="22" height="36"/><text x="1176" y="156" class="tx">캐비</text><text x="1176" y="168" class="tx">넷</text>
 
 <!-- ─── 라운지 (X축 축소 415 → 280) ─── -->
-<rect class="lg" x="920" y="193" width="280" height="280"/>
-<text x="1060" y="320" class="tk" style="font-size:15px;fill:#1a5e20">라운지</text>
-<text x="1060" y="337" class="te" style="font-size:10px;fill:#2e7d32">(Lounge · Internal Path)</text>
+<g style="cursor:help">
+  <title>라운지 — 임직원 휴게 공간, 식사/간식 섭취, 간단한 미팅 가능</title>
+  <rect class="lg" x="920" y="193" width="280" height="280"/>
+  <text x="1060" y="320" class="tk" style="font-size:15px;fill:#1a5e20">라운지</text>
+  <text x="1060" y="337" class="te" style="font-size:10px;fill:#2e7d32">(Lounge · Internal Path)</text>
+</g>
 
 <!-- ─── EPS/TPS 흰색 박스 (우측까지 확장) ─── -->
 <rect class="ep" x="350" y="220" width="528" height="250"/>
@@ -146,10 +156,13 @@ text{font-family:Pretendard,"Apple SD Gothic Neo",sans-serif}
 <text x="240" y="444" class="te">(Office Seating)</text>
 
 <!-- ─── 메인EV존 아래: PS, 29층 택배보관함, EV×3 ─── -->
-<rect class="ut" x="350" y="488" width="60" height="42"/>
-<text x="380" y="502" class="tx">29층 택배함</text>
-<text x="380" y="513" class="tx" style="font-size:7px">(29F Parcel</text>
-<text x="380" y="522" class="tx" style="font-size:7px">Locker)</text>
+<g style="cursor:help">
+  <title>택배 보관함 — 29층 수령 택배 보관 장소</title>
+  <rect class="ut" x="350" y="488" width="60" height="42"/>
+  <text x="380" y="502" class="tx">29층 택배함</text>
+  <text x="380" y="513" class="tx" style="font-size:7px">(29F Parcel</text>
+  <text x="380" y="522" class="tx" style="font-size:7px">Locker)</text>
+</g>
 <rect class="co" x="414" y="488" width="60" height="42"/>
 <text x="444" y="510" class="ts">PS</text>
 <text x="444" y="522" class="tx" style="font-size:7px">(Pipe Shaft)</text>
@@ -253,6 +266,8 @@ text{font-family:Pretendard,"Apple SD Gothic Neo",sans-serif}
 <text x="1060" y="830" class="tk" style="font-size:16px">공조실</text>
 <text x="1060" y="847" class="te" style="font-size:10px">(HVAC · F23-02)</text>
 
+<!-- CU 포스트기 / 시딩랙 — 박스는 마커 이후 (제일 앞으로 빼서) 렌더링하여 텍스트 가독성 보장 (아래 STEP 5 이후 참조) -->
+
 <!-- AD 하단 좌석군 — 좌측 사무 좌석에 흡수 (병합) -->
 
 <!-- ─── 남측 통로 아래: Partnership 우측 좌석군 ─── -->
@@ -296,79 +311,31 @@ text{font-family:Pretendard,"Apple SD Gothic Neo",sans-serif}
 <!-- 동선: 모든 시작점 → 내부 복도 → 분기점 (614, 455) → A·B (단일 path 통합 — 겹침 제거) -->
 <!-- ============================================ -->
 <!-- A 루트 (초록): 237은 B로 단일화, 좌측 출발점 + EV/오픈부스 + 하단 corridor -->
-<path class="rt r-a" d="
-  M 185 354 L 326 354
-  M 185 516 L 326 516
-  M 185 678 L 326 678
-  M 384 854 L 326 854
-  M 384 854 L 543 854
-  M 701 854 L 543 854
-  M 701 854 L 760 854
-  M 820 854 L 760 854
-  M 820 854 L 899 854
-  M 326 200 L 326 455
-  M 326 854 L 326 455
-  M 614 455 L 326 455
-  M 614 645 L 326 645
-  M 460 455 L 460 404
-"/>
+
 <!-- B 루트 (파랑): 하단 출발점 verticals 추가 (비상계단 B가 더 가까움) -->
-<path class="rt r-b" d="
-  M 237 126 L 237 200 L 671 200
-  M 671 126 L 671 200 L 899 200
-  M 973 126 L 899 200
-  M 384 902 L 384 854
-  M 701 902 L 701 854
-  M 820 902 L 820 854
-  M 899 200 L 899 749
-  M 899 854 L 899 749
-  M 614 455 L 899 455
-  M 614 645 L 899 645
-  M 899 749 L 836 749
-"/>
+
 
 <!-- ================================================================= -->
 <!--  STEP 4: 출발지 마커                                               -->
 <!-- ================================================================= -->
 <!-- 시작점 9개 — 사무 좌석 3곳 × 3개 균등 (모두 빨강 #E60012) -->
 <!-- 상단 사무 좌석 3개 -->
-<g transform="translate(237,126)"><circle class="yr" cx="0" cy="0" r="8" fill="none" stroke="#E60012" stroke-width="3"/><circle class="yp" cx="0" cy="0" r="7" fill="#E60012"/><circle cx="0" cy="0" r="2.5" fill="#fff"/></g>
-<g transform="translate(671,126)"><circle class="yr" cx="0" cy="0" r="8" fill="none" stroke="#E60012" stroke-width="3"/><circle class="yp" cx="0" cy="0" r="7" fill="#E60012"/><circle cx="0" cy="0" r="2.5" fill="#fff"/></g>
-<g transform="translate(973,126)"><circle class="yr" cx="0" cy="0" r="8" fill="none" stroke="#E60012" stroke-width="3"/><circle class="yp" cx="0" cy="0" r="7" fill="#E60012"/><circle cx="0" cy="0" r="2.5" fill="#fff"/></g>
+
+
+
 <!-- 좌측 사무 좌석 3개 -->
-<g transform="translate(185,354)"><circle class="yr" cx="0" cy="0" r="8" fill="none" stroke="#E60012" stroke-width="3"/><circle class="yp" cx="0" cy="0" r="7" fill="#E60012"/><circle cx="0" cy="0" r="2.5" fill="#fff"/></g>
-<g transform="translate(185,516)"><circle class="yr" cx="0" cy="0" r="8" fill="none" stroke="#E60012" stroke-width="3"/><circle class="yp" cx="0" cy="0" r="7" fill="#E60012"/><circle cx="0" cy="0" r="2.5" fill="#fff"/></g>
-<g transform="translate(185,678)"><circle class="yr" cx="0" cy="0" r="8" fill="none" stroke="#E60012" stroke-width="3"/><circle class="yp" cx="0" cy="0" r="7" fill="#E60012"/><circle cx="0" cy="0" r="2.5" fill="#fff"/></g>
+
+
+
 <!-- 하단 사무 좌석 3개 -->
-<g transform="translate(384,902)"><circle class="yr" cx="0" cy="0" r="8" fill="none" stroke="#E60012" stroke-width="3"/><circle class="yp" cx="0" cy="0" r="7" fill="#E60012"/><circle cx="0" cy="0" r="2.5" fill="#fff"/></g>
-<g transform="translate(701,902)"><circle class="yr" cx="0" cy="0" r="8" fill="none" stroke="#E60012" stroke-width="3"/><circle class="yp" cx="0" cy="0" r="7" fill="#E60012"/><circle cx="0" cy="0" r="2.5" fill="#fff"/></g>
-<g transform="translate(820,902)"><circle class="yr" cx="0" cy="0" r="8" fill="none" stroke="#E60012" stroke-width="3"/><circle class="yp" cx="0" cy="0" r="7" fill="#E60012"/><circle cx="0" cy="0" r="2.5" fill="#fff"/></g>
+
+
+
 
 <use href="#ext" x="63" y="185" width="14" height="14"/>
 <use href="#ext" x="63" y="432" width="14" height="14"/>
 <use href="#ext" x="63" y="840" width="14" height="14"/>
 
-<!-- ================================================================= -->
-<!--  STEP 4.5: 화살표 — 계단 진입점 + 동선 방향 표시 (군데군데, 과하지 않게)  -->
-<!-- ================================================================= -->
-<!-- A 계단 진입점 (위쪽 향) — 아이콘 가리지 않게 stair 박스 밖, EV 통로 안에 위치 -->
-<polygon points="453,446 467,446 460,434" fill="#00964F" stroke="#fff" stroke-width="0.8"/>
-<!-- 메인 EV존 통로 좌측 흐름 (좌측 정문 → A 분기점 좌측) -->
-<polygon points="478,449 478,461 466,455" fill="#00964F" stroke="#fff" stroke-width="0.8"/>
-<!-- 메인 EV존 통로 우측 흐름 (614 → 899) -->
-<polygon points="780,449 780,461 792,455" fill="#0288D1" stroke="#fff" stroke-width="0.8"/>
-<!-- 오픈부스 복도 좌측 흐름 -->
-<polygon points="478,639 478,651 466,645" fill="#00964F" stroke="#fff" stroke-width="0.8"/>
-<!-- 오픈부스 복도 우측 흐름 -->
-<polygon points="780,639 780,651 792,645" fill="#0288D1" stroke="#fff" stroke-width="0.8"/>
-<!-- 남측 내부복도 좌측 흐름 (384 → 326) -->
-<polygon points="362,848 362,860 350,854" fill="#00964F" stroke="#fff" stroke-width="0.8"/>
-<!-- 남측 내부복도 우측 흐름 (820 → 899) -->
-<polygon points="858,848 858,860 870,854" fill="#00964F" stroke="#fff" stroke-width="0.8"/>
-<!-- 우측 수직 corridor 하향 (top → 749) -->
-<polygon points="893,490 905,490 899,502" fill="#0288D1" stroke="#fff" stroke-width="0.8"/>
-<!-- 우측 수직 corridor 상향 (854 → 749) -->
-<polygon points="893,820 905,820 899,808" fill="#0288D1" stroke="#fff" stroke-width="0.8"/>
 
 <!-- ================================================================= -->
 <!--  STEP 5: SANDBOX 정문 (좌: 미팅룸3과 비상계단A 사이 / 우: 기존 위치 유지)   -->
@@ -384,10 +351,30 @@ text{font-family:Pretendard,"Apple SD Gothic Neo",sans-serif}
   <tspan x="866" dy="0">S</tspan><tspan x="866" dy="7">A</tspan><tspan x="866" dy="7">N</tspan><tspan x="866" dy="7">D</tspan><tspan x="866" dy="7">B</tspan><tspan x="866" dy="7">O</tspan><tspan x="866" dy="7">X</tspan><tspan x="866" dy="13">정</tspan><tspan x="866" dy="8">문</tspan>
 </text>
 
-<!-- 행동요령 — 영어 병기 -->
-<g transform="translate(33,950)">
-  <rect width="1167" height="35" fill="#fff" stroke="#ccc" rx="3"/>
-  <text x="10" y="14" font-size="11" font-weight="800" fill="#222">화재 시 행동요령 · Fire Emergency Procedures</text>
-  <text x="10" y="27" font-size="9" fill="#333">① 비상구 선택 (Choose exit)  ② <tspan fill="#BF1E2D" font-weight="700">엘리베이터 금지 (No EV)</tspan>  ③ 자세 낮추고 입·코 가림 (Cover mouth)  ④ 119 + GA Slack #ga-helpdesk  |  1·2·5·3(A)→계단A / 6·3(B)·4→계단B</text>
+
+<!-- ============================================ -->
+<!-- 오피스 투어 동선 (5개 정류점, 통로만, 라운지 종점) -->
+<!-- ① SANDBOX 정문 우 → 우측세로 ↑ → ② 상단 내부복도 (← 가로 이동) → ③ 좌측세로 내부복도 (↓) → → 오픈부스복도 (→) → ④ CU 포스트기 (우측 벽 부착) → ↑ 우측 → → ⑤ 라운지 (종점) -->
+<!-- ============================================ -->
+<path class="tour-rt" marker-end="url(#tour-arrow)" d="M 866 447 H 899 V 203 H 326 V 644 H 899 V 732 H 920 V 333 H 1060"/>
+
+<!-- 번호 정류점 마커 (라운지가 마지막) -->
+<g transform="translate(866,447)"><circle class="tour-stop" r="11"/><text class="tour-num" y="0">1</text></g>
+<g transform="translate(612,203)"><circle class="tour-stop" r="11"/><text class="tour-num" y="0">2</text></g>
+<g transform="translate(380,509)" style="cursor:help"><title>29층 택배함 — 29층 수령 택배 보관 장소</title><circle class="tour-stop" r="11"/><text class="tour-num" y="0">3</text></g>
+<g transform="translate(890,732)"><circle class="tour-stop" r="11"/><text class="tour-num" y="0">4</text></g>
+<g transform="translate(1060,333)"><circle class="tour-stop" r="11"/><text class="tour-num" y="0">5</text></g>
+
+<!-- CU 포스트기 / 시딩랙 — 최상위 렌더링 (가독성 우선) -->
+<g style="cursor:help">
+  <title>CU Post 및 시딩 보관함 — 택배 발송 가능 / 담당자 확인 완료된 시딩 택배 보관함 (임직원 개인 택배 보관함 X)</title>
+  <rect fill="#FFB74D" stroke="#BF360C" stroke-width="2" x="908" y="684" width="24" height="96" rx="3"/>
+  <text x="920" y="732" transform="rotate(-90 920 732)" style="font-size:10px;fill:#3E1500;font-weight:900;text-anchor:middle;paint-order:stroke;stroke:#FFE8C2;stroke-width:1.5px;stroke-linejoin:round">CU 포스트기 / 시딩랙</text>
+</g>
+
+<!-- 담당자 표기 -->
+<g transform="translate(33,960)">
+  <rect width="300" height="28" fill="#fff" stroke="#ccc" rx="3"/>
+  <text x="12" y="19" font-size="13" font-weight="700" fill="#333">담당자: <tspan fill="#3F51B5" font-weight="800">@GA 임재승</tspan></text>
 </g>
 </svg>
