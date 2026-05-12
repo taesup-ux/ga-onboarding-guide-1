@@ -583,40 +583,45 @@
   </div>
   <div class="sb-nav">
     <div class="sb-nav-label">섹션</div>
-    <button type="button" class="sb-item active" onclick="showSection('s01',this)">
+    <button type="button" class="sb-item active" onclick="showSection('s00',this)">
+      <span class="icon">👋</span>
+      <span class="label">팀 소개</span>
+      <span class="badge-num">01</span>
+    </button>
+    <button type="button" class="sb-item" onclick="showSection('s01',this)">
       <span class="icon">💻</span>
       <span class="label">IT 장비 세팅</span>
-      <span class="badge-num">01</span>
+      <span class="badge-num">02</span>
     </button>
     <button type="button" class="sb-item" onclick="showSection('s02',this)">
       <span class="icon">🔧</span>
       <span class="label">업무툴 세팅</span>
-      <span class="badge-num">02</span>
+      <span class="badge-num">03</span>
     </button>
     <button type="button" class="sb-item" onclick="showSection('s03',this)">
       <span class="icon">🏢</span>
       <span class="label">오피스 이용</span>
-      <span class="badge-num">03</span>
+      <span class="badge-num">04</span>
     </button>
     <button type="button" class="sb-item" onclick="showSection('s04',this)">
       <span class="icon">📦</span>
       <span class="label">이동지원·법인차량</span>
-      <span class="badge-num">04</span>
+      <span class="badge-num">05</span>
     </button>
     <button type="button" class="sb-item" onclick="showSection('s05',this)">
       <span class="icon">🚨</span>
       <span class="label">안전·보건</span>
-      <span class="badge-num">05</span>
+      <span class="badge-num">06</span>
     </button>
     <button type="button" class="sb-item" onclick="showSection('s06',this)">
       <span class="icon">🗺️</span>
       <span class="label">오피스 투어 맵</span>
-      <span class="badge-num">06</span>
+      <span class="badge-num">07</span>
     </button>
     <button type="button" class="sb-item" onclick="showSection('s07',this)">
       <span class="icon">✅</span>
       <span class="label">완료 체크리스트</span>
-      <span class="badge-num">07</span>
+      <span class="badge-num">08</span>
     </button>
     <div class="sb-nav-label" style="margin-top:12px;">상세 자료</div>
     <button type="button" class="sb-item" onclick="showSection('s08',this)">
@@ -649,12 +654,93 @@
   <!-- 콘텐츠 -->
   <div id="content">
 
-    <!-- ───────────── SECTION 01 ───────────── -->
-    <section id="s01" class="section active">
+    <!-- ───────────── SECTION 01: 팀 소개 ───────────── -->
+    <section id="s00" class="section active">
+      <div class="section-header">
+        <div class="section-icon-wrap">👋</div>
+        <div class="section-meta">
+          <div class="sec-num">Section 01</div>
+          <h1>General Affairs 팀 소개</h1>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">직무 소개</div>
+        <p style="color:var(--text); line-height:1.7; margin:0; font-size:14px;">
+          GA는 모든 구성원이 <strong style="color:var(--navy);">안정적으로 업무에 몰입할 수 있는 환경을 조성</strong>하고,
+          더 높은 성과를 낼 수 있도록 지원하는 팀입니다.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="card-title">주요 업무</div>
+        <ol style="color:var(--text); line-height:1.9; margin:0; padding-left:20px; font-size:14px;">
+          <li>공간·좌석·인테리어</li>
+          <li>오피스 서비스 운영 (주차·렌탈·시설/기기 유지보수)</li>
+          <li>보안 (정보보안·물리보안·출입) 관리</li>
+          <li>IT 자산·S/W 라이선스·소모품 구매 및 관리</li>
+          <li>법인차량 관리 및 운영</li>
+          <li>이동지원 (출장·퀵·택배·카카오택시 등)</li>
+          <li>출납·증명 (계약서·인감·법인등기·인증서)</li>
+          <li>메일룸 운영지원 (우편·등기·택배·일선 응대)</li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📣 GA 운영 채널 (Slack)</div>
+        <p style="color:var(--text-secondary); margin:0 0 14px; font-size:13px;">문의 유형별로 채널을 구분해서 이용해 주세요.</p>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px;">
+          <li>
+            <a href="https://sandboxnetwork2.slack.com/archives/C03E08UCZS6" target="_blank" style="display:flex; align-items:center; gap:10px; padding:12px 14px; background:#f1f5f9; border-radius:10px; text-decoration:none; color:var(--text); font-size:13px; border:1px solid var(--border);">
+              <span style="font-size:18px;">💬</span>
+              <div style="flex:1;">
+                <div style="font-weight:700; color:var(--navy);">#공통-ga-헬프데스크</div>
+                <div style="font-size:12px; color:var(--text-secondary); margin-top:2px;">GA 전반 문의 · 1차 응대 (메인 채널)</div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="https://sandboxnetwork2.slack.com/archives/C025WV4JFPV" target="_blank" style="display:flex; align-items:center; gap:10px; padding:12px 14px; background:#f1f5f9; border-radius:10px; text-decoration:none; color:var(--text); font-size:13px; border:1px solid var(--border);">
+              <span style="font-size:18px;">🅿️</span>
+              <div style="flex:1;">
+                <div style="font-weight:700; color:var(--navy);">#공통-주차권신청</div>
+                <div style="font-size:12px; color:var(--text-secondary); margin-top:2px;">방문 주차권 신청</div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="https://sandboxnetwork2.slack.com/archives/CMTVD2NA1" target="_blank" style="display:flex; align-items:center; gap:10px; padding:12px 14px; background:#f1f5f9; border-radius:10px; text-decoration:none; color:var(--text); font-size:13px; border:1px solid var(--border);">
+              <span style="font-size:18px;">🚗</span>
+              <div style="flex:1;">
+                <div style="font-weight:700; color:var(--navy);">#공통-공용법인차량-신청</div>
+                <div style="font-size:12px; color:var(--text-secondary); margin-top:2px;">공용 법인차량 배차 신청 워크플로</div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="https://sandboxnetwork2.slack.com/archives/C0ANWTCHYFQ" target="_blank" style="display:flex; align-items:center; gap:10px; padding:12px 14px; background:#f1f5f9; border-radius:10px; text-decoration:none; color:var(--text); font-size:13px; border:1px solid var(--border);">
+              <span style="font-size:18px;">📂</span>
+              <div style="flex:1;">
+                <div style="font-weight:700; color:var(--navy);">#샌드박스-문서자료실</div>
+                <div style="font-size:12px; color:var(--text-secondary); margin-top:2px;">전사 문서·자료 공유</div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="alert alert-blue">
+        <span class="alert-icon">💬</span>
+        <span>GA 주요 업무 관련 모든 문의는 <strong><a href="https://sandboxnetwork2.slack.com/archives/C03E08UCZS6" target="_blank" style="color:inherit;">Slack #공통-ga-헬프데스크</a></strong> 채널로 부탁드립니다.</span>
+      </div>
+    </section>
+
+    <!-- ───────────── SECTION 02 ───────────── -->
+    <section id="s01" class="section">
       <div class="section-header">
         <div class="section-icon-wrap">💻</div>
         <div class="section-meta">
-          <div class="sec-num">Section 01</div>
+          <div class="sec-num">Section 02</div>
           <h1>IT 장비 세팅</h1>
         </div>
       </div>
@@ -794,7 +880,7 @@
       <div class="section-header">
         <div class="section-icon-wrap">🔧</div>
         <div class="section-meta">
-          <div class="sec-num">Section 02</div>
+          <div class="sec-num">Section 03</div>
           <h1>업무툴 세팅</h1>
         </div>
       </div>
@@ -858,7 +944,7 @@
             </div>
             <div class="step-item">
               <span class="step-badge">4</span>
-              <span>접속 URL: <a href="https://docs.google.com/presentation/d/1P7d1OnydFutYnSRA8c2ri6Pynnx3iO7CaanY93m64uk/edit?slide=id.p11#slide=id.p11" target="_blank" style="color:var(--blue); text-decoration:underline;">슬랙 프로필 설정 가이드 ↗</a></span>
+              <span>접속 URL: <a href="https://docs.google.com/presentation/d/12o6wrPksEovK0DNZs-5kML3XMz-wzFK0/edit?slide=id.p11#slide=id.p11" target="_blank" style="color:var(--blue); text-decoration:underline;">슬랙 프로필 설정 가이드 ↗</a></span>
             </div>
           </div>
         </div>
@@ -895,7 +981,7 @@
           </div>
           <div class="step-item">
             <span class="step-badge">5</span>
-            <span>접속 URL: <a href="https://docs.google.com/presentation/d/1P7d1OnydFutYnSRA8c2ri6Pynnx3iO7CaanY93m64uk/edit?slide=id.p13#slide=id.p13" target="_blank" style="color:var(--blue); text-decoration:underline;">모바일 출입증 발급 및 앱 설치 가이드 ↗</a></span>
+            <span>접속 URL: <a href="https://docs.google.com/presentation/d/12o6wrPksEovK0DNZs-5kML3XMz-wzFK0/edit?slide=id.p13#slide=id.p13" target="_blank" style="color:var(--blue); text-decoration:underline;">모바일 출입증 발급 및 앱 설치 가이드 ↗</a></span>
           </div>
         </div>
       </div>
@@ -906,7 +992,7 @@
       <div class="section-header">
         <div class="section-icon-wrap">🏢</div>
         <div class="section-meta">
-          <div class="sec-num">Section 03</div>
+          <div class="sec-num">Section 04</div>
           <h1>오피스 이용</h1>
         </div>
       </div>
@@ -1098,7 +1184,7 @@
       <div class="section-header">
         <div class="section-icon-wrap">📦</div>
         <div class="section-meta">
-          <div class="sec-num">Section 04</div>
+          <div class="sec-num">Section 05</div>
           <h1>이동지원·법인차량</h1>
         </div>
       </div>
@@ -1234,7 +1320,7 @@
       <div class="section-header">
         <div class="section-icon-wrap">🚨</div>
         <div class="section-meta">
-          <div class="sec-num">Section 05</div>
+          <div class="sec-num">Section 06</div>
           <h1>안전·보건</h1>
         </div>
       </div>
@@ -1255,7 +1341,7 @@
         </div>
 
         <div class="floor-content" data-floor="28F" style="display:block; background:#fafafa; border-radius:8px; padding:8px; overflow-x:auto;">
-          <object data="floorplans/28F-evac-animated.svg" type="image/svg+xml" style="width:100%; min-width:600px; display:block;" aria-label="28F 비상대피 동선"></object>
+          <object data="floorplans/28F-evac-animated.svg" type="image/svg+xml" style="width:100%; min-width:900px; display:block;" aria-label="28F 비상대피 동선"></object>
         </div>
 
         <div class="floor-content" data-floor="29F" style="display:none; background:#fafafa; border-radius:8px; padding:8px; overflow-x:auto;">
@@ -1393,22 +1479,27 @@
       <div class="section-header">
         <div class="section-icon-wrap">🗺️</div>
         <div class="section-meta">
-          <div class="sec-num">Section 06</div>
+          <div class="sec-num">Section 07</div>
           <h1>오피스 투어 맵 · Office Tour Map</h1>
         </div>
       </div>
 
       <div class="card" style="border:2px solid #FF8A65;">
         <div class="card-title" style="color:#FF8A65;">🗺️ 오피스 투어 맵 · Office Tour Map</div>
-        <p style="color:#94a3b8; margin:0 0 16px; font-size:14px;">신규 입사자 오피스 투어 동선 — 28층(분리수거→메일룸→스튜디오) / 29층(분리수거→라운지→사무공간 한바퀴). 21층은 온보딩 미팅룸 안내만 (동선 제외).</p>
+        <p style="color:#94a3b8; margin:0 0 16px; font-size:14px;">투어 순서: <strong style="color:#fbbf24;">21F (담당자 직접 안내)</strong> → <strong style="color:#fbbf24;">28F</strong> → <strong style="color:#fbbf24;">29F</strong> → 마무리</p>
 
         <div class="floor-tabs" style="display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap;">
-          <button class="floor-tab active" data-floor="28F" onclick="switchTourFloor('28F')" style="flex:1; padding:12px 20px; border-radius:8px; border:2px solid #FF8A65; background:#FF8A65; color:#fff; font-weight:700; cursor:pointer; transition:all 0.2s;">28F · 반층 (시작)</button>
-          <button class="floor-tab" data-floor="29F" onclick="switchTourFloor('29F')" style="flex:1; padding:12px 20px; border-radius:8px; border:2px solid #475569; background:transparent; color:#cbd5e1; font-weight:700; cursor:pointer; transition:all 0.2s;">29F · 전층 (메인)</button>
+          <button class="floor-tab" data-floor="21F" onclick="switchTourFloor('21F')" style="flex:1; padding:12px 20px; border-radius:8px; border:2px solid #475569; background:transparent; color:#cbd5e1; font-weight:700; cursor:pointer; transition:all 0.2s;">21F · 회의실</button>
+          <button class="floor-tab active" data-floor="28F" onclick="switchTourFloor('28F')" style="flex:1; padding:12px 20px; border-radius:8px; border:2px solid #FF8A65; background:#FF8A65; color:#fff; font-weight:700; cursor:pointer; transition:all 0.2s;">28F · 반층</button>
+          <button class="floor-tab" data-floor="29F" onclick="switchTourFloor('29F')" style="flex:1; padding:12px 20px; border-radius:8px; border:2px solid #475569; background:transparent; color:#cbd5e1; font-weight:700; cursor:pointer; transition:all 0.2s;">29F · 전층</button>
+        </div>
+
+        <div class="tour-content" data-floor="21F" style="display:none; background:#fafafa; border-radius:8px; padding:8px; overflow-x:auto;">
+          <object data="floorplans/21F-tour.svg" type="image/svg+xml" style="width:100%; min-width:900px; display:block;" aria-label="21F 오피스 투어 베이스 맵"></object>
         </div>
 
         <div class="tour-content" data-floor="28F" style="display:block; background:#fafafa; border-radius:8px; padding:8px; overflow-x:auto;">
-          <object data="floorplans/28F-tour.svg" type="image/svg+xml" style="width:100%; min-width:600px; display:block;" aria-label="28F 오피스 투어 동선"></object>
+          <object data="floorplans/28F-tour.svg" type="image/svg+xml" style="width:100%; min-width:900px; display:block;" aria-label="28F 오피스 투어 동선"></object>
         </div>
 
         <div class="tour-content" data-floor="29F" style="display:none; background:#fafafa; border-radius:8px; padding:8px; overflow-x:auto;">
@@ -1417,7 +1508,7 @@
 
         <div class="alert alert-blue" style="margin-top:16px;">
           <span class="alert-icon">📍</span>
-          <span>점선 동선은 GA 구성원 안내 순서. 번호 마커 ①→② 순으로 진행. 21F는 온보딩 미팅룸에서 시작 (대회의실만 안내).</span>
+          <span>21F는 담당자가 직접 설명 (동선 없음). 28F·29F는 코랄색 점선 + 번호 마커 (①→②→③→④) 순서로 진행.</span>
         </div>
       </div>
     </section>
@@ -1426,7 +1517,7 @@
       <div class="section-header">
         <div class="section-icon-wrap">✅</div>
         <div class="section-meta">
-          <div class="sec-num">Section 07</div>
+          <div class="sec-num">Section 08</div>
           <h1>완료 체크리스트</h1>
         </div>
       </div>
@@ -1532,10 +1623,10 @@
         <div style="padding: 16px 20px; background: var(--navy); color:#fff; display:flex; align-items:center; gap:10px;">
           <span style="font-size:15px; font-weight:600;">GA 온보딩 가이드</span>
           <span style="font-size:12px; color:rgba(255,255,255,0.5);">— 원본 슬라이드 전체 보기</span>
-          <a href="https://docs.google.com/presentation/d/1P7d1OnydFutYnSRA8c2ri6Pynnx3iO7CaanY93m64uk/edit" target="_blank" style="margin-left:auto; font-size:12px; color:var(--blue-light); text-decoration:none; font-weight:500;">새 탭에서 열기 ↗</a>
+          <a href="https://docs.google.com/presentation/d/12o6wrPksEovK0DNZs-5kML3XMz-wzFK0/edit" target="_blank" style="margin-left:auto; font-size:12px; color:var(--blue-light); text-decoration:none; font-weight:500;">새 탭에서 열기 ↗</a>
         </div>
         <iframe
-          src="https://docs.google.com/presentation/d/1P7d1OnydFutYnSRA8c2ri6Pynnx3iO7CaanY93m64uk/embed?start=false&loop=false&delayms=0"
+          src="https://docs.google.com/presentation/d/12o6wrPksEovK0DNZs-5kML3XMz-wzFK0/embed?start=false&loop=false&delayms=0"
           frameborder="0"
           width="100%"
           style="height: calc(100vh - 200px); min-height: 600px; display: block;"

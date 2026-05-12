@@ -299,10 +299,10 @@
   </g>
 
   <!-- 소화전 픽토그램 -->
-  <use href="#hydrant" x="380" y="332" width="26" height="26"/>
+  <use href="#hydrant" x="380" y="332" width="26" height="26" class="exit-pulse"/>
   <text x="393" y="372" font-size="9" fill="#BF1E2D" text-anchor="middle" font-weight="700">소화전</text>
 
-  <use href="#hydrant" x="240" y="828" width="26" height="26"/>
+  <use href="#hydrant" x="240" y="828" width="26" height="26" class="exit-pulse"/>
   <text x="253" y="868" font-size="9" fill="#BF1E2D" text-anchor="middle" font-weight="700">소화전</text>
 
   <!-- 행동 요령 + 범례 -->

@@ -21,24 +21,24 @@
   .door-mark{fill:#FFD700;stroke:#B8860B;stroke-width:2.2}
   .ev-label{font-size:11px;fill:#3F51B5;text-anchor:middle;font-weight:700}
   .stair-ko{font-size:12px;fill:#1F5E1F;text-anchor:middle;font-weight:700}
-  .red-tag{font-size:9px;fill:#E60012;text-anchor:middle;font-weight:700}
+  .red-tag{font-size:10px;fill:#E60012;text-anchor:middle;font-weight:700}
   .label-sm-ko{font-size:11px;fill:#333;text-anchor:middle;font-weight:500}
 
-  .tk{font-size:13px;fill:#222;text-anchor:middle;font-weight:650}
-  .ts{font-size:11px;fill:#333;text-anchor:middle;font-weight:550;paint-order:stroke;stroke:#fff;stroke-width:2.5px;stroke-linejoin:round}
-  .tx{font-size:9px;fill:#888;text-anchor:middle;paint-order:stroke;stroke:#fff;stroke-width:2px;stroke-linejoin:round}
-  .tc{font-size:11px;fill:#444;text-anchor:middle;font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round}
-  .tit{font-size:22px;font-weight:800;fill:#111}
+  .tk{font-size:13px;fill:#222;text-anchor:middle;font-weight:600}
+  .ts{font-size:11px;fill:#333;text-anchor:middle;font-weight:500;paint-order:stroke;stroke:#fff;stroke-width:2.5px;stroke-linejoin:round}
+  .tx{font-size:10px;fill:#666;text-anchor:middle;paint-order:stroke;stroke:#fff;stroke-width:2px;stroke-linejoin:round}
+  .tc{font-size:14px;fill:#444;text-anchor:middle;font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round}
+  .tit{font-size:22px;font-weight:700;fill:#111}
   .tdoor{font-size:10px;fill:#0277BD;text-anchor:middle;font-weight:700}
 
   /* 점멸 (비상구·소화전) — 28F/29F와 동일 사양 */
-  .exit-pulse{animation:pls 1.1s ease-in-out infinite}
-  .hydrant-glow{animation:pls 1.1s ease-in-out infinite}
-  @keyframes pls{0%,100%{opacity:1}50%{opacity:.2}}
+  .exit-pulse{animation:pls 1.4s ease-in-out infinite}
+  .hydrant-glow{animation:pls 1.4s ease-in-out infinite}
+  @keyframes pls{0%,100%{opacity:1}50%{opacity:.65}}
   /* 출발점 마커 — 28F/29F와 동일 (확장 링 + 펄스 점) */
   .start-ring{animation:rn 1.5s ease-out infinite}
   @keyframes rn{0%{r:8;opacity:1}100%{r:22;opacity:0}}
-  .start-dot{animation:pls 1.1s ease-in-out infinite}
+  .start-dot{animation:pls 1.4s ease-in-out infinite}
   /* 비상대피 동선 — 28F/29F 사양 (점선 12 7, dashoffset 애니메이션) */
   .rt{fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:12 7}
   .r-a{stroke:#00964F;stroke-width:5;animation:f 2.0s linear infinite}
@@ -121,10 +121,10 @@
 <rect class="corr" x="80" y="325" width="620" height="80"/>
 <!-- 프린트 PC -->
 <rect class="util" x="95" y="378" width="85" height="24"/>
-<text x="137" y="394" class="ts" style="font-size:9px">프린트 PC</text>
+<text x="137" y="394" class="ts" style="font-size:11px">프린트 PC</text>
 <!-- 정수기 -->
 <rect class="util" x="185" y="378" width="85" height="24"/>
-<text x="227" y="394" class="ts" style="font-size:9px">정수기</text>
+<text x="227" y="394" class="ts" style="font-size:11px">정수기</text>
 <!-- 메인도어 ① (정수기 옆 노란 박스) -->
 <rect class="door-mark" x="280" y="378" width="100" height="24" rx="2"/>
 <text x="330" y="394" style="font-size:11px;fill:#8B4513;font-weight:700;text-anchor:middle;paint-order:stroke;stroke:#fff;stroke-width:5px;stroke-linejoin:round">메인도어 ①</text>
