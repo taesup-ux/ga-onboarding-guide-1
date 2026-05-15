@@ -664,6 +664,20 @@
         </div>
       </div>
 
+      <!-- 환영 카드 -->
+      <div class="card" style="background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); border:none;">
+        <div style="display:flex; align-items:center; gap:18px; color:#fff;">
+          <div style="font-size:40px;">🎉</div>
+          <div>
+            <div style="font-size:16px; font-weight:700; margin-bottom:6px;">샌드박스에 오신 것을 환영합니다!</div>
+            <div style="font-size:13px; color:rgba(255,255,255,0.7); line-height:1.7;">
+              본 가이드는 첫날 셋업부터 안전 · 보건까지 한 번에 확인할 수 있도록 구성되어 있습니다.<br>
+              궁금한 사항은 언제든 <strong style="color:var(--blue-light);">#공통-ga-헬프데스크</strong> 또는 <strong style="color:var(--blue-light);">ga@sandbox.co.kr</strong>로 연락주세요.
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="card">
         <div class="card-title">직무 소개</div>
         <p style="color:var(--text); line-height:1.7; margin:0; font-size:14px;">
@@ -1304,7 +1318,7 @@
             <li>차량: 소나타 / 카니발</li>
             <li>만 21세 이상 + 운전면허 소지자</li>
             <li>업무 목적만 사용 가능</li>
-            <li><span class="badge badge-red">CR 운전 절대 불가</span></li>
+            <li><span class="badge badge-red">CR(크리에이터) 운전 절대 불가</span></li>
             <li>유류대 · 세차비: <strong>개인 법인카드</strong> 사용</li>
           </ul>
           <div class="alert alert-red" style="margin-top:12px;">
@@ -1312,6 +1326,72 @@
             <span>사고 발생 시: 사진 촬영 → 보험사 접수 → GA 보고. 인명/분쟁 시 <strong>112 신고 후 GA 연락</strong></span>
           </div>
         </div>
+
+        <!-- 법인차량 가이드 및 규정 (Notion 미리보기) -->
+        <a href="https://www.notion.so/sandboxinc/13d29436cbac8104897ef7848404aa97"
+           target="_blank" rel="noopener noreferrer"
+           style="display:flex; flex-direction:column; background:#1a2744;
+                  border:1px solid #2d3a5e; border-radius:12px; overflow:hidden;
+                  text-decoration:none; color:#fff;
+                  box-shadow:0 4px 14px rgba(26,39,68,.18);
+                  transition:box-shadow .18s ease, transform .18s ease, border-color .18s ease;"
+           onmouseover="this.style.boxShadow='0 10px 26px rgba(26,39,68,.32)';this.style.transform='translateY(-2px)';this.style.borderColor='#4a90d9';"
+           onmouseout="this.style.boxShadow='0 4px 14px rgba(26,39,68,.18)';this.style.transform='translateY(0)';this.style.borderColor='#2d3a5e';">
+          <!-- 페이지 헤더: 아이콘 + 제목 + 부제 -->
+          <div style="display:flex; align-items:center; gap:14px; padding:18px 20px;
+                      background:linear-gradient(135deg, #243360 0%, #1a2744 100%);
+                      border-bottom:1px solid rgba(255,255,255,.08);">
+            <div style="flex-shrink:0; width:46px; height:46px; background:#4a90d9;
+                        border-radius:11px; display:flex; align-items:center;
+                        justify-content:center; font-size:22px;
+                        box-shadow:0 2px 8px rgba(74,144,217,.4);">🚗</div>
+            <div style="min-width:0; flex:1;">
+              <div style="font-size:14px; font-weight:700; color:#ffffff; margin-bottom:3px; line-height:1.3;">
+                법인차량 가이드 및 규정
+              </div>
+              <div style="font-size:11px; color:#a0b8d8; line-height:1.4;
+                          overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
+                공용 법인차량 운영 정책 · 배차 절차 · 사고 대응 매뉴얼
+              </div>
+            </div>
+            <div style="flex-shrink:0; font-size:16px; color:#6aaae8;">↗</div>
+          </div>
+
+          <!-- 본문: 핵심 운영 정보 -->
+          <div style="padding:16px 20px; display:flex; flex-direction:column; gap:9px; background:#1a2744; flex:1;">
+            <div style="display:flex; align-items:flex-start; gap:10px; font-size:12px; color:#d8e2f0; line-height:1.5;">
+              <span style="flex-shrink:0; width:20px; text-align:center;">🚙</span>
+              <span><strong style="color:#ffffff;">차량 구성</strong> · 소나타 · 카니발 (28F GA 자리에서 키 수령)</span>
+            </div>
+            <div style="display:flex; align-items:flex-start; gap:10px; font-size:12px; color:#d8e2f0; line-height:1.5;">
+              <span style="flex-shrink:0; width:20px; text-align:center;">👤</span>
+              <span><strong style="color:#ffffff;">운전 자격</strong> · 만 21세 이상 + 운전면허 소지 임직원 한정 (CR 운전 절대 불가)</span>
+            </div>
+            <div style="display:flex; align-items:flex-start; gap:10px; font-size:12px; color:#d8e2f0; line-height:1.5;">
+              <span style="flex-shrink:0; width:20px; text-align:center;">📅</span>
+              <span><strong style="color:#ffffff;">배차 절차</strong> · 사용 전 일정 등록 → 키 수령 (업무 목적만 가능)</span>
+            </div>
+            <div style="display:flex; align-items:flex-start; gap:10px; font-size:12px; color:#d8e2f0; line-height:1.5;">
+              <span style="flex-shrink:0; width:20px; text-align:center;">💳</span>
+              <span><strong style="color:#ffffff;">유류대 · 세차비</strong> · 개인 법인카드 결제 후 경비 정산</span>
+            </div>
+            <div style="display:flex; align-items:flex-start; gap:10px; font-size:12px; color:#d8e2f0; line-height:1.5;">
+              <span style="flex-shrink:0; width:20px; text-align:center;">🚨</span>
+              <span><strong style="color:#ffffff;">사고 대응</strong> · 사진 → 보험사 접수 → GA 보고 · 인명사고, 분쟁시 119/112 우선</span>
+            </div>
+          </div>
+
+          <!-- footer: Notion 마크 + 워크스페이스 -->
+          <div style="padding:11px 20px; background:rgba(0,0,0,.18); border-top:1px solid rgba(255,255,255,.06);
+                      display:flex; align-items:center; gap:8px; font-size:11px; color:#a0b8d8;">
+            <svg width="13" height="13" viewBox="0 0 120 126" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="flex-shrink:0;">
+              <path fill="#ffffff" d="M22.5 11.6l66.4-4.9c8.2-.7 10.3-.2 15.4 3.5l21.2 14.9c3.5 2.6 4.7 3.3 4.7 6v83.2c0 4.9-1.8 7.8-8 8.2l-77.2 4.7c-4.7.2-7-.5-9.5-3.7l-15.6-20.3c-2.7-3.7-3.9-6.4-3.9-9.6V19.8c0-4 1.8-7.3 6.5-8.2zm51.6 7l-37.5 12.2c-2.6 1.2-3.7 2.7-3.7 4.6v60c0 1.9 1.2 3.4 3.7 4.6l31.5 11.5c2.6 1 3.6.5 3.6-1.4V52c0-1.9-.7-2.7-2.6-3.4l-29.1-10.6c-1.5-.6-1.5-2.6 0-3.2L66 26.4c1.5-.5 2.4-.4 3.4 0l28.6 10c2.4.8 3 1.4 3 3.6v55c0 2.1.5 2.7 2.5 2.4l8.5-1.4c2.5-.5 3-1.6 3-3.7V35.3c0-2.6-.4-3.4-3.7-4.5L73 18.7c-1.2-.4-2.4-.4-3.6 0z"/>
+            </svg>
+            <span style="font-weight:600; color:#ffffff;">Notion</span>
+            <span>·</span>
+            <span style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">sandboxinc / 법인차량 가이드 및 규정 페이지로 이동</span>
+          </div>
+        </a>
       </div>
     </section>
 
@@ -1438,7 +1518,7 @@
               <tr>
                 <td><span class="badge badge-green">상비약</span></td>
                 <td>29층</td>
-                <td>풀숲 캐비넷 앞</td>
+                <td>3번 회의실 앞 캐비넷</td>
               </tr>
               <tr>
                 <td><span class="badge badge-green">상비약</span></td>
@@ -1470,6 +1550,61 @@
         <div class="alert alert-green" style="margin-top:16px;">
           <span class="alert-icon">💚</span>
           <span>AED 위치: 29층 라운지 보관함 (모델 A15). 평소에 위치를 미리 확인해 두세요.</span>
+        </div>
+      </div>
+
+      <!-- 보건 — 상비약 & 인근 응급병원 + 공식 비상연락망 -->
+      <div class="grid-2">
+        <!-- 상비약 & 인근 응급병원 -->
+        <div class="card">
+          <div class="card-title">상비약 & 인근 응급병원</div>
+
+          <div style="margin-bottom:14px;">
+            <div style="font-size:13px; font-weight:700; color:var(--success); margin-bottom:8px;">💊 상비약 위치</div>
+            <ul class="info-list">
+              <li><strong>28층</strong> · 복합기 옆</li>
+              <li><strong>29층</strong> · 3번 회의실 앞 캐비넷</li>
+              <li>자유 사용 · 보충 요청: <a href="https://sandboxnetwork2.slack.com/archives/C03E08UCZS6" target="_blank" style="color:var(--blue);"><span class="badge badge-blue">#공통-ga-헬프데스크</span></a></li>
+            </ul>
+          </div>
+
+          <div style="border-top:1px solid var(--border); padding-top:14px;">
+            <div style="font-size:13px; font-weight:700; color:var(--danger); margin-bottom:8px;">🏥 인근 응급병원</div>
+            <ul class="info-list">
+              <li><strong>순천향대학교 서울병원</strong> · 응급실 24시간 운영</li>
+              <li>대표 <strong>02-709-9117</strong></li>
+              <li>오피스에서 차량 약 10분 거리 (한남동)</li>
+            </ul>
+          </div>
+
+          <div class="alert alert-red" style="margin-top:14px;">
+            <span class="alert-icon">🚑</span>
+            <span>의식 저하 · 중증 부상은 <strong>119 즉시 호출</strong> 후 병원 후송. 심정지 시 29층 라운지 AED 사용.</span>
+          </div>
+        </div>
+
+        <!-- 공식 비상연락망 -->
+        <div class="card">
+          <div class="card-title">공식 비상연락망</div>
+          <div class="tbl-wrap">
+            <table>
+              <thead><tr><th>구분</th><th>연락처</th></tr></thead>
+              <tbody>
+                <tr><td><span class="badge badge-red">긴급</span> 화재 · 구급</td><td><strong>119</strong></td></tr>
+                <tr><td><span class="badge badge-red">긴급</span> 범죄 · 분쟁</td><td><strong>112</strong></td></tr>
+                <tr><td>용산소방서</td><td>02-796-6361</td></tr>
+                <tr><td>용산경찰서</td><td>02-2198-0329</td></tr>
+                <tr><td>순천향대 서울병원</td><td>02-709-9117</td></tr>
+                <tr><td>서울지방고용노동청</td><td>02-2231-0009</td></tr>
+                <tr><td>빌딩 관리실 (대표)</td><td>02-792-3684</td></tr>
+                <tr><td>시설 · 방재팀 직통</td><td>070-4910-2995</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="alert alert-blue" style="margin-top:14px;">
+            <span class="alert-icon">📞</span>
+            <span>사내 즉시 대응은 <a href="https://sandboxnetwork2.slack.com/archives/C03E08UCZS6" target="_blank" style="color:inherit;"><strong>#공통-ga-헬프데스크</strong></a> 또는 GA 구성원 직접 연락.</span>
+          </div>
         </div>
       </div>
     </section>
@@ -1543,72 +1678,73 @@
       <div class="card">
         <div class="checklist">
           <div class="check-group">
-            <div class="check-group-title">
+            <h3 class="check-group-title">
               <span>💻</span> IT 세팅
-            </div>
-            <div class="check-item" onclick="toggleCheck(this)">
+            </h3>
+            <div class="check-item" onclick="toggleCheck(this)" data-key="it-gws-login">
               <div class="check-box"><span class="check-tick">✓</span></div>
               <div class="check-label">Google Workspace 로그인 및 초기 비밀번호 변경</div>
             </div>
-            <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-item" onclick="toggleCheck(this)" data-key="it-gws-2fa">
               <div class="check-box"><span class="check-tick">✓</span></div>
               <div class="check-label">Google Workspace 2FA(2단계 인증) 설정</div>
             </div>
-            <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-item" onclick="toggleCheck(this)" data-key="it-notion">
               <div class="check-box"><span class="check-tick">✓</span></div>
               <div class="check-label">Notion 접속 및 팀스페이스 확인</div>
             </div>
-            <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-item" onclick="toggleCheck(this)" data-key="it-slack">
               <div class="check-box"><span class="check-tick">✓</span></div>
               <div class="check-label">Slack 필수 채널 가입 (#공통-ga-헬프데스크 포함)</div>
             </div>
-            <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-item" onclick="toggleCheck(this)" data-key="it-groupware">
               <div class="check-box"><span class="check-tick">✓</span></div>
               <div class="check-label">그룹웨어 로그인 및 위임전결규정 확인</div>
             </div>
           </div>
 
           <div class="check-group">
-            <div class="check-group-title">
+            <h3 class="check-group-title">
               <span>🏢</span> 오피스 세팅
-            </div>
-            <div class="check-item" onclick="toggleCheck(this)">
+            </h3>
+            <div class="check-item" onclick="toggleCheck(this)" data-key="off-access">
               <div class="check-box"><span class="check-tick">✓</span></div>
               <div class="check-label">모바일 출입증 (에스원) 설치 및 인증 완료</div>
             </div>
-            <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-item" onclick="toggleCheck(this)" data-key="off-wifi">
               <div class="check-box"><span class="check-tick">✓</span></div>
               <div class="check-label">임직원용 Wi-Fi(SANDBOX) 연결 확인</div>
             </div>
-            <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-item" onclick="toggleCheck(this)" data-key="off-printer">
               <div class="check-box"><span class="check-tick">✓</span></div>
               <div class="check-label">복합기 위치 확인 (28층 / 29층)</div>
             </div>
-            <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-item" onclick="toggleCheck(this)" data-key="off-parking">
               <div class="check-box"><span class="check-tick">✓</span></div>
-              <div class="check-label">주차권 신청 방법 확인 (#공용-주차권신청)</div>
+              <div class="check-label">주차권 신청 방법 확인 (#공통-주차권신청)</div>
             </div>
-            <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-item" onclick="toggleCheck(this)" data-key="off-meeting">
               <div class="check-box"><span class="check-tick">✓</span></div>
               <div class="check-label">회의실 예약 방법 확인 (Google Calendar)</div>
+            </div>
+          </div>
+
+          <div class="check-group">
+            <h3 class="check-group-title">
+              <span>🚨</span> 안전·공간 숙지
+            </h3>
+            <div class="check-item" onclick="toggleCheck(this)" data-key="safe-evac">
+              <div class="check-box"><span class="check-tick">✓</span></div>
+              <div class="check-label">비상대피로 숙지 (본인 좌석 → 비상계단 A/B 경로)</div>
+            </div>
+            <div class="check-item" onclick="toggleCheck(this)" data-key="safe-tour">
+              <div class="check-box"><span class="check-tick">✓</span></div>
+              <div class="check-label">오피스 투어 완료 (28F · 29F)</div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 완료 후 안내 -->
-      <div class="card" style="background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); border:none;">
-        <div style="display:flex; align-items:center; gap:18px; color:#fff;">
-          <div style="font-size:40px;">🎉</div>
-          <div>
-            <div style="font-size:16px; font-weight:700; margin-bottom:6px;">온보딩을 환영합니다!</div>
-            <div style="font-size:13px; color:rgba(255,255,255,0.7); line-height:1.7;">
-              모든 체크리스트 완료 후 GA 담당자에게 완료 공유를 부탁드립니다.<br>
-              궁금한 사항은 언제든지 <strong style="color:var(--blue-light);">#공통-ga-헬프데스크</strong> 또는 <strong style="color:var(--blue-light);">ga@sandbox.co.kr</strong>로 연락주세요.
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
     <section id="s08" class="section">
@@ -1758,22 +1894,51 @@
     window.scrollTo(0, 0);
   }
 
-  // ── 체크박스 토글 ──
-  const TOTAL = 12;
+  // ── 체크박스 토글 + localStorage 영구화 ──
+  const CHECKLIST_STORAGE_KEY = 'ga-onboarding-checklist-v1';
+
+  function loadChecklistState() {
+    try {
+      const raw = localStorage.getItem(CHECKLIST_STORAGE_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function saveChecklistState() {
+    const state = {};
+    document.querySelectorAll('.check-item[data-key]').forEach(item => {
+      state[item.dataset.key] = item.classList.contains('checked');
+    });
+    try {
+      localStorage.setItem(CHECKLIST_STORAGE_KEY, JSON.stringify(state));
+    } catch (e) { /* 저장 실패 시 silently */ }
+  }
+
+  function restoreChecklistState() {
+    const state = loadChecklistState();
+    document.querySelectorAll('.check-item[data-key]').forEach(item => {
+      if (state[item.dataset.key]) item.classList.add('checked');
+    });
+  }
 
   function toggleCheck(el) {
     el.classList.toggle('checked');
+    saveChecklistState();
     updateProgress();
   }
 
   function updateProgress() {
+    const items = document.querySelectorAll('.check-item');
+    const total = items.length;
     const checked = document.querySelectorAll('.check-item.checked').length;
-    const pct = (checked / TOTAL) * 100;
+    const pct = total ? (checked / total) * 100 : 0;
     document.getElementById('prog-bar').style.width = pct + '%';
-    document.getElementById('prog-count').textContent = checked + ' / ' + TOTAL;
+    document.getElementById('prog-count').textContent = checked + ' / ' + total;
 
     // 100% 완료 시 축하 메시지
-    if (checked === TOTAL) {
+    if (total > 0 && checked === total) {
       document.getElementById('prog-count').style.color = '#10b981';
     } else {
       document.getElementById('prog-count').style.color = 'var(--blue)';
@@ -1813,6 +1978,7 @@
   }
 
   // 초기화
+  restoreChecklistState();
   updateProgress();
 </script>
 </body>
