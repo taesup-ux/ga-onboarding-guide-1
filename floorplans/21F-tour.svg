@@ -31,10 +31,10 @@
   .tit{font-size:22px;font-weight:700;fill:#111}
   .tdoor{font-size:10px;fill:#0277BD;text-anchor:middle;font-weight:700}
 
-  /* 점멸 (비상구·소화전) — 28F/29F와 동일 사양 */
-  .exit-pulse{animation:pls 1.4s ease-in-out infinite}
-  .hydrant-glow{animation:pls 1.4s ease-in-out infinite}
-  @keyframes pls{0%,100%{opacity:1}50%{opacity:.65}}
+  /* 점멸 (비상구·소화전) — 28F/29F와 동일 강화 사양 */
+  .exit-pulse{animation:pls 1.0s ease-in-out infinite;filter:drop-shadow(0 0 6px rgba(229,0,18,0.95))}
+  .hydrant-glow{animation:pls 1.0s ease-in-out infinite;filter:drop-shadow(0 0 6px rgba(229,0,18,0.95))}
+  @keyframes pls{0%,100%{opacity:1}50%{opacity:.15}}
   /* 출발점 마커 — 28F/29F와 동일 (확장 링 + 펄스 점) */
   .start-ring{animation:rn 1.5s ease-out infinite}
   @keyframes rn{0%{r:8;opacity:1}100%{r:22;opacity:0}}
